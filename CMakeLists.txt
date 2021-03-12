@@ -5,6 +5,7 @@ project(PROJEKT LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DEBUG)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE"${CMAKE_CXX_FLAGS_RELEASE}-D_REALESE")
 
-add_executable(PROJEKT main.cpp monitor.cpp model.cpp user.cpp model.h monitor.h user.h)
+add_executable(PROJEKT main.cpp  monitor.cpp user.cpp monitor.h user.h)

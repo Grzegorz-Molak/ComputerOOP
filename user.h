@@ -1,12 +1,15 @@
 #pragma once
 #include <iostream>
 
+using namespace std;
+
 class User
 {
 public:
     User();
+   ~User();
 private:
-    std::string name;
+    string name;
     int age;
 };
 
