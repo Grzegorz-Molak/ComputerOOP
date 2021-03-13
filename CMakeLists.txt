@@ -8,4 +8,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE"${CMAKE_CXX_FLAGS_RELEASE}-D_REALESE")
 
-add_executable(PROJEKT main.cpp  monitor.cpp user.cpp monitor.h user.h)
+add_executable(PROJEKT main.cpp  monitor.cpp user.cpp app.cpp monitor.h user.h app.h)

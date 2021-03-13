@@ -1,5 +1,6 @@
 #pragma once
 #include "user.h"
+#include "app.h"
 
 using namespace std;
 
@@ -16,8 +17,10 @@ public:
     int get_number_of_users();
 private:
     string name_of_model = "unknown";
-    unsigned int number_of_users = 0;
-    User* users = 0;
+    bool screen_on = true;
+    unsigned int number_of_apps = 0;
+    User user;
+    App *opened_apps = 0;
 };
 
 
