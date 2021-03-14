@@ -4,22 +4,31 @@ unsigned int App::quantity = 0;
 
 App::App()
 {
-    change_quantity(1);
+    quantity++;
 #ifdef _DEBUG
     cout<<"App(), current number of class 'App' objects: "<<quantity<<endl;
 #endif  
 }
+
+App::App(string name_of_app)
+{
+    quantity++;
+#ifdef _DEBUG
+    cout<<"App(string name_of_app), current number of class 'App' objects: "<<quantity<<endl;
+#endif
+
+    this->name = name_of_app;
+}
+
 App::~App()
 {
-    change_quantity(-1);
+    quantity--;
 #ifdef _DEBUG
     cout<<"~App(), current number of class 'App' objects: "<<quantity<<endl;
 #endif   
 }
 
-void App::change_quantity(int change)
+int App::get_quantity()
 {
-   quantity += change;
+    return quantity;
 }
-
-

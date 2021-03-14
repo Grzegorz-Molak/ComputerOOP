@@ -13,9 +13,10 @@ public:
     Monitor(string model_name, unsigned int users_number);
     Monitor(const Monitor &monitor_to_copy);
     ~Monitor();
-    void change_quantity(int change);
 
-    int get_number_of_users();
+    static int get_quantity();
+    unsigned int get_number_of_users();
+
 private:
     static unsigned int quantity;
     string name_of_model = "unknown";

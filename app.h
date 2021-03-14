@@ -7,10 +7,13 @@ class App
 {
 public:
     App();
+    App(string name_of_app);
    ~App();
-    void change_quantity(int change);
+
+    static int get_quantity();
+
 private:
     static unsigned int quantity;
-    string name;
+    string name = "unknown";
 };
 

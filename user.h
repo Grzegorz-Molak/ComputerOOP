@@ -7,12 +7,17 @@ class User
 {
 public:
     User();
+    User(string name_of_user);
+    User(int age_of_user);
+    User(string name_of_user, int age_of_user);
    ~User();
-    void change_quantity(int change);
+
+    static int get_quantity();
+
 private:
     static unsigned int quantity;
-    string name;
-    int age;
+    string name = "anonim";
+    unsigned int age = 0;
 };
 
 

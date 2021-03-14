@@ -4,14 +4,14 @@ unsigned int Monitor::quantity = 0;
 
 Monitor::Monitor()
 {
-    change_quantity(1);
+    quantity++;
 #ifdef _DEBUG
     cout<<"Monitor(), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
 }
 Monitor::Monitor(string model_name)
 {
-    change_quantity(1);
+    quantity++;
 #ifdef _DEBUG
     cout<<"Monitor(string model_name), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
@@ -20,7 +20,7 @@ Monitor::Monitor(string model_name)
 }
 Monitor::Monitor(unsigned int apps_number)
 {
-    change_quantity(1);
+    quantity++;
 #ifdef _DEBUG
     cout<<"Monitor(unsigned int apps_number), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
@@ -33,7 +33,7 @@ Monitor::Monitor(unsigned int apps_number)
 }
 Monitor::Monitor(string model_name, unsigned int apps_number)
 {
-    change_quantity(1);
+    quantity++;
 #ifdef _DEBUG
     cout<<"Monitor(string model_name, unsigned int apps_number), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
@@ -49,7 +49,7 @@ Monitor::Monitor(string model_name, unsigned int apps_number)
 
 Monitor::Monitor(const Monitor &monitor_to_copy)
 {
-    change_quantity(1);
+    quantity++;
 #ifdef _DEBUG
     cout<<"Monitor(const Monitor &monitor_to_copy), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
@@ -65,7 +65,7 @@ Monitor::Monitor(const Monitor &monitor_to_copy)
 
 Monitor::~Monitor()
 {
-    change_quantity(-1);
+    quantity--;
 #ifdef _DEBUG
     cout<<"~Monitor(), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
@@ -76,12 +76,13 @@ Monitor::~Monitor()
     }
 }
 
-void Monitor::change_quantity(int change)
+int Monitor::get_quantity()
 {
-   quantity += change;
+    return quantity;
 }
 
-int Monitor::get_number_of_users()
+
+unsigned int Monitor::get_number_of_users()
 {
     return this->number_of_apps;
 }
