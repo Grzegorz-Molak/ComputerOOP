@@ -38,6 +38,17 @@ User::User(string name_of_user, int age_of_user)
     this->age = age_of_user;
 }
 
+User::User(const User &user_to_copy)
+{
+    quantity++;
+#ifdef _DEBUG
+    cout<<"User(const User &user_to_copy), current number of class 'User' objects: "<<quantity<<endl;
+#endif
+
+    this->name = user_to_copy.name;
+    this->age = user_to_copy.age;
+}
+
 User::~User()
 {
     quantity--;

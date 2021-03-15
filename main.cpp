@@ -13,8 +13,10 @@ int main()
     User user("anna");
     User user2(14);
     User user3("Marek", 12);
+    User user4(user3);
 
-    App("Teams");
+    App app("Teams");
+    App app2(app);
 
     return 0;
 }

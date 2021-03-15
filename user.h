@@ -10,6 +10,7 @@ public:
     User(string name_of_user);
     User(int age_of_user);
     User(string name_of_user, int age_of_user);
+    User(const User &user_to_copy);
    ~User();
 
     static int get_quantity();
