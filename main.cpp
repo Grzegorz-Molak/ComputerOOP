@@ -42,14 +42,22 @@ int main()
 
 
 
-    cout<<"Testing [] operator"<<endl;
+    cout<<"Testing [] operator"<<endl<<endl;
+
+    cout<<"Names of apps in m_test3, before changing app names in m_test4 and assigning m_test4 to m_test3:"<<endl;
+    for(unsigned int i = 0; i < m_test3.get_number_of_apps(); i++)
+    {
+        cout<<"["<<i<<"]: "<<m_test3[i]->get_name()<<endl;
+    }
+
     m_test4.get_apps()[0].set_name("pierwsza");
     m_test4.get_apps()[1].set_name("druga");
     m_test4.get_apps()[2].set_name("trzecia");
 
+    cout<<"\nCalling m_test3 = m_test4 "<<endl;
     m_test3 = m_test4;
 
-    cout<<"Names of apps in m_test3, after changing app names in m_test4 and assigning m_test4 to m_test3:"<<endl;
+    cout<<"\nNames of apps in m_test3, after changing app names in m_test4 and assigning m_test4 to m_test3:"<<endl;
     for(unsigned int i = 0; i < m_test3.get_number_of_apps(); i++)
     {
         cout<<"["<<i<<"]: "<<m_test3[i]->get_name()<<endl;
