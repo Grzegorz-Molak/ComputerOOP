@@ -2,52 +2,55 @@
 
 unsigned int Monitor::quantity = 0;
 
-Monitor::Monitor()
+Monitor::Monitor() // podstawowy konstruktor
 {
     quantity++;
 #ifdef _DEBUG
     cout<<"Monitor(), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
 }
-Monitor::Monitor(string model_name)
+
+Monitor::Monitor(string model_name) // z inicjalizacja nazwy modelu
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"Monitor(string model_name), current number of class 'Monitor' objects: "<<quantity<<endl;
+    cout<<"Monitor("<<model_name<<"), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
 
     this->name_of_model = model_name;
 }
-Monitor::Monitor(unsigned int apps_number)
+
+Monitor::Monitor(unsigned int apps_number) // z inicjalizacja ilosci aplikacji
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"Monitor(unsigned int apps_number), current number of class 'Monitor' objects: "<<quantity<<endl;
+    cout<<"Monitor("<<apps_number<<"), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
 
     this->number_of_apps= apps_number;
     if(this->number_of_apps > 0)
     {
-        this->opened_apps = new App[this->number_of_apps];
+        this->opened_apps = new App[this->number_of_apps]; // stworzenie dynamicznej tablicy na aplikacje
     }
 }
-Monitor::Monitor(string model_name, unsigned int apps_number)
+
+Monitor::Monitor(string model_name, unsigned int apps_number) // pełna inicjalizacja
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"Monitor(string model_name, unsigned int apps_number), current number of class 'Monitor' objects: "<<quantity<<endl;
+    cout<<"Monitor("<<model_name<<" "<<apps_number<<"), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
 
     this->name_of_model = model_name;
     this->number_of_apps = apps_number;
     if(this->number_of_apps > 0)
     {
-        this->opened_apps = new App[this->number_of_apps];
+        this->opened_apps = new App[this->number_of_apps]; // stworzenie dynamicznej tablicy na aplikacje
     }
 
 }
 
-Monitor::Monitor(const Monitor &monitor_to_copy)
+Monitor::Monitor(const Monitor &monitor_to_copy) // konstruktor kopiujacy
 {
     quantity++;
 #ifdef _DEBUG
@@ -63,7 +66,7 @@ Monitor::Monitor(const Monitor &monitor_to_copy)
 }
 
 
-Monitor::~Monitor()
+Monitor::~Monitor() // destruktor
 {
     quantity--;
 #ifdef _DEBUG
@@ -76,13 +79,55 @@ Monitor::~Monitor()
     }
 }
 
-int Monitor::get_quantity()
+bool Monitor::operator==(const Monitor &monitor_to_compare) // operator porownojacy modele dwoch monitorow
 {
-    return quantity;
+#ifdef _DEBUG
+    cout<<"Comparing "<<name_of_model<<" with "<<monitor_to_compare.name_of_model<<endl;
+#endif
+    return this->name_of_model == monitor_to_compare.name_of_model;
 }
 
-
-unsigned int Monitor::get_number_of_users()
+Monitor& Monitor::operator=(const Monitor &monitor_to_copy) // przypisanie monitorowi parametrow innego
 {
-    return this->number_of_apps;
+    name_of_model = monitor_to_copy.name_of_model;
+    screen_on = monitor_to_copy.screen_on;
+    number_of_apps = monitor_to_copy.number_of_apps;
+    user = monitor_to_copy.user;
+
+    if(opened_apps) delete[] opened_apps;
+    opened_apps = new App[number_of_apps];
+
+    for(unsigned int i = 0; i < number_of_apps; i++)
+    {
+        opened_apps[i] = monitor_to_copy.opened_apps[i];
+    }
+
+    return *this;
+}
+
+Monitor::operator string() // krotkie info o monitorze w postaci stringa
+{
+    return name_of_model+(screen_on ? ", on, " : ", off, ")+" nickname: "+user.get_name()+", "+to_string(number_of_apps)+" opened apps";
+}
+
+App* Monitor::operator[](unsigned int i) // daje dostep do itej aplikacji
+{
+    if(i > number_of_apps)
+    {
+        cout<<"No app with that index";
+    }
+    return &opened_apps[i];
+}
+
+Monitor& Monitor::operator!() // gasi lub zapala ekran
+{
+    screen_on = !screen_on;
+    return *this;
+}
+
+ostream & operator<<( ostream &stream , Monitor &monitor ) // wypisuje dane o monitorze
+{
+    return stream<<"model name: "<<monitor.name_of_model<<", "<<(monitor.screen_on ? "screen on" : "screen off")
+                 <<", "<<monitor.number_of_apps<<" opened apps, user nickname and age : "
+                 <<monitor.user.get_name()<<" "<<monitor.user.get_age()<<endl;
 }

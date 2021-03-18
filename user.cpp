@@ -2,7 +2,7 @@
 
 unsigned int User::quantity = 0;
 
-User::User()
+User::User() // podstawowy konstruktor
 {
     quantity++;
 #ifdef _DEBUG
@@ -10,7 +10,7 @@ User::User()
 #endif
 }
 
-User::User(string name_of_user)
+User::User(string name_of_user) // z zainicjalizowana nazwa uzytkownika
 {
     quantity++;
 #ifdef _DEBUG
@@ -19,7 +19,7 @@ User::User(string name_of_user)
     this->name = name_of_user;
 }
 
-User::User(int age_of_user)
+User::User(int age_of_user) // z inicjalizacja wieku uzytkownika
 {
     quantity++;
 #ifdef _DEBUG
@@ -28,7 +28,7 @@ User::User(int age_of_user)
     this->age = age_of_user;
 }
 
-User::User(string name_of_user, int age_of_user)
+User::User(string name_of_user, int age_of_user) // ze wszelka inicjalizacja
 {
     quantity++;
 #ifdef _DEBUG
@@ -38,7 +38,7 @@ User::User(string name_of_user, int age_of_user)
     this->age = age_of_user;
 }
 
-User::User(const User &user_to_copy)
+User::User(const User &user_to_copy) // konstruktor kopiujacy
 {
     quantity++;
 #ifdef _DEBUG
@@ -49,7 +49,7 @@ User::User(const User &user_to_copy)
     this->age = user_to_copy.age;
 }
 
-User::~User()
+User::~User() // destruktor
 {
     quantity--;
 #ifdef _DEBUG
@@ -57,9 +57,11 @@ User::~User()
 #endif
 }
 
-int User::get_quantity()
+User& User::operator=(const User &user_to_copy) // operator przypisujacy uzytkownikowi parametry innego uzytkownika
 {
-    return quantity;
+    name = user_to_copy.name;
+    age = user_to_copy.age;
+    return *this;
 }
 
 

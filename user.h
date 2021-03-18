@@ -13,7 +13,12 @@ public:
     User(const User &user_to_copy);
    ~User();
 
-    static int get_quantity();
+    static int get_quantity() {return quantity;}
+
+    User& operator=(const User &user_to_copy);
+
+    string get_name(){return name;}
+    int get_age(){return age;}
 
 private:
     static unsigned int quantity;
