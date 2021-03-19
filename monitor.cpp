@@ -2,6 +2,8 @@
 
 unsigned int Monitor::quantity = 0;
 
+// KONSTRUKTORY ****************************************
+
 Monitor::Monitor() // podstawowy konstruktor
 {
     quantity++;
@@ -65,6 +67,8 @@ Monitor::Monitor(const Monitor &monitor_to_copy) // konstruktor kopiujacy
     }
 }
 
+// KONSTRUKTORY ****************************************
+
 
 Monitor::~Monitor() // destruktor
 {
@@ -78,6 +82,8 @@ Monitor::~Monitor() // destruktor
         delete[] this->opened_apps;
     }
 }
+
+// OPERATORY ******************************************
 
 bool Monitor::operator==(const Monitor &monitor_to_compare) // operator porownojacy modele dwoch monitorow
 {
@@ -131,3 +137,5 @@ ostream & operator<<( ostream &stream , Monitor &monitor ) // wypisuje dane o mo
                  <<", "<<monitor.number_of_apps<<" opened apps, user nickname and age : "
                  <<monitor.user.get_name()<<" "<<monitor.user.get_age()<<endl;
 }
+
+// OPERATORY ******************************************

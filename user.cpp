@@ -2,6 +2,8 @@
 
 unsigned int User::quantity = 0;
 
+// KONSTRUKTORY ****************************************
+
 User::User() // podstawowy konstruktor
 {
     quantity++;
@@ -49,6 +51,8 @@ User::User(const User &user_to_copy) // konstruktor kopiujacy
     this->age = user_to_copy.age;
 }
 
+// KONSTRUKTORY ****************************************
+
 User::~User() // destruktor
 {
     quantity--;
@@ -57,11 +61,16 @@ User::~User() // destruktor
 #endif
 }
 
+// OPERATORY *****************************
+
 User& User::operator=(const User &user_to_copy) // operator przypisujacy uzytkownikowi parametry innego uzytkownika
 {
     name = user_to_copy.name;
     age = user_to_copy.age;
     return *this;
 }
+
+// OPERATORY *****************************
+
 
 

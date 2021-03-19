@@ -7,6 +7,7 @@ Monitor m_global = {"GLOBAL", 6};
 
 int test()
 {
+#ifdef _DEBUG
     cout<<endl;
     Monitor m_test1;
     cout<<endl;
@@ -18,8 +19,15 @@ int test()
     cout<<endl;
     Monitor m_test5 = m_test4;
     cout<<endl;
+#else
+    Monitor m_test1;
+    Monitor m_test2 = {"Asus"};
+    Monitor m_test3 = {5};
+    Monitor m_test4 = {"HP", 4};
+    Monitor m_test5 = m_test4;
+#endif
 
-    cout<<"Dynamic object "<<endl;
+    cout<<"Creating dynamic object "<<endl;
     Monitor* p_monitor;
     p_monitor = new Monitor("Dynamic", 1);
     cout<<endl;
