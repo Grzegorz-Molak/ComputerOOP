@@ -6,8 +6,6 @@ int test();
 
 int main()
 {
-#ifdef _DEBUG
-    test();
-#endif
+test();
     return 0;
 }
