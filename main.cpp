@@ -1,11 +1,20 @@
 #include <iostream>
 #include "monitor.h"
+#include "test.cpp"
 using namespace std;
 
-int test();
 
 int main()
 {
-test();
+if(test_objects() == 0)
+{
+    cout<<"Finished testing objects"<<endl;
+}
+#ifdef _DEBUG
+    if(test_operators() == 0)
+    {
+        cout<<"Finished testing operators"<<endl;
+    }
+#endif
     return 0;
 }

@@ -7,9 +7,10 @@ Monitor m_global = {"GLOBAL", 6};
 App a_global = {"CS-GO"};
 User u_global = {"Globalek", 11};
 
-int test()
+int test_objects()
 {
 #ifdef _DEBUG
+    cout<<"\nTesting objects"<<endl;
     cout<<"\nCreating five test monitors:"<<endl;
     Monitor m_test1;
     cout<<endl;
@@ -32,6 +33,11 @@ int test()
     User* p_user;
     p_user = new User("Dynamek");
     cout<<endl;
+    if(!p_monitor || !p_app || !p_user)
+    {
+        cout<<"Error with dynamic objects"<<endl;
+        return 1;
+    }
 
     cout<<"Deleting dynamic objects:"<<endl;
     delete p_monitor;
@@ -40,6 +46,7 @@ int test()
     cout<<endl;
     delete p_user;
     cout<<endl;
+
 #else
     Monitor m_test1;
     Monitor m_test2 = {"Asus"};
@@ -54,40 +61,58 @@ int test()
     User* p_user;
     p_user = new User("Dynamek");
 
+    if(!p_monitor || !p_app || !p_user)
+    {
+        cout<<"Error with dynamic objects"<<endl;
+        return 1;
+    }
+
+
     delete p_monitor;
     delete p_app;
     delete p_user;
 #endif
+    return 0;
+}
 
+int test_operators()
+{
+    cout<<"\n\n Testing operators:"<<endl;
 
-
-    cout<<"Testing == operator:"<<endl;
-    cout<<"Calling m_test4 == m_test3"<<endl;
-    cout<<(m_test4 == m_test3)<<endl;
-    cout<<"Calling m_test4 == m_test5"<<endl;
-    cout<<(m_test4 == m_test5)<<endl;
+    Monitor m_test1;
+    cout<<endl;
+    Monitor m_test2 = {"Operatorek"};
+    cout<<endl;
+    Monitor m_test3 = {"Operatorek", 4};
     cout<<endl;
 
-    cout<<"Testing = operator (m_test3 = m_test4) and (string) operator:"<<endl;
-    cout<<"m_test3: "<<(string)m_test3<<endl;
-    cout<<"m_test4: "<<(string)m_test4<<endl;
-    cout<<"Calling m_test3 = m_test4"<<endl;
-    m_test3 = m_test4;
-    cout<<"After m_test3 = m_test4"<<endl;
-    cout<<"m_test3: "<<(string)m_test3<<endl;
-    cout<<"m_test4: "<<(string)m_test4<<endl;
+    cout<<"Testing == operator:"<<endl;
+    cout<<"Calling m_test3 == m_test1"<<endl;
+    cout<<(m_test3 == m_test1)<<endl;
+    cout<<"Calling m_test3 == m_test2"<<endl;
+    cout<<(m_test3 == m_test2)<<endl;
+    cout<<endl;
+
+    cout<<"Testing = operator (m_test1 = m_test2) and (string) operator:"<<endl;
+    cout<<"m_test1: "<<(string)m_test1<<endl;
+    cout<<"m_test2: "<<(string)m_test2<<endl;
+    cout<<"Calling m_test1 = m_test2"<<endl;
+    m_test1 = m_test2;
+    cout<<"After m_test1 = m_test2"<<endl;
+    cout<<"m_test1: "<<(string)m_test1<<endl;
+    cout<<"m_test2: "<<(string)m_test2<<endl;
 
     cout<<"\nTesting both ! and (string) operators:"<<endl;
-    cout<<"Before !m_test4: "<<(string)m_test4<<endl;
-    !m_test4;
-    cout<<"After !m_test4: "<<(string)m_test4<<endl;
-    !m_test4;
-    cout<<"After another !m_test4: "<<(string)m_test4<<endl;
+    cout<<"Before !m_test3: "<<(string)m_test3<<endl;
+    !m_test3;
+    cout<<"After !m_test3: "<<(string)m_test3<<endl;
+    !m_test3;
+    cout<<"After another !m_test3: "<<(string)m_test3<<endl;
     cout<<endl;
 
     cout<<"Testing << operator:"<<endl;
-    cout<<"Calling cout<<m_test4: "<<endl;
-    cout<<m_test4;
+    cout<<"Calling cout<<m_test3: "<<endl;
+    cout<<m_test3;
 
     cout<<endl;
 
@@ -95,23 +120,26 @@ int test()
 
     cout<<"Testing [] operator:"<<endl;
 
-    cout<<"Names of apps in m_test4, before assigning new values"<<endl;
-    for(unsigned int i = 0; i < m_test4.get_number_of_apps(); i++)
+    cout<<"Names of apps in m_test3, before assigning new values"<<endl;
+    for(unsigned int i = 0; i < m_test3.get_number_of_apps(); i++)
     {
-        cout<<"["<<i<<"]: "<<m_test4[i]->get_name()<<endl;
+        cout<<"["<<i<<"]: "<<m_test3[i]->get_name()<<endl;
     }
 
-    cout<<"Changing values of m_test4 apps names"<<endl;
-    m_test4.get_apps()[0].set_name("pierwsza");
-    m_test4.get_apps()[1].set_name("druga");
-    m_test4.get_apps()[2].set_name("trzecia");
+    cout<<"Changing values of 3 of m_test3 apps names"<<endl;
+    m_test3.get_apps()[0].set_name("pierwsza");
+    m_test3.get_apps()[1].set_name("druga");
+    m_test3.get_apps()[2].set_name("trzecia");
 
-    cout<<"\nNames of apps in m_test4 after assigning new values"<<endl;
-    for(unsigned int i = 0; i < m_test4.get_number_of_apps(); i++)
+    cout<<"\nNames of apps in m_test3 after assigning new values"<<endl;
+    for(unsigned int i = 0; i < m_test3.get_number_of_apps(); i++)
     {
-        cout<<"["<<i<<"]: "<<m_test4[i]->get_name()<<endl;
+        cout<<"["<<i<<"]: "<<m_test3[i]->get_name()<<endl;
     }
     cout<<endl;
 
     return 0;
 }
+
+
+
