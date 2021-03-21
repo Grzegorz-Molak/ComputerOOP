@@ -1,10 +1,7 @@
 #include <iostream>
 #include "monitor.h"
-//#include "test.cpp"
+#include "test.h"
 using namespace std;
-
-int test_objects();
-int test_operators();
 
 int main()
 {
