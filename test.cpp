@@ -121,21 +121,16 @@ int test_operators()
     cout<<"Testing [] operator:"<<endl;
 
     cout<<"Names of apps in m_test3, before assigning new values"<<endl;
-    for(unsigned int i = 0; i < m_test3.get_number_of_apps(); i++)
-    {
-        cout<<"["<<i<<"]: "<<m_test3[i]->get_name()<<endl;
-    }
+    cout<<m_test3;
 
-    cout<<"Changing values of 3 of m_test3 apps names"<<endl;
+    cout<<"Changing manually values of 3 of m_test3 apps names using [] operator"<<endl;
     m_test3.get_apps()[0].set_name("pierwsza");
     m_test3.get_apps()[1].set_name("druga");
     m_test3.get_apps()[2].set_name("trzecia");
 
     cout<<"\nNames of apps in m_test3 after assigning new values"<<endl;
-    for(unsigned int i = 0; i < m_test3.get_number_of_apps(); i++)
-    {
-        cout<<"["<<i<<"]: "<<m_test3[i]->get_name()<<endl;
-    }
+    cout<<m_test3;
+
     cout<<endl;
 
     return 0;

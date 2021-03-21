@@ -65,6 +65,10 @@ Monitor::Monitor(const Monitor &monitor_to_copy) // konstruktor kopiujacy
     {
         this->opened_apps = new App[this->number_of_apps];
     }
+    for(unsigned int i = 0; i < number_of_apps; i++)
+    {
+        this->opened_apps[i] = monitor_to_copy.opened_apps[i];
+    }
 }
 
 // KONSTRUKTORY ****************************************
@@ -133,9 +137,16 @@ Monitor& Monitor::operator!() // gasi lub zapala ekran
 
 ostream & operator<<( ostream &stream , Monitor &monitor ) // wypisuje dane o monitorze
 {
-    return stream<<"model name: "<<monitor.name_of_model<<", "<<(monitor.screen_on ? "screen on" : "screen off")
-                 <<", "<<monitor.number_of_apps<<" opened apps, user nickname and age : "
-                 <<monitor.user.get_name()<<" "<<monitor.user.get_age()<<endl;
+    string s_opened_apps = "";
+    for(unsigned int i = 0; i < monitor.number_of_apps; i++)
+    {
+        s_opened_apps +=  "["+to_string(i)+"]: "+monitor.opened_apps[i].get_name()+"\n";
+    }
+    return stream<<"model name: "<<monitor.name_of_model<<", "
+                 <<(monitor.screen_on ? "screen on" : "screen off")<<", "
+                 <<monitor.number_of_apps<<" opened apps, user nickname and age : "
+                 <<monitor.user.get_name()<<" "<<monitor.user.get_age()<<endl<<"Opened apps:\n"
+                 <<s_opened_apps;
 }
 
 // OPERATORY ******************************************
