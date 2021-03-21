@@ -113,7 +113,7 @@ Monitor& Monitor::operator=(const Monitor &monitor_to_copy) // przypisanie monit
 
 Monitor::operator string() // krotkie info o monitorze w postaci stringa
 {
-    return name_of_model+(screen_on ? ", on, " : ", off, ")+" nickname: "+user.get_name()+", "+to_string(number_of_apps)+" opened apps";
+    return name_of_model+(screen_on ? ", on, " : ", off, ")+to_string(number_of_apps)+", "+user.get_name()+", "+to_string(user.get_age());
 }
 
 App* Monitor::operator[](unsigned int i) // daje dostep do itej aplikacji

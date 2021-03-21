@@ -19,7 +19,7 @@ public:
 
     // funkcje sterujace zawartoscia ******
     string get_name() { return this->name;}
-    void set_name(string new_name) {this->name = new_name;}
+    void set_name(string new_name);
     // funkcje sterujace zawartoscia ******
 
 private:

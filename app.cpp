@@ -16,7 +16,7 @@ App::App(string name_of_app) // konstruktor jezeli podano nazwe aplikacji
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"App(string name_of_app), current number of class 'App' objects: "<<quantity<<endl;
+    cout<<"App("<<name_of_app<<"), current number of class 'App' objects: "<<quantity<<endl;
 #endif
     this->name = name_of_app;
 }
@@ -31,6 +31,7 @@ App::App(const App &app_to_copy) // konstruktor kopiujacy
 }
 
 // KONSTRUKTORY **********
+
 
 App::~App() // destruktor
 {
@@ -50,5 +51,13 @@ App& App::operator=(const App &app_to_copy) //operator przypisania, mozna przypi
 }
 
 // OPERATORY *****************************
+
+void App::set_name(string new_name)
+{
+#ifdef _DEBUG
+    cout<<"Replacing "<<this->name<<" with "<<new_name<<endl;
+#endif
+    this->name = new_name;
+}
 
 

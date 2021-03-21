@@ -16,7 +16,7 @@ User::User(string name_of_user) // z zainicjalizowana nazwa uzytkownika
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"User(string name_of_user), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User("<<name_of_user<<"), current number of class 'User' objects: "<<quantity<<endl;
 #endif
     this->name = name_of_user;
 }
@@ -25,7 +25,7 @@ User::User(int age_of_user) // z inicjalizacja wieku uzytkownika
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"User(int age_of_user), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User("<<age_of_user<<"), current number of class 'User' objects: "<<quantity<<endl;
 #endif
     this->age = age_of_user;
 }
@@ -34,7 +34,7 @@ User::User(string name_of_user, int age_of_user) // ze wszelka inicjalizacja
 {
     quantity++;
 #ifdef _DEBUG
-    cout<<"User(string name_of_user, int age_of_user), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User("<<name_of_user<<" "<<age_of_user<<"), current number of class 'User' objects: "<<quantity<<endl;
 #endif
     this->name = name_of_user;
     this->age = age_of_user;
