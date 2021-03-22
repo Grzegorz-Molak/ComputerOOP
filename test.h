@@ -123,7 +123,7 @@ int test_operators()
     cout<<"m_test3 after assigning new values:"<<endl;
     cout<<m_test3<<endl;
 
-    cout<<"Testing = operator (m_test1 = m_test3):"<<endl;
+    cout<<"Testing = operator (before m_test1 = m_test3):"<<endl;
     cout<<"m_test1:\n"<<m_test1;
     cout<<"m_test3:\n"<<m_test3<<endl;
     cout<<"Calling m_test1 = m_test2"<<endl;
