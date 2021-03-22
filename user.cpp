@@ -57,15 +57,7 @@ User::~User() // destruktor
 {
     quantity--;
 #ifdef _DEBUG
-    if(this->name == "anonim" && this->age == 0)
-    {
-       cout<<"~User(), current number of class 'User' objects: "<<quantity<<endl;
-    }
-    else
-    {
-       cout<<"~User("<<this->name<<" "<<this->age<<"), current number of class 'User' objects: "<<quantity<<endl;
-    }
-
+    cout<<"~User(), current number of class 'User' objects: "<<quantity<<endl;
 #endif
 }
 

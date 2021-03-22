@@ -21,7 +21,6 @@ public:
     // Metody pobierajace wartosci
     unsigned int get_number_of_apps() {return number_of_apps;}
     App* get_apps() {return opened_apps;}
-    User* get_user(){return &user;}
     string get_model(){return name_of_model;}
     // Metody pobierajace wartosci
 
