@@ -78,14 +78,7 @@ Monitor::~Monitor() // destruktor
 {
     quantity--;
 #ifdef _DEBUG
-    if(this->name_of_model == "unknown" && number_of_apps == 0)
-    {
-        cout<<"~Monitor(), current number of class 'Monitor' objects: "<<quantity<<endl;
-    }
-    else
-    {
-        cout<<"~Monitor("<<this->name_of_model<<" "<<number_of_apps<<"), current number of class 'Monitor' objects: "<<quantity<<endl;
-    }
+    cout<<"~Monitor(), current number of class 'Monitor' objects: "<<quantity<<endl;
 #endif
 
     if(this->opened_apps)
@@ -96,7 +89,7 @@ Monitor::~Monitor() // destruktor
 
 // OPERATORY ******************************************
 
-bool Monitor::operator==(const Monitor &monitor_to_compare) // operator porownojacy dwa monitory
+bool Monitor::operator==(const Monitor &monitor_to_compare) // operator porownojacy modele dwoch monitorow
 {
 #ifdef _DEBUG
     cout<<"Comparing "<<name_of_model<<" with "<<monitor_to_compare.name_of_model<<endl;
@@ -112,11 +105,7 @@ Monitor& Monitor::operator=(const Monitor &monitor_to_copy) // przypisanie monit
     user = monitor_to_copy.user;
 
     if(opened_apps) delete[] opened_apps;
-
-    if(number_of_apps > 0)
-    {
-        opened_apps = new App[number_of_apps];
-    }
+    opened_apps = new App[number_of_apps];
 
     for(unsigned int i = 0; i < number_of_apps; i++)
     {
@@ -149,7 +138,7 @@ Monitor& Monitor::operator!() // gasi lub zapala ekran
 ostream & operator<<( ostream &stream , Monitor &monitor ) // wypisuje dane o monitorze
 {
     string s_opened_apps = "";
-    for(unsigned int i = 0; i < monitor.number_of_apps; i++) // tworzenie listy apki
+    for(unsigned int i = 0; i < monitor.number_of_apps; i++)
     {
         s_opened_apps +=  "["+to_string(i)+"]: "+monitor.opened_apps[i].get_name()+"\n";
     }
