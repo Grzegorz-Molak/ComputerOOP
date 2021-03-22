@@ -37,7 +37,15 @@ App::~App() // destruktor
 {
     quantity--;
 #ifdef _DEBUG
-    cout<<"~App(), current number of class 'App' objects: "<<quantity<<endl;
+    if(this->name == "unknown")
+    {
+       cout<<"~App(), current number of class 'App' objects: "<<quantity<<endl;
+    }
+    else
+    {
+        cout<<"~App("<<this->name<<"), current number of class 'App' objects: "<<quantity<<endl;
+    }
+
 #endif   
 }
 
