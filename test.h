@@ -12,7 +12,8 @@ User u_global = {"Globalek", 11};
 int test_objects()
 {
     cout<<"\nTesting objects"<<endl;
-
+    cout<<"Number of class objects in beginning of test: "<<endl;
+    cout<<"Monitors: "<<Monitor::get_quantity()<<"\nUsers: "<<User::get_quantity()<<"\nApps: "<<App::get_quantity()<<endl;
     cout<<"Displaying global objects"<<endl;
     cout<<"m_global:\n"<<m_global;
     cout<<"a_global:\n"<<a_global.get_name()<<endl;
@@ -77,6 +78,7 @@ int test_objects()
         return 1;
     }
 
+
     cout<<"Deleting dynamic objects:"<<endl;
     delete p_monitor;
     cout<<endl;
@@ -84,6 +86,10 @@ int test_objects()
     cout<<endl;
     delete p_user;
     cout<<endl;
+
+    cout<<"Number of class objects in end of test: "<<endl;
+    cout<<"Monitors: "<<Monitor::get_quantity()<<"\nUsers: "<<User::get_quantity()<<"\nApps: "<<App::get_quantity()<<endl;
+
     return 0;
 }
 
