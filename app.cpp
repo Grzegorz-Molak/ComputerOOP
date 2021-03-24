@@ -60,6 +60,8 @@ App& App::operator=(const App &app_to_copy) //operator przypisania, mozna przypi
 
 // OPERATORY *****************************
 
+// INNE FUNKCJE
+
 void App::set_name(string new_name)
 {
 #ifdef _DEBUG

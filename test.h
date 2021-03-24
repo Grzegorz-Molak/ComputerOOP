@@ -90,6 +90,8 @@ int test_objects()
 int test_operators()
 {
     cout<<"\n\n Testing operators:"<<endl;
+    cout<<"Number of class objects in beginning of test: "<<endl;
+    cout<<"Monitors: "<<Monitor::get_quantity()<<"\nUsers: "<<User::get_quantity()<<"\nApps: "<<App::get_quantity()<<endl;
     cout<<"Creating 3 monitors to test"<<endl;
 
     cout<<"m_test1: without any values in initialization "<<endl;
@@ -104,6 +106,9 @@ int test_operators()
     Monitor m_test3 = {"Operatorek", 4};
     cout<<m_test3<<endl;
 
+    cout<<"Number of class objects after creating 3 Monitors: "<<endl;
+    cout<<"Monitors: "<<Monitor::get_quantity()<<"\nUsers: "<<User::get_quantity()<<"\nApps: "<<App::get_quantity()<<endl;
+
     cout<<"Testing == operator(two monitors are equal if their model names are same):"<<endl;
     cout<<"Calling m_test3 == m_test1:"<<endl;
     cout<<(m_test3 == m_test1)<<endl;
@@ -116,9 +121,9 @@ int test_operators()
     cout<<m_test3;
 
     cout<<"Changing manually values of 3 of m_test3 apps names using [] operator:"<<endl;
-    m_test3.get_apps()[0].set_name("pierwsza");
-    m_test3.get_apps()[1].set_name("druga");
-    m_test3.get_apps()[2].set_name("trzecia");
+    m_test3[0]->set_name("pierwsza");
+    m_test3[1]->set_name("druga");
+    m_test3[2]->set_name("trzecia");
 
     cout<<"m_test3 after assigning new values:"<<endl;
     cout<<m_test3<<endl;
@@ -126,9 +131,9 @@ int test_operators()
     cout<<"Testing = operator (m_test1 = m_test3):"<<endl;
     cout<<"m_test1:\n"<<m_test1;
     cout<<"m_test3:\n"<<m_test3<<endl;
-    cout<<"Calling m_test1 = m_test2"<<endl;
+    cout<<"Calling m_test1 = m_test3:"<<endl;
     m_test1 = m_test3;
-    cout<<"After m_test1 = m_test3"<<endl;
+    cout<<"After m_test1 = m_test3:"<<endl;
     cout<<"m_test1:\n"<<m_test1;
     cout<<"m_test3:\n"<<m_test3<<endl;
 
@@ -143,9 +148,10 @@ int test_operators()
 
     cout<<"Testing << operator:"<<endl;
     cout<<"Calling cout<<m_test3: "<<endl;
-    cout<<m_test3;
+    cout<<m_test3<<endl;
 
-    cout<<endl;
+    cout<<"Number of class objects after all tests: "<<endl;
+    cout<<"Monitors: "<<Monitor::get_quantity()<<"\nUsers: "<<User::get_quantity()<<"\nApps: "<<App::get_quantity()<<endl;
 
 
     cout<<endl;
