@@ -1,69 +1,69 @@
 #include "user.h"
 
-unsigned int User::quantity = 0;
+int User::m_quantity = 0;
 
 // KONSTRUKTORY ****************************************
 
 User::User() // podstawowy konstruktor
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"User(), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User(), 'User' objects: "<<m_quantity<<endl;
 #endif
 }
 
 User::User(string name_of_user) // z zainicjalizowana nazwa uzytkownika
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"User("<<name_of_user<<"), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User("<<name_of_user<<"), 'User' objects: "<<m_quantity<<endl;
 #endif
-    this->name = name_of_user;
+    m_name = name_of_user;
 }
 
 User::User(int age_of_user) // z inicjalizacja wieku uzytkownika
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"User("<<age_of_user<<"), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User("<<age_of_user<<"), 'User' objects: "<<m_quantity<<endl;
 #endif
-    this->age = age_of_user;
+    m_age = age_of_user;
 }
 
 User::User(string name_of_user, int age_of_user) // ze wszelka inicjalizacja
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"User("<<name_of_user<<" "<<age_of_user<<"), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User("<<name_of_user<<" "<<age_of_user<<"), 'User' objects: "<<m_quantity<<endl;
 #endif
-    this->name = name_of_user;
-    this->age = age_of_user;
+    m_name = name_of_user;
+    m_age = age_of_user;
 }
 
 User::User(const User &user_to_copy) // konstruktor kopiujacy
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"User(const User &user_to_copy), current number of class 'User' objects: "<<quantity<<endl;
+    cout<<"User(const User &user_to_copy),  'User' objects: "<<m_quantity<<endl;
 #endif
 
-    this->name = user_to_copy.name;
-    this->age = user_to_copy.age;
+    m_name = user_to_copy.m_name;
+    m_age = user_to_copy.m_age;
 }
 
 // KONSTRUKTORY ****************************************
 
 User::~User() // destruktor
 {
-    quantity--;
+    m_quantity--;
 #ifdef _DEBUG
-    if(this->name == "anonim" && this->age == 0)
+    if(m_name == "anonim" && m_age == 0)
     {
-       cout<<"~User(), current number of class 'User' objects: "<<quantity<<endl;
+       cout<<"~User(), 'User' objects: "<<m_quantity<<endl;
     }
     else
     {
-       cout<<"~User("<<this->name<<" "<<this->age<<"), current number of class 'User' objects: "<<quantity<<endl;
+       cout<<"~User("<<m_name<<" "<<m_age<<"), 'User' objects: "<<m_quantity<<endl;
     }
 
 #endif
@@ -73,8 +73,8 @@ User::~User() // destruktor
 
 User& User::operator=(const User &user_to_copy) // operator przypisujacy uzytkownikowi parametry innego uzytkownika
 {
-    name = user_to_copy.name;
-    age = user_to_copy.age;
+    m_name = user_to_copy.m_name;
+    m_age = user_to_copy.m_age;
     return *this;
 }
 

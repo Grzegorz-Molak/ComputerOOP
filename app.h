@@ -13,17 +13,17 @@ public:
     // KONSTRUKTORY **********
    ~App(); // DESTRUKTOR ***********
 
-    static int get_quantity() {return quantity;}
+    static int quantity() {return m_quantity;}
 
     App& operator=(const App &app_to_copy); // przypisuje danej aplikacji parametry innej
 
     // funkcje sterujace zawartoscia ******
-    string get_name() { return this->name;}
-    void set_name(string new_name);
+    string name() { return m_name;}
+    void setName(string name);
     // funkcje sterujace zawartoscia ******
 
 private:
-    static unsigned int quantity;
-    string name = "unknown"; // bazowo kazda aplikacja ma nazwe unknown
+    static int m_quantity;
+    string m_name = "unknown"; // bazowo kazda aplikacja ma nazwe unknown
 };
 

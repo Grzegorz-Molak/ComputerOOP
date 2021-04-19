@@ -1,33 +1,33 @@
 #include "app.h"
 
-unsigned int App::quantity = 0; // bazowo ilosc aplikacji to 0
+int App::m_quantity = 0; // bazowo ilosc aplikacji to 0
 
 // KONSTRUKTORY **********
 
 App::App() // podstawowy konstruktor
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"App(), current number of class 'App' objects: "<<quantity<<endl;
+    cout<<"App(), 'App' objects: "<<m_quantity<<endl;
 #endif  
 }
 
 App::App(string name_of_app) // konstruktor jezeli podano nazwe aplikacji
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"App("<<name_of_app<<"), current number of class 'App' objects: "<<quantity<<endl;
+    cout<<"App("<<name_of_app<<"), 'App' objects: "<<m_quantity<<endl;
 #endif
-    this->name = name_of_app;
+    this->m_name = name_of_app;
 }
 
 App::App(const App &app_to_copy) // konstruktor kopiujacy
 {
-    quantity++;
+    m_quantity++;
 #ifdef _DEBUG
-    cout<<"App(const App &app_to_copy), current number of class 'App' objects: "<<quantity<<endl;
+    cout<<"App(const App &app_to_copy), 'App' objects: "<<m_quantity<<endl;
 #endif
-    this->name = app_to_copy.name;
+    this->m_name = app_to_copy.m_name;
 }
 
 // KONSTRUKTORY **********
@@ -35,15 +35,15 @@ App::App(const App &app_to_copy) // konstruktor kopiujacy
 
 App::~App() // destruktor
 {
-    quantity--;
+    m_quantity--;
 #ifdef _DEBUG
-    if(this->name == "unknown")
+    if(m_name == "unknown")
     {
-       cout<<"~App(), current number of class 'App' objects: "<<quantity<<endl;
+       cout<<"~App(), 'App' objects: "<<m_quantity<<endl;
     }
     else
     {
-        cout<<"~App("<<this->name<<"), current number of class 'App' objects: "<<quantity<<endl;
+        cout<<"~App("<<m_name<<"), 'App' objects: "<<m_quantity<<endl;
     }
 
 #endif   
@@ -54,7 +54,7 @@ App::~App() // destruktor
 
 App& App::operator=(const App &app_to_copy) //operator przypisania, mozna przypisac obiektowi App wartosc(bedzie to nazwa)
 {
-    name = app_to_copy.name;
+    m_name = app_to_copy.m_name;
     return *this;
 }
 
@@ -62,12 +62,12 @@ App& App::operator=(const App &app_to_copy) //operator przypisania, mozna przypi
 
 // INNE FUNKCJE
 
-void App::set_name(string new_name)
+void App::setName(string name)
 {
 #ifdef _DEBUG
-    cout<<"Replacing "<<this->name<<" with "<<new_name<<endl;
+    cout<<"Replacing "<<m_name<<" with "<<name<<endl;
 #endif
-    this->name = new_name;
+    m_name = name;
 }
 
 

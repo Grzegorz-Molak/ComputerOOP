@@ -15,19 +15,19 @@ public:
     // KONSTRUKTORY **********
    ~User(); // DESTRUKTOR **********
 
-    static int get_quantity() {return quantity;}
+    static int get_quantity() {return m_quantity;}
 
     User& operator=(const User &user_to_copy); // przeciazony operator przypisania
 
     // funkcje sterujace zawartoscia ******
-    string get_name(){return name;}
-    int get_age(){return age;}
+    string name(){return m_name;}
+    int age(){return m_age;}
     // funkcje sterujace zawartoscia ******
 
 private:
-    static unsigned int quantity;
-    string name = "anonim";
-    unsigned int age = 0;
+    static int m_quantity;
+    string m_name = "anonim";
+    unsigned int m_age = 0;
 };
 
 
