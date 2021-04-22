@@ -1,4 +1,6 @@
 #include "electronic.h"
+#include <fstream>
+#include <typeinfo>
 
 int Electronic::m_quantity = 0;
 
@@ -26,6 +28,12 @@ istream & operator>>( istream &s , Electronic& electronic)
 {
 return s >> electronic.m_name >> electronic.m_power >> electronic.m_user;
 }
+
+void Electronic::save(ostream& file)
+{
+    file<<m_name <<" | "<< m_power <<" | "<< m_user;
+}
+
 
 bool Electronic::askToTurnOn()
 {

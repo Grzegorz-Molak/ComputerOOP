@@ -1,4 +1,5 @@
 #include "monitor.h"
+#include <fstream>
 
 int Monitor::m_quantity = 0;
 
@@ -88,6 +89,32 @@ void Monitor::switchPower()
     }
 }
 
+void Monitor::save()
+{
+    ofstream file;
+    file.open(m_name+".txt", ios_base::out);
+    save(file);
+    file.close();
+}
+
+void Monitor::save(ostream& file)
+{
+    Electronic::save(file);
+    file << " | " << m_diagonal <<" | "<< m_brightness;
+
+    stack<App> apps = m_apps;
+    if(apps.empty()) cout<<" | BRAK"<<endl;
+    else
+    {
+        while(!apps.empty())
+        {
+            file<<" | "<<apps.top();
+            apps.pop();
+        }
+    }
+}
+
+
 void Monitor::openApp(string name)
 {
 #ifdef _DEBUG
@@ -123,10 +150,12 @@ void Monitor::closeApp()
     }
     else
     {
-        cout<<"Monitor jest wylaczony, nie ma zadnych otwartych aplikacji"<<endl;
+        cout<<"Monitor jest wylaczony, nie ma zadnych otwartych afileacji"<<endl;
     }
 
 }
+
+
 
 
 

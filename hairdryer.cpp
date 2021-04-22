@@ -1,4 +1,5 @@
 #include "hairdryer.h"
+#include <fstream>
 
 
 int Hairdryer::m_quantity = 0;
@@ -57,6 +58,20 @@ void Hairdryer::switchPower()
         this->m_power = false;
         this->m_heat_level = Heat_level::OFF;
     }
+}
+
+void Hairdryer::save()
+{
+    ofstream file;
+    file.open(m_name+".txt");
+    if(file) cout<<"Udalo sie otworzyc file"<<endl;
+    save(file);
+    file.close();
+}
+
+void Hairdryer::save(ostream& file)
+{
+    file<<static_cast<int>(m_heat_level);
 }
 
 int Hairdryer::heat_level()

@@ -1,4 +1,6 @@
 #include "computermonitor.h"
+#include <fstream>
+
 
 int ComputerMonitor::m_quantity = 0;
 
@@ -94,6 +96,20 @@ void ComputerMonitor::openApp(string name)
             openApp(name);
         }
     }
+}
+
+void ComputerMonitor::save()
+{
+    ofstream file;
+    file.open(m_name+".txt");
+    if(file) cout<<"Udalo sie otworzyc file"<<endl;
+    save(file);
+    file.close();
+}
+void ComputerMonitor::save(ostream& file)
+{
+    Monitor::save(file);
+    file<< " | " << static_cast<int>(m_output);
 }
 
 ComputerMonitor::Output ComputerMonitor::output()

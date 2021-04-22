@@ -27,6 +27,9 @@ public:
     virtual void openApp(string name);
     void closeApp();
 
+    void save();
+    void save(ostream& file);
+
 
     friend ostream & operator<<( ostream &s , const Monitor& monitor);
     friend istream & operator>>( istream &s , Monitor& monitor);

@@ -21,6 +21,8 @@ public:
     User user() const;
     void setUser(const User &user);
 
+    virtual void save() = 0;
+    virtual void save(ostream& file);
     static int quantity();
 
     friend ostream & operator<<( ostream &s , const Electronic& electronic);

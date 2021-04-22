@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 #include "electronic.h"
 #include "monitor.h"
@@ -30,12 +31,13 @@ int main()
     comp.openApp("Kopciuszek");
     comp.closeApp();*/
 
+
     App apka = {"Kotek"};
     ComputerMonitor comp("comp");
     Hairdryer hair("hair");
-    hair.setHeat_level(Hairdryer::Heat_level::MEDIUM);
     Monitor monit("monit");
     User us("imie");
+    comp.switchPower();
     comp.openApp("alaska");
     comp.openApp("maska");
     comp.openApp("waska");
@@ -44,10 +46,7 @@ int main()
     monit.switchPower();
     cout<<"Monit "<<monit<<endl;
     cout<<"Comp "<<comp<<endl;
-
-    cin>>comp;
-    cout<<"Comp "<<comp<<endl;
-
+    comp.save();
 
     return 0;
 }

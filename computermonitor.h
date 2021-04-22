@@ -20,6 +20,9 @@ public:
     Output output();
     void setOutput(Output output);
 
+    void save();
+    void save(ostream& file);
+
     friend ostream& operator<<(ostream &, const ComputerMonitor&);
     friend istream & operator>>( istream &s , ComputerMonitor& computermonitor);
     friend istream & operator>>( istream &s , ComputerMonitor::Output& output);

@@ -1,7 +1,6 @@
 #pragma once
 #include "electronic.h"
 #include <string>
-#include <map>
 
 class Hairdryer : public Electronic
 {
@@ -15,13 +14,14 @@ public:
     int heat_level();
     void setHeat_level(Heat_level heat_level);
 
+    void save();
+    void save(ostream& file);
+
     friend ostream & operator<<( ostream &s , Hairdryer& hairdryer);
     friend istream & operator>>( istream &s , Hairdryer& hairdryer);
     friend ostream & operator>>( ostream &s , Hairdryer::Heat_level& heat_level);
 //private:
     Heat_level m_heat_level = Heat_level::OFF;
    static int m_quantity;
-
-   map<string, Hairdryer::Heat_level> heats;
 };
 
