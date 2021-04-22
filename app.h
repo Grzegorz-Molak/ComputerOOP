@@ -22,6 +22,9 @@ public:
     void setName(string name);
     // funkcje sterujace zawartoscia ******
 
+    friend ostream & operator<<( ostream &s , App& app);
+    friend istream & operator>>( istream &s , App& app);
+
 private:
     static int m_quantity;
     string m_name = "unknown"; // bazowo kazda aplikacja ma nazwe unknown

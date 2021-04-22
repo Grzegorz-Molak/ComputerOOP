@@ -18,6 +18,15 @@ Electronic::~Electronic()
 #endif
 }
 
+ostream & operator<<( ostream &s , const Electronic& electronic)
+{
+return s << electronic.m_name <<" | "<< electronic.m_power <<" | "<< electronic.m_user;
+}
+istream & operator>>( istream &s , Electronic& electronic)
+{
+return s >> electronic.m_name >> electronic.m_power >> electronic.m_user;
+}
+
 bool Electronic::power() const
 {
     return m_power;

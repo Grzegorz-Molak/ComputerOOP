@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    string cha;
+    /*string cha;
     vector<Electronic*> electronics;
     Hairdryer hair("Messy");
     Monitor monit("Lippy");
@@ -28,6 +28,21 @@ int main()
     }
 
     comp.openApp("Kopciuszek");
-    comp.closeApp();
+    comp.closeApp();*/
+
+    App apka = {"Kotek"};
+    ComputerMonitor comp("comp");
+    Hairdryer hair("hair");
+    hair.setHeat_level(Hairdryer::Heat_level::MEDIUM);
+    Monitor monit("monit");
+    User us("imie");
+    comp.openApp("alaska");
+    comp.openApp("maska");
+    comp.openApp("waska");
+
+    cout<<"Hair "<<hair<<endl;
+    cout<<"Monit "<<monit<<endl;
+    cout<<"Comp "<<comp<<endl;
+
     return 0;
 }

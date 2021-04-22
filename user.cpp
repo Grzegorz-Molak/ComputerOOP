@@ -78,6 +78,15 @@ User& User::operator=(const User &user_to_copy) // operator przypisujacy uzytkow
     return *this;
 }
 
+ostream & operator<<( ostream &s , const User& user)
+{
+return s << user.m_name << " | " << user.m_age;
+}
+istream & operator>>( istream &s , User& user)
+{
+return s >> user.m_name >> user.m_age;
+}
+
 // OPERATORY *****************************
 
 

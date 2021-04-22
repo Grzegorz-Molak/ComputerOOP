@@ -17,8 +17,11 @@ public:
     void openApp(string name);
     void closeApp();
 
-protected:
+    friend ostream& operator<<(ostream &, const ComputerMonitor&);
+    friend istream & operator>>( istream &s , ComputerMonitor& computermonitor);
+    friend istream & operator>>( istream &s , ComputerMonitor::Output& output);
 
+protected:
     Output m_output = Output::VGA;
 
 private:

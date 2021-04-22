@@ -28,6 +28,29 @@ Monitor::~Monitor()
 
 // OPERATORY ******************************************
 
+ostream & operator<<( ostream &s , const Monitor& monitor)
+{
+    s << *(dynamic_cast<const Electronic*>(&monitor));
+    s << " | " << monitor.m_diagonal <<" | "<< monitor.m_brightness;
+
+stack<App> apps = monitor.m_apps;
+if(apps.empty()) return s;
+else
+{
+    while(!apps.empty())
+    {
+        s<<" | "<<apps.top();
+        apps.pop();
+    }
+}
+return s;
+}
+
+istream & operator>>( istream &s , Monitor& monitor)
+{
+return s >> monitor.m_brightness;
+}
+
 double Monitor::diagonal() const
 {
     return m_diagonal;
@@ -82,6 +105,8 @@ void Monitor::closeApp()
     this->m_apps.pop();
     this->m_apps.emplace("Hello World");
 }
+
+
 
 
 // OPERATORY ******************************************

@@ -58,6 +58,16 @@ App& App::operator=(const App &app_to_copy) //operator przypisania, mozna przypi
     return *this;
 }
 
+ostream & operator<<( ostream &s , App& app)
+{
+return s<<app.m_name;
+}
+istream & operator>>( istream &s , App& app)
+{
+return s >> app.m_name;
+
+}
+
 // OPERATORY *****************************
 
 // INNE FUNKCJE
@@ -69,5 +79,7 @@ void App::setName(string name)
 #endif
     m_name = name;
 }
+
+
 
 

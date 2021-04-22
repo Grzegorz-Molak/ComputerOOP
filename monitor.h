@@ -27,6 +27,9 @@ public:
     virtual void closeApp();
 
 
+    friend ostream & operator<<( ostream &s , const Monitor& monitor);
+    friend istream & operator>>( istream &s , Monitor& monitor);
+
 protected:
     double m_diagonal = 25;
     unsigned int m_brightness = 50;

@@ -1,5 +1,6 @@
 #include "hairdryer.h"
 
+
 int Hairdryer::m_quantity = 0;
 
 Hairdryer::Hairdryer()
@@ -23,6 +24,23 @@ Hairdryer::~Hairdryer()
 #endif
 }
 
+istream & operator>>(istream &s, Hairdryer::Heat_level& heat_level)
+{
+    int h;
+    s>>h;
+    heat_level = static_cast<Hairdryer::Heat_level>(h);
+    return s;
+}
+
+ostream & operator<<( ostream &s , Hairdryer& hairdryer)
+{
+return s<<*(dynamic_cast<Electronic*>(&hairdryer))<<" | "
+        <<static_cast<int>(hairdryer.m_heat_level);
+}
+istream & operator>>( istream &s , Hairdryer& hairdryer)
+{
+    return s>>hairdryer.m_heat_level;
+}
 void Hairdryer::switchPower()
 {
 #ifdef _DEBUG

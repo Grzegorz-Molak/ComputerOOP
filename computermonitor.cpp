@@ -31,6 +31,26 @@ ComputerMonitor::~ComputerMonitor()
     cout<<"~ComputerMonitor()"<<endl;
 #endif
 }
+
+ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
+{
+
+    s << static_cast<Monitor>(computermonitor)<< " | "
+      <<static_cast<int>(computermonitor.m_output);
+    return s;
+}
+istream & operator>>( istream &s , ComputerMonitor& computermonitor)
+{
+return s >> computermonitor.m_output;
+}
+istream & operator>>( istream &s , ComputerMonitor::Output& output)
+{
+    int o;
+    s>>o;
+    output = static_cast<ComputerMonitor::Output>(o);
+    return s;
+}
+
 void ComputerMonitor::switchPower()
 {
 #ifdef _DEBUG
@@ -75,3 +95,4 @@ void ComputerMonitor::closeApp()
         this->m_apps.emplace("Hello World");
     }
 }
+

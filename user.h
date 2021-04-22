@@ -24,6 +24,8 @@ public:
     int age(){return m_age;}
     // funkcje sterujace zawartoscia ******
 
+    friend ostream & operator<<( ostream &s , const User& user);
+    friend istream & operator>>( istream &s , User& user);
 private:
     static int m_quantity;
     string m_name = "anonim";
