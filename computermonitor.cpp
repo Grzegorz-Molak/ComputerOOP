@@ -2,6 +2,7 @@
 
 int ComputerMonitor::m_quantity = 0;
 
+// KONSTRUKTORY I DESTRUKTORY ***********************
 ComputerMonitor::ComputerMonitor()
 {
     this->m_quantity++;
@@ -31,7 +32,9 @@ ComputerMonitor::~ComputerMonitor()
     cout<<"~ComputerMonitor()"<<endl;
 #endif
 }
+// KONSTRUKTORY I DESTRUKTORY ***********************
 
+// OPERATORY ****************************************
 ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 {
 
@@ -50,7 +53,9 @@ istream & operator>>( istream &s , ComputerMonitor::Output& output)
     output = static_cast<ComputerMonitor::Output>(o);
     return s;
 }
+// OPERATORY ****************************************
 
+// INNE FUNKCJE *************************************
 void ComputerMonitor::switchPower()
 {
 #ifdef _DEBUG
@@ -64,35 +69,39 @@ void ComputerMonitor::switchPower()
     else
     {
         this->m_power = false;
-        for(size_t i = 0; i < m_apps.size(); i++)
+        while(!m_apps.empty())
         {
-            this->m_apps.pop();
+            m_apps.pop();
         }
     }
 }
 
 void ComputerMonitor::openApp(string name)
 {
+
 #ifdef _DEBUG
     cout<<"Calling openApp in ComputerMonitor class, opening "<<name<<endl;
 #endif
-    this->m_apps.emplace(name);
-}
-
-void ComputerMonitor::closeApp()
-{
-#ifdef _DEBUG
-    cout<<"Calling closeApp in ComputerMonitor class, closing "<<m_apps.top().name()<<endl;
-#endif
-    if(this->m_apps.size() > 1)
+    if(m_power)
     {
-
-        this->m_apps.pop();
+        this->m_apps.emplace(name);
     }
     else
     {
-        this->m_apps.pop();
-        this->m_apps.emplace("Hello World");
+        if(askToTurnOn())
+        {
+            switchPower();
+            openApp(name);
+        }
     }
+}
+
+ComputerMonitor::Output ComputerMonitor::output()
+{
+return m_output;
+}
+void ComputerMonitor::setOutput(Output output)
+{
+m_output = output;
 }
 

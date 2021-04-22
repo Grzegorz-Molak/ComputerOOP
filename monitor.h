@@ -22,9 +22,10 @@ public:
     void setBrightness(unsigned int value);
 
 
+
     void switchPower();
     virtual void openApp(string name);
-    virtual void closeApp();
+    void closeApp();
 
 
     friend ostream & operator<<( ostream &s , const Monitor& monitor);

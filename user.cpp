@@ -57,15 +57,7 @@ User::~User() // destruktor
 {
     m_quantity--;
 #ifdef _DEBUG
-    if(m_name == "anonim" && m_age == 0)
-    {
        cout<<"~User(), 'User' objects: "<<m_quantity<<endl;
-    }
-    else
-    {
-       cout<<"~User("<<m_name<<" "<<m_age<<"), 'User' objects: "<<m_quantity<<endl;
-    }
-
 #endif
 }
 

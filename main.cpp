@@ -41,8 +41,13 @@ int main()
     comp.openApp("waska");
 
     cout<<"Hair "<<hair<<endl;
+    monit.switchPower();
     cout<<"Monit "<<monit<<endl;
     cout<<"Comp "<<comp<<endl;
+
+    cin>>comp;
+    cout<<"Comp "<<comp<<endl;
+
 
     return 0;
 }

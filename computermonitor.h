@@ -17,6 +17,9 @@ public:
     void openApp(string name);
     void closeApp();
 
+    Output output();
+    void setOutput(Output output);
+
     friend ostream& operator<<(ostream &, const ComputerMonitor&);
     friend istream & operator>>( istream &s , ComputerMonitor& computermonitor);
     friend istream & operator>>( istream &s , ComputerMonitor::Output& output);

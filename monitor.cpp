@@ -34,7 +34,7 @@ ostream & operator<<( ostream &s , const Monitor& monitor)
     s << " | " << monitor.m_diagonal <<" | "<< monitor.m_brightness;
 
 stack<App> apps = monitor.m_apps;
-if(apps.empty()) return s;
+if(apps.empty()) {cout<<" | BRAK"<<endl; return s;}
 else
 {
     while(!apps.empty())
@@ -93,8 +93,19 @@ void Monitor::openApp(string name)
 #ifdef _DEBUG
     cout<<"Calling openApp in Monitor class"<<endl;
 #endif
+    if(m_power)
+    {
     this->m_apps.pop();
     this->m_apps.emplace(name);
+    }
+    else
+    {
+        if(askToTurnOn())
+        {
+            switchPower();
+            openApp(name);
+        }
+    }
 }
 
 void Monitor::closeApp()
@@ -102,8 +113,19 @@ void Monitor::closeApp()
 #ifdef _DEBUG
     cout<<"Calling closeApp in Monitor class"<<endl;
 #endif
-    this->m_apps.pop();
-    this->m_apps.emplace("Hello World");
+    if(m_power)
+    {
+        this->m_apps.pop();
+        if(m_apps.empty())
+        {
+            this->m_apps.emplace("Hello World");
+        }
+    }
+    else
+    {
+        cout<<"Monitor jest wylaczony, nie ma zadnych otwartych aplikacji"<<endl;
+    }
+
 }
 
 

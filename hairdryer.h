@@ -12,7 +12,7 @@ public:
     ~Hairdryer();
 
     void switchPower();
-    unsigned int heat_level() const;
+    int heat_level();
     void setHeat_level(Heat_level heat_level);
 
     friend ostream & operator<<( ostream &s , Hairdryer& hairdryer);

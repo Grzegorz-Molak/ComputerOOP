@@ -37,15 +37,7 @@ App::~App() // destruktor
 {
     m_quantity--;
 #ifdef _DEBUG
-    if(m_name == "unknown")
-    {
-       cout<<"~App(), 'App' objects: "<<m_quantity<<endl;
-    }
-    else
-    {
         cout<<"~App("<<m_name<<"), 'App' objects: "<<m_quantity<<endl;
-    }
-
 #endif   
 }
 
@@ -70,7 +62,13 @@ return s >> app.m_name;
 
 // OPERATORY *****************************
 
+int App::quantity()
+{
+    return m_quantity;
+}
+
 // INNE FUNKCJE
+
 
 void App::setName(string name)
 {
@@ -78,6 +76,10 @@ void App::setName(string name)
     cout<<"Replacing "<<m_name<<" with "<<name<<endl;
 #endif
     m_name = name;
+}
+string App::name()
+{
+    return m_name;
 }
 
 

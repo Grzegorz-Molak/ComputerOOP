@@ -13,6 +13,7 @@ public:
 
     bool power() const;
     virtual void switchPower() = 0;
+    bool askToTurnOn();
 
     string name() const;
     void setName(const string &name);

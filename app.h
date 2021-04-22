@@ -13,12 +13,12 @@ public:
     // KONSTRUKTORY **********
    ~App(); // DESTRUKTOR ***********
 
-    static int quantity() {return m_quantity;}
+    static int quantity();
 
     App& operator=(const App &app_to_copy); // przypisuje danej aplikacji parametry innej
 
     // funkcje sterujace zawartoscia ******
-    string name() { return m_name;}
+    string name();
     void setName(string name);
     // funkcje sterujace zawartoscia ******
 

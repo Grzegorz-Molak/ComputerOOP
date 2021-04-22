@@ -59,12 +59,24 @@ void Hairdryer::switchPower()
     }
 }
 
-unsigned int Hairdryer::heat_level() const
+int Hairdryer::heat_level()
 {
     return static_cast<int>(m_heat_level);
 }
 
 void Hairdryer::setHeat_level(Heat_level heat_level)
 {
-    m_heat_level = heat_level;
+    if(m_power)
+    {
+       m_heat_level = heat_level;
+    }
+    else
+    {
+        if(askToTurnOn())
+        {
+            switchPower();
+            setHeat_level(heat_level);
+        }
+    }
+
 }

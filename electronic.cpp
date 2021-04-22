@@ -27,6 +27,20 @@ istream & operator>>( istream &s , Electronic& electronic)
 return s >> electronic.m_name >> electronic.m_power >> electronic.m_user;
 }
 
+bool Electronic::askToTurnOn()
+{
+    cout<<"Aby wykonywac te operacje urzadzenie musi byc wlaczone\n"
+          <<"czy chcesz je wlaczyc? \n 1 - TAK, 0 - Nie"<<endl;
+    bool open;
+    cin>>open;
+    if(!open)
+    {
+        cout<<"Aby wykonywac te operacje urzadzenie musi byc wlaczone"<<endl;
+    }
+    return open;
+
+}
+
 bool Electronic::power() const
 {
     return m_power;
