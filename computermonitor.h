@@ -21,10 +21,7 @@ public:
     void setOutput(Output output);
 
     void save();
-    void save(ostream& file);
-
     void read();
-    void read(istream& file);
 
     friend ostream& operator<<(ostream &, const ComputerMonitor&);
     friend istream & operator>>( istream &s , ComputerMonitor& computermonitor);

@@ -22,10 +22,7 @@ public:
     void setUser(const User &user);
 
     virtual void save() = 0;
-    virtual void save(ostream& file);
-
-    virtual void read() = 0;
-    virtual void read(istream& file);
+    virtual void read() = 0;;
 
     static int quantity();
 

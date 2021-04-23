@@ -52,7 +52,36 @@ return s;
 
 istream & operator>>( istream &s , Monitor& monitor)
 {
-return s >> monitor.m_brightness;
+    s >> *(dynamic_cast<Electronic*>(&monitor));
+    while(!monitor.m_apps.empty())
+    {
+        monitor.m_apps.pop();
+    }
+
+    App app;
+    stack<App> helpApp;
+    string title;
+    string AppName;
+    int AppsQuantity = 0;
+
+    s>>title>>monitor.m_diagonal;
+    s>>title>>monitor.m_brightness;
+    s>>title>>AppsQuantity;
+
+    for(int i = 0; i < AppsQuantity; i++)
+    {
+    s>>title;
+    getline(s, AppName);
+    app.setName(AppName);
+    helpApp.push(app);
+    }
+
+    while(!helpApp.empty())
+    {
+        monitor.m_apps.push(helpApp.top());
+        helpApp.pop();
+    }
+    return s;
 }
 
 double Monitor::diagonal() const
@@ -100,7 +129,7 @@ void Monitor::save()
     if(file)
     {
         cout<<"udalo sie utworzyc plik"<<endl;
-        save(file);
+        file<<*this;
         file.close();
     }
     else
@@ -108,30 +137,6 @@ void Monitor::save()
         cout<<"Nie udalo sie utworzyc pliku"<<endl;
         return;
     }
-
-    save(file);
-    file.close();
-}
-
-void Monitor::save(ostream& file)
-{
-    Electronic::save(file);
-    file<<"Przekatna: "<<m_diagonal<<endl;
-    file<<"Jasnosc: "<<m_brightness<<endl;
-    file<<"Apps: "<<m_apps.size()<<endl;
-
-    stack<App> apps = m_apps;
-
-    if(apps.empty()) cout<<" | BRAK"<<endl;
-    else
-    {
-        while(!apps.empty())
-        {
-            file<<"App: "<<apps.top()<<endl;
-            apps.pop();
-        }
-    }
-   // file<<*this;
 }
 
 void Monitor::read()
@@ -144,7 +149,7 @@ void Monitor::read()
     if(file)
     {
         cout<<"udalo sie otworzyc plik"<<endl;
-        read(file);
+        file>>*this;
         file.close();
     }
     else
@@ -154,45 +159,6 @@ void Monitor::read()
     }
 
 }
-
-void Monitor::read(istream& file)
-{
-    Electronic::read(file);
-    while(!m_apps.empty())
-    {
-        m_apps.pop();
-    }
-
-    App app;
-    stack<App> helpApp;
-    string title;
-    string AppName;
-    int AppsQuantity = 0;
-
-    file>>title;
-    if(title == "Przekatna:") file>>m_diagonal;
-    file>>title;
-    if(title == "Jasnosc:") file>>m_brightness;
-    file>>title;
-    if(title == "Apps:") file>>AppsQuantity;
-
-    for(int i = 0; i < AppsQuantity; i++)
-    {
-    file>>title;
-    if(title != "App:") continue;
-    getline(file, AppName);
-    app.setName(AppName);
-    helpApp.push(app);
-    }
-
-    while(!helpApp.empty())
-    {
-        m_apps.push(helpApp.top());
-        helpApp.pop();
-    }
-}
-
-
 
 void Monitor::openApp(string name)
 {

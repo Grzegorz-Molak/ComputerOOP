@@ -29,37 +29,12 @@ return s;
 }
 istream & operator>>( istream &s , Electronic& electronic)
 {
-return s >> electronic.m_name >> electronic.m_power >> electronic.m_user;
-}
-
-void Electronic::save(ostream& file)
-{
-    file<<"Nazwa: "<<m_name<<endl;
-    file<<"ON/OFF: "<<m_power<<endl;
-    file<<"Uzytkownik: "<<m_user<<endl;
-    //file<<*this;
-}
-
-void Electronic::read(istream& file)
-{
     string title;
-    int age;
-
-    file>>title;
-    if(title == "Nazwa:" ) file>>m_name;
-    file>>title;
-    if(title == "ON/OFF:" ) file>>m_power;
-    file>>title;
-    if(title == "Uzytkownik:" )
-    {
-        file>>title;
-        m_user.setName(title);
-        file>>title>>age;
-        m_user.setAge(age);
-    }
-
+    s>>title>>electronic.m_name;
+    s>>title>>electronic.m_power;
+    s>>title>>electronic.m_user;
+    return s;
 }
-
 
 bool Electronic::askToTurnOn()
 {

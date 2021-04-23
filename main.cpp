@@ -39,10 +39,10 @@ int main()
     User us("imie");
     comp.switchPower();
     monit.switchPower();
+
     comp.openApp("alaska2");
     comp.openApp("maska2");
     comp.openApp("waska2");
-    comp.save();
     cout<<"Comp "<<comp<<endl;
     comp.read();
     cout<<"Comp "<<comp<<endl;

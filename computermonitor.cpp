@@ -46,7 +46,10 @@ ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 }
 istream & operator>>( istream &s , ComputerMonitor& computermonitor)
 {
-return s >> computermonitor.m_output;
+    string title;
+    s >> *(dynamic_cast<Monitor*>(&computermonitor));
+    s >>title>> computermonitor.m_output;
+    return s;
 }
 istream & operator>>( istream &s , ComputerMonitor::Output& output)
 {
@@ -105,7 +108,7 @@ void ComputerMonitor::save()
     if(file)
     {
         cout<<"Udalo sie utworzyc plik"<<endl;
-        save(file);
+        file<<*this;
         file.close();
     }
     else
@@ -115,13 +118,6 @@ void ComputerMonitor::save()
     }
 
 }
-void ComputerMonitor::save(ostream& file)
-{
-    Monitor::save(file);
-    file<< "Wyjscie: " << static_cast<int>(m_output);
-    //file<<*this;
-}
-
 void ComputerMonitor::read()
 {
     string namefile;
@@ -132,7 +128,7 @@ void ComputerMonitor::read()
     if(file)
     {
         cout<<"udalo sie otworzyc plik"<<endl;
-        read(file);
+        file>>*this;
         file.close();
     }
     else
@@ -140,15 +136,6 @@ void ComputerMonitor::read()
         cout<<"Nie udalo sie otworzyc pliku"<<endl;
         return;
     }
-
-}
-
-void ComputerMonitor::read(istream& file)
-{
-    Monitor::read(file);
-    string title;
-    file>>title;
-    if(title == "Wyjscie:") file>>m_output;
 
 }
 

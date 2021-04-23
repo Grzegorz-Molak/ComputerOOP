@@ -15,10 +15,7 @@ public:
     void setHeat_level(Heat_level heat_level);
 
     void save();
-    void save(ostream& file);
-
     void read();
-    void read(istream& file);
 
     friend ostream & operator<<( ostream &s , Hairdryer& hairdryer);
     friend istream & operator>>( istream &s , Hairdryer& hairdryer);

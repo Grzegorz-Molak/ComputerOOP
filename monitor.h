@@ -28,10 +28,7 @@ public:
     void closeApp();
 
     void save();
-    void save(ostream& file);
-
     void read();
-    void read(istream& file);
 
 
     friend ostream & operator<<( ostream &s , const Monitor& monitor);

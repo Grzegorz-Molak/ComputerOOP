@@ -41,7 +41,10 @@ ostream & operator<<( ostream &s , Hairdryer& hairdryer)
 }
 istream & operator>>( istream &s , Hairdryer& hairdryer)
 {
-    return s>>hairdryer.m_heat_level;
+    string title;
+    s>>*(dynamic_cast<Electronic*>(&hairdryer));
+    s>>title>>hairdryer.m_heat_level;
+    return s;
 }
 void Hairdryer::switchPower()
 {
@@ -68,7 +71,7 @@ void Hairdryer::save()
     if(file)
     {
         cout<<"Udalo sie otworzyc file"<<endl;
-        save(file);
+        file<<*this;
         file.close();
     }
 
@@ -78,13 +81,6 @@ void Hairdryer::save()
         return;
     }
 
-}
-
-void Hairdryer::save(ostream& file)
-{
-    Electronic::save(file);
-    file<<"Poziom-ciepla: "<<static_cast<int>(m_heat_level)<<endl;
-    //file<<*this;
 }
 
 void Hairdryer::read()
@@ -97,7 +93,7 @@ void Hairdryer::read()
     if(file)
     {
         cout<<"udalo sie otworzyc plik"<<endl;
-        read(file);
+        file>>*this;
         file.close();
     }
     else
@@ -106,17 +102,6 @@ void Hairdryer::read()
         return;
     }
 }
-
-void Hairdryer::read(istream& file)
-{
-    Electronic::read(file);
-
-    string title;
-    file>>title;
-    if(title == "Poziom-ciepla:") file>>m_heat_level;
-
-}
-
 
 int Hairdryer::heat_level()
 {
