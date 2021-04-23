@@ -23,6 +23,9 @@ public:
     void save();
     void save(ostream& file);
 
+    void read();
+    void read(istream& file);
+
     friend ostream& operator<<(ostream &, const ComputerMonitor&);
     friend istream & operator>>( istream &s , ComputerMonitor& computermonitor);
     friend istream & operator>>( istream &s , ComputerMonitor::Output& output);

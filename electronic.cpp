@@ -22,7 +22,10 @@ Electronic::~Electronic()
 
 ostream & operator<<( ostream &s , const Electronic& electronic)
 {
-return s << electronic.m_name <<" | "<< electronic.m_power <<" | "<< electronic.m_user;
+s<<"Nazwa: "<<electronic.m_name<<endl;
+s<<"ON/OFF: "<<electronic.m_power<<endl;
+s<<"Uzytkownik: "<<electronic.m_user<<endl;
+return s;
 }
 istream & operator>>( istream &s , Electronic& electronic)
 {
@@ -31,7 +34,30 @@ return s >> electronic.m_name >> electronic.m_power >> electronic.m_user;
 
 void Electronic::save(ostream& file)
 {
-    file<<m_name <<" | "<< m_power <<" | "<< m_user;
+    /*file<<"Nazwa: "<<m_name<<endl;
+    file<<"ON/OFF: "<<m_power<<endl;
+    file<<"Uzytkownik: "<<m_user<<endl;*/
+    file<<*this;
+}
+
+void Electronic::read(istream& file)
+{
+    string title;
+    int age;
+
+    file>>title;
+    if(title == "Nazwa:" ) file>>m_name;
+    file>>title;
+    if(title == "ON/OFF:" ) file>>m_power;
+    file>>title;
+    if(title == "Uzytkownik:" )
+    {
+        file>>title;
+        m_user.setName(title);
+        file>>title>>age;
+        m_user.setAge(age);
+    }
+
 }
 
 

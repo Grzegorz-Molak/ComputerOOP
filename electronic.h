@@ -23,6 +23,10 @@ public:
 
     virtual void save() = 0;
     virtual void save(ostream& file);
+
+    virtual void read() = 0;
+    virtual void read(istream& file);
+
     static int quantity();
 
     friend ostream & operator<<( ostream &s , const Electronic& electronic);

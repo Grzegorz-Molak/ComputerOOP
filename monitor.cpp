@@ -32,18 +32,21 @@ Monitor::~Monitor()
 ostream & operator<<( ostream &s , const Monitor& monitor)
 {
     s << *(dynamic_cast<const Electronic*>(&monitor));
-    s << " | " << monitor.m_diagonal <<" | "<< monitor.m_brightness;
+    s<<"Przekatna: "<<monitor.m_diagonal<<endl;
+    s<<"Jasnosc: "<<monitor.m_brightness<<endl;
+    s<<"Apps: "<<monitor.m_apps.size()<<endl;
 
-stack<App> apps = monitor.m_apps;
-if(apps.empty()) {cout<<" | BRAK"<<endl; return s;}
-else
-{
-    while(!apps.empty())
+    stack<App> apps = monitor.m_apps;
+
+    if(apps.empty()) cout<<" | BRAK"<<endl;
+    else
     {
-        s<<" | "<<apps.top();
-        apps.pop();
+        while(!apps.empty())
+        {
+            s<<"App: "<<apps.top()<<endl;
+            apps.pop();
+        }
     }
-}
 return s;
 }
 
@@ -93,6 +96,19 @@ void Monitor::save()
 {
     ofstream file;
     file.open(m_name+".txt", ios_base::out);
+
+    if(file)
+    {
+        cout<<"udalo sie utworzyc plik"<<endl;
+        save(file);
+        file.close();
+    }
+    else
+    {
+        cout<<"Nie udalo sie utworzyc pliku"<<endl;
+        return;
+    }
+
     save(file);
     file.close();
 }
@@ -100,19 +116,82 @@ void Monitor::save()
 void Monitor::save(ostream& file)
 {
     Electronic::save(file);
-    file << " | " << m_diagonal <<" | "<< m_brightness;
+    /*file<<"Przekatna: "<<m_diagonal<<endl;
+    file<<"Jasnosc: "<<m_brightness<<endl;
+    file<<"Apps: "<<m_apps.size()<<endl;
 
     stack<App> apps = m_apps;
+
     if(apps.empty()) cout<<" | BRAK"<<endl;
     else
     {
         while(!apps.empty())
         {
-            file<<" | "<<apps.top();
+            file<<"App: "<<apps.top()<<endl;
             apps.pop();
         }
+    }*/
+    file<<*this;
+}
+
+void Monitor::read()
+{
+    string namefile;
+    ifstream file;
+    cout<<"Prosze podac nazwe pliku: "<<endl;
+    cin>>namefile;
+    file.open(namefile, ios_base::in);
+    if(file)
+    {
+        cout<<"udalo sie otworzyc plik"<<endl;
+        read(file);
+        file.close();
+    }
+    else
+    {
+        cout<<"Nie udalo sie otworzyc pliku"<<endl;
+        return;
+    }
+
+}
+
+void Monitor::read(istream& file)
+{
+    Electronic::read(file);
+    while(!m_apps.empty())
+    {
+        m_apps.pop();
+    }
+
+    App app;
+    stack<App> helpApp;
+    string title;
+    string AppName;
+    int AppsQuantity = 0;
+
+    file>>title;
+    if(title == "Przekatna:") file>>m_diagonal;
+    file>>title;
+    if(title == "Jasnosc:") file>>m_brightness;
+    file>>title;
+    if(title == "Apps:") file>>AppsQuantity;
+
+    for(int i = 0; i < AppsQuantity; i++)
+    {
+    file>>title;
+    if(title != "App:") continue;
+    getline(file, AppName);
+    app.setName(AppName);
+    helpApp.push(app);
+    }
+
+    while(!helpApp.empty())
+    {
+        m_apps.push(helpApp.top());
+        helpApp.pop();
     }
 }
+
 
 
 void Monitor::openApp(string name)

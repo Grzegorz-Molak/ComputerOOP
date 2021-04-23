@@ -22,6 +22,8 @@ public:
     // funkcje sterujace zawartoscia ******
     string name(){return m_name;}
     int age(){return m_age;}
+    void setName(string name) {m_name = name;}
+    void setAge(unsigned int age) { m_age = age;}
     // funkcje sterujace zawartoscia ******
 
     friend ostream & operator<<( ostream &s , const User& user);
@@ -29,7 +31,7 @@ public:
 private:
     static int m_quantity;
     string m_name = "anonim";
-    unsigned int m_age = 0;
+    unsigned int m_age = 18;
 };
 
 

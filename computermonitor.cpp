@@ -40,8 +40,8 @@ ComputerMonitor::~ComputerMonitor()
 ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 {
 
-    s << static_cast<Monitor>(computermonitor)<< " | "
-      <<static_cast<int>(computermonitor.m_output);
+    s << static_cast<Monitor>(computermonitor);
+    s<< "Wyjscie: " << static_cast<int>(computermonitor.m_output);
     return s;
 }
 istream & operator>>( istream &s , ComputerMonitor& computermonitor)
@@ -102,14 +102,54 @@ void ComputerMonitor::save()
 {
     ofstream file;
     file.open(m_name+".txt");
-    if(file) cout<<"Udalo sie otworzyc file"<<endl;
-    save(file);
-    file.close();
+    if(file)
+    {
+        cout<<"Udalo sie utworzyc plik"<<endl;
+        save(file);
+        file.close();
+    }
+    else
+    {
+        cout<<"Nie udalo sie utworzyc pliku"<<endl;
+        return;
+    }
+
 }
 void ComputerMonitor::save(ostream& file)
 {
     Monitor::save(file);
-    file<< " | " << static_cast<int>(m_output);
+    //file<< "Wyjscie: " << static_cast<int>(m_output);
+    file<<*this;
+}
+
+void ComputerMonitor::read()
+{
+    string namefile;
+    ifstream file;
+    cout<<"Prosze podac nazwe pliku: "<<endl;
+    cin>>namefile;
+    file.open(namefile, ios_base::in);
+    if(file)
+    {
+        cout<<"udalo sie otworzyc plik"<<endl;
+        read(file);
+        file.close();
+    }
+    else
+    {
+        cout<<"Nie udalo sie otworzyc pliku"<<endl;
+        return;
+    }
+
+}
+
+void ComputerMonitor::read(istream& file)
+{
+    Monitor::read(file);
+    string title;
+    file>>title;
+    if(title == "Wyjscie:") file>>m_output;
+
 }
 
 ComputerMonitor::Output ComputerMonitor::output()

@@ -38,15 +38,21 @@ int main()
     Monitor monit("monit");
     User us("imie");
     comp.switchPower();
-    comp.openApp("alaska");
-    comp.openApp("maska");
-    comp.openApp("waska");
-
-    cout<<"Hair "<<hair<<endl;
     monit.switchPower();
-    cout<<"Monit "<<monit<<endl;
+    comp.openApp("alaska2");
+    comp.openApp("maska2");
+    comp.openApp("waska2");
+
     cout<<"Comp "<<comp<<endl;
-    comp.save();
+    comp.read();
+    cout<<"Comp "<<comp<<endl;
+    cout<<"Monit "<<monit<<endl;
+    monit.read();
+    cout<<"Monit "<<monit<<endl;
+    cout<<"Hair "<<hair<<endl;
+    hair.read();
+    cout<<"Hair "<<hair<<endl;
+
 
     return 0;
 }

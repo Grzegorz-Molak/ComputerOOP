@@ -17,6 +17,9 @@ public:
     void save();
     void save(ostream& file);
 
+    void read();
+    void read(istream& file);
+
     friend ostream & operator<<( ostream &s , Hairdryer& hairdryer);
     friend istream & operator>>( istream &s , Hairdryer& hairdryer);
     friend ostream & operator>>( ostream &s , Hairdryer::Heat_level& heat_level);
