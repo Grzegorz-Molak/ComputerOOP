@@ -34,10 +34,10 @@ return s >> electronic.m_name >> electronic.m_power >> electronic.m_user;
 
 void Electronic::save(ostream& file)
 {
-    /*file<<"Nazwa: "<<m_name<<endl;
+    file<<"Nazwa: "<<m_name<<endl;
     file<<"ON/OFF: "<<m_power<<endl;
-    file<<"Uzytkownik: "<<m_user<<endl;*/
-    file<<*this;
+    file<<"Uzytkownik: "<<m_user<<endl;
+    //file<<*this;
 }
 
 void Electronic::read(istream& file)

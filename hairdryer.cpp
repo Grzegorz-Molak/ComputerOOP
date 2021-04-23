@@ -83,8 +83,8 @@ void Hairdryer::save()
 void Hairdryer::save(ostream& file)
 {
     Electronic::save(file);
-    /*file<<"Poziom-ciepla: "<<static_cast<int>(m_heat_level)<<endl;*/
-    file<<*this;
+    file<<"Poziom-ciepla: "<<static_cast<int>(m_heat_level)<<endl;
+    //file<<*this;
 }
 
 void Hairdryer::read()

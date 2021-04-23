@@ -118,8 +118,8 @@ void ComputerMonitor::save()
 void ComputerMonitor::save(ostream& file)
 {
     Monitor::save(file);
-    //file<< "Wyjscie: " << static_cast<int>(m_output);
-    file<<*this;
+    file<< "Wyjscie: " << static_cast<int>(m_output);
+    //file<<*this;
 }
 
 void ComputerMonitor::read()

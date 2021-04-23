@@ -116,7 +116,7 @@ void Monitor::save()
 void Monitor::save(ostream& file)
 {
     Electronic::save(file);
-    /*file<<"Przekatna: "<<m_diagonal<<endl;
+    file<<"Przekatna: "<<m_diagonal<<endl;
     file<<"Jasnosc: "<<m_brightness<<endl;
     file<<"Apps: "<<m_apps.size()<<endl;
 
@@ -130,8 +130,8 @@ void Monitor::save(ostream& file)
             file<<"App: "<<apps.top()<<endl;
             apps.pop();
         }
-    }*/
-    file<<*this;
+    }
+   // file<<*this;
 }
 
 void Monitor::read()

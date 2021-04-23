@@ -42,7 +42,7 @@ int main()
     comp.openApp("alaska2");
     comp.openApp("maska2");
     comp.openApp("waska2");
-
+    comp.save();
     cout<<"Comp "<<comp<<endl;
     comp.read();
     cout<<"Comp "<<comp<<endl;
