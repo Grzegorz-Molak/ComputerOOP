@@ -1,8 +1,14 @@
 #include "app.h"
 
+// STATYCZNE ************
 int App::m_quantity = 0; // bazowo ilosc aplikacji to 0
 
-// KONSTRUKTORY **********
+int App::quantity()
+{
+    return m_quantity;
+}
+// STATYCZNE ************
+// KONSTRUKTORY I DESTRUKTORY **********
 
 App::App() // podstawowy konstruktor
 {
@@ -30,8 +36,6 @@ App::App(const App &app_to_copy) // konstruktor kopiujacy
     this->m_name = app_to_copy.m_name;
 }
 
-// KONSTRUKTORY **********
-
 
 App::~App() // destruktor
 {
@@ -40,6 +44,8 @@ App::~App() // destruktor
         cout<<"~App("<<m_name<<"), 'App' objects: "<<m_quantity<<endl;
 #endif   
 }
+
+// KONSTRUKTORY I DESTRUKTORY **********
 
 
 // OPERATORY *****************************
@@ -62,12 +68,9 @@ return s >> app.m_name;
 
 // OPERATORY *****************************
 
-int App::quantity()
-{
-    return m_quantity;
-}
 
-// INNE FUNKCJE
+
+// INNE FUNKCJE****************
 
 
 void App::setName(string name)
@@ -82,6 +85,6 @@ string App::name()
     return m_name;
 }
 
-
+// INNE FUNKCJE****************
 
 

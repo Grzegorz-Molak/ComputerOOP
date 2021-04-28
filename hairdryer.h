@@ -16,6 +16,8 @@ public:
 
     void save();
     void read();
+    void print();
+    void edit();
 
     friend ostream & operator<<( ostream &s , Hairdryer& hairdryer);
     friend istream & operator>>( istream &s , Hairdryer& hairdryer);

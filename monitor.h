@@ -29,6 +29,8 @@ public:
 
     void save();
     void read();
+    void print();
+    void edit();
 
 
     friend ostream & operator<<( ostream &s , const Monitor& monitor);

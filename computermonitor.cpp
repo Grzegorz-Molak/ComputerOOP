@@ -1,4 +1,5 @@
 #include "computermonitor.h"
+#include "useful.h"
 #include <fstream>
 
 
@@ -8,30 +9,27 @@ int ComputerMonitor::m_quantity = 0;
 ComputerMonitor::ComputerMonitor()
 {
     this->m_quantity++;
+#ifdef _DEBUG
+    cout<<"ComputerMonitor("<<m_name<<"), 'ComputerMonitor' objects: "<<m_quantity<<endl;
+#endif
 }
 
 ComputerMonitor::ComputerMonitor(string name) : ComputerMonitor()
 {
     m_name = name;
-#ifdef _DEBUG
-    cout<<"ComputerMonitor("<<name<<"), 'ComputerMonitor' objects: "<<m_quantity<<endl;
-#endif
 }
 
 ComputerMonitor::ComputerMonitor(string name, Output output) : ComputerMonitor()
 {
     m_name = name;
     m_output = output;
-#ifdef _DEBUG
-    cout<<"ComputerMonitor("<<name<<","<<static_cast<int>(output)<<"), 'ComputerMonitor' objects: "<<m_quantity<<endl;
-#endif
 }
 
 ComputerMonitor::~ComputerMonitor()
 {
     this->m_quantity--;
 #ifdef _DEBUG
-    cout<<"~ComputerMonitor()"<<endl;
+    cout<<"~ComputerMonitor(), 'ComputerMonitor' objects: "<<this->m_quantity<<endl;
 #endif
 }
 // KONSTRUKTORY I DESTRUKTORY ***********************
@@ -39,22 +37,41 @@ ComputerMonitor::~ComputerMonitor()
 // OPERATORY ****************************************
 ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 {
+    s << *(dynamic_cast<const Monitor*>(&computermonitor));
+    //s<< "Wyjscie: " << static_cast<int>(computermonitor.m_output)<<endl;
+    s<<"Output: ";
+    switch(static_cast<int>(computermonitor.m_output))
+    {
+        case 0:
+            s<<"VGA ";
+            break;
+        case 1:
+            s<<"DVI ";
+            break;
+        case 2:
+            s<<"HDMI ";
+            break;
+        case 3:
+            s<<"DISPLAYPORT ";
+            break;
 
-    s << static_cast<Monitor>(computermonitor);
-    s<< "Wyjscie: " << static_cast<int>(computermonitor.m_output);
+     }
+    s<<static_cast<int>(computermonitor.m_output)<<endl;
     return s;
 }
 istream & operator>>( istream &s , ComputerMonitor& computermonitor)
 {
     string title;
     s >> *(dynamic_cast<Monitor*>(&computermonitor));
-    s >>title>> computermonitor.m_output;
+    s >>title>>title>> computermonitor.m_output;
     return s;
 }
 istream & operator>>( istream &s , ComputerMonitor::Output& output)
 {
+    string title;
     int o;
     s>>o;
+    cout<<o<<endl;
     output = static_cast<ComputerMonitor::Output>(o);
     return s;
 }
@@ -137,6 +154,36 @@ void ComputerMonitor::read()
         return;
     }
 
+}
+
+void ComputerMonitor::print()
+{
+   cout<<*this;
+}
+
+void ComputerMonitor::edit()
+{
+Monitor::edit();
+if(m_power == 1)
+{
+    cout<<"Nowy output: "<<endl;
+    switch(getInt(0,3))
+    {
+        case 0:
+            m_output = ComputerMonitor::Output::VGA;
+            break;
+        case 1:
+            m_output = ComputerMonitor::Output::DVI;
+            break;
+        case 2:
+            m_output = ComputerMonitor::Output::HDMI;
+            break;
+        case 3:
+            m_output = ComputerMonitor::Output::DISPLAYPORT;
+            break;
+
+    }
+}
 }
 
 ComputerMonitor::Output ComputerMonitor::output()

@@ -1,6 +1,7 @@
 #include "electronic.h"
 #include <fstream>
-#include <typeinfo>
+#include "useful.h"
+
 
 int Electronic::m_quantity = 0;
 
@@ -47,6 +48,22 @@ bool Electronic::askToTurnOn()
         cout<<"Aby wykonywac te operacje urzadzenie musi byc wlaczone"<<endl;
     }
     return open;
+
+}
+
+void Electronic::edit()
+{
+    cout<<"Edycja pola on/off nie jest mozliwa"<<endl;
+    string text;
+    cout<<"Nowa nazwa urzadzenia: "<<endl;
+        cin>>text;
+        m_name = text;
+    cout<<"Nowa nazwa uzytkownika: "<<endl;
+        cin>>text;
+        m_user.setName(text);
+    cout<<"Nowy wiek uzytkownika: "<<endl;
+        m_user.setAge(getInt());
+
 
 }
 

@@ -1,20 +1,21 @@
 #include "hairdryer.h"
+#include "useful.h"
 #include <fstream>
-
 
 int Hairdryer::m_quantity = 0;
 
 Hairdryer::Hairdryer()
 {
-this->m_quantity++;
+    this->m_quantity++;
+#ifdef _DEBUG
+    cout<<"Hairdryer("<<m_name<<"), 'Hairdryer' objects: "<<m_quantity<<endl;
+#endif
 }
+
 
 Hairdryer::Hairdryer(string name) : Hairdryer()
 {
     m_name = name;
-#ifdef _DEBUG
-    cout<<"Hairdryer("<<name<<"), 'Hairdryer' objects: "<<m_quantity<<endl;
-#endif
 }
 
 Hairdryer::~Hairdryer()
@@ -36,14 +37,32 @@ istream & operator>>(istream &s, Hairdryer::Heat_level& heat_level)
 ostream & operator<<( ostream &s , Hairdryer& hairdryer)
 {
  s<<*(dynamic_cast<Electronic*>(&hairdryer));
- s<<"Poziom-ciepla: "<<static_cast<int>(hairdryer.m_heat_level)<<endl;
+ //s<<"Poziom-ciepla: "<<static_cast<int>(hairdryer.m_heat_level)<<endl;
+ s<<"Poziom-ciepla: ";
+ switch(static_cast<int>(hairdryer.m_heat_level))
+ {
+     case 0:
+         s<<"OFF ";
+         break;
+     case 1:
+         s<<"LOW ";
+         break;
+     case 2:
+         s<<"MEDIUM ";
+         break;
+     case 3:
+         s<<"HIGH ";
+         break;
+
+  }
+ s<<static_cast<int>(hairdryer.m_heat_level)<<endl;
  return s;
 }
 istream & operator>>( istream &s , Hairdryer& hairdryer)
 {
     string title;
     s>>*(dynamic_cast<Electronic*>(&hairdryer));
-    s>>title>>hairdryer.m_heat_level;
+    s>>title>>title>>hairdryer.m_heat_level;
     return s;
 }
 void Hairdryer::switchPower()
@@ -101,6 +120,36 @@ void Hairdryer::read()
         cout<<"nie udalo sie otworzyc pliku";
         return;
     }
+}
+
+void Hairdryer::print()
+{
+   cout<<*this;
+}
+
+void Hairdryer::edit()
+{
+Electronic::edit();
+if(m_power == 1)
+{
+    cout<<"Nowy poziom ciepla: "<<endl;
+    switch(getInt(0,3))
+    {
+        case 0:
+            m_heat_level = Hairdryer::Heat_level::OFF;
+            break;
+        case 1:
+            m_heat_level = Hairdryer::Heat_level::LOW;
+            break;
+        case 2:
+            m_heat_level = Hairdryer::Heat_level::MEDIUM;
+            break;
+        case 3:
+            m_heat_level = Hairdryer::Heat_level::HIGH;
+            break;
+
+    }
+}
 }
 
 int Hairdryer::heat_level()

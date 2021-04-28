@@ -1,4 +1,5 @@
 #include "monitor.h"
+#include "useful.h"
 #include <fstream>
 
 int Monitor::m_quantity = 0;
@@ -7,14 +8,14 @@ int Monitor::m_quantity = 0;
 Monitor::Monitor()
 {
     this->m_quantity++;
+#ifdef _DEBUG
+    cout<<"Monitor("<<m_name<<", 'Monitor' objects: "<<this->m_quantity<<endl;
+#endif
 }
 
 Monitor::Monitor(string name) : Monitor()
 {
     m_name = name;
-#ifdef _DEBUG
-    cout<<"Monitor("<<name<<"), 'Monitor' objects: "<<this->m_quantity<<endl;
-#endif
 }
 
 // KONSTRUKTORY ****************************************
@@ -38,8 +39,7 @@ ostream & operator<<( ostream &s , const Monitor& monitor)
 
     stack<App> apps = monitor.m_apps;
 
-    if(apps.empty()) cout<<" | BRAK"<<endl;
-    else
+    if(!apps.empty())
     {
         while(!apps.empty())
         {
@@ -200,7 +200,34 @@ void Monitor::closeApp()
 
 }
 
+void Monitor::print()
+{
+   cout<<*this;
+}
 
+void Monitor::edit()
+{
+  Electronic::edit();
+  string text;
+  cout<<"Nowa przekatna( <0 ,100>: "<<endl;
+      m_diagonal = getInt(0,100);
+  cout<<"Nowa jasnosc( <0,100>): "<<endl;
+      m_brightness = getInt(0,100);
+
+   stack<App> apps;
+   while(!m_apps.empty())
+   {
+     cout<<"Nowa nazwa apikacji: "<<endl;
+     cin>>text;
+     apps.emplace("text");
+     m_apps.pop();
+   }
+   while(!apps.empty())
+   {
+       m_apps.emplace(apps.top());
+       apps.pop();
+   }
+}
 
 
 
