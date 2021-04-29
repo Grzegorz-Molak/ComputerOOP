@@ -28,9 +28,10 @@ public:
     void closeApp();
 
     void save();
-    void read();
+    int read();
     void print();
     void edit();
+    int functions();
 
 
     friend ostream & operator<<( ostream &s , const Monitor& monitor);

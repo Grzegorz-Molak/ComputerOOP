@@ -67,6 +67,12 @@ void Electronic::edit()
 
 }
 
+int Electronic::functions()
+{
+cout<<"1. Wlacz/Wylacz, aktualnie urzadzenie jest"<<(m_power ?  "ON" : "OFF")<<endl;
+return 0;
+}
+
 bool Electronic::power() const
 {
     return m_power;

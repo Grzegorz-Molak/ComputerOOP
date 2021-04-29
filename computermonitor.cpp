@@ -85,11 +85,13 @@ void ComputerMonitor::switchPower()
 #endif
     if(this->m_power == false)
     {
+        cout<<"Wlaczam monitor komputerowy, otwieram standardowa aplikacje Hello World"<<endl;
         this->m_power = true;
         this->m_apps.emplace("Hello world");
     }
     else
     {
+        cout<<"Wylaczam monitor komputerowy, zamykam wszystkie aplikacje"<<endl;
         this->m_power = false;
         while(!m_apps.empty())
         {
@@ -104,6 +106,7 @@ void ComputerMonitor::openApp(string name)
 #ifdef _DEBUG
     cout<<"Calling openApp in ComputerMonitor class, opening "<<name<<endl;
 #endif
+    cout<<"Otwieram nowa aplikacje: "<<name<<endl;
     if(m_power)
     {
         this->m_apps.emplace(name);
@@ -125,6 +128,7 @@ void ComputerMonitor::save()
     if(file)
     {
         cout<<"Udalo sie utworzyc plik"<<endl;
+        file<<"ComputerMonitor"<<endl;
         file<<*this;
         file.close();
     }
@@ -135,7 +139,7 @@ void ComputerMonitor::save()
     }
 
 }
-void ComputerMonitor::read()
+int ComputerMonitor::read()
 {
     string namefile;
     ifstream file;
@@ -145,13 +149,27 @@ void ComputerMonitor::read()
     if(file)
     {
         cout<<"udalo sie otworzyc plik"<<endl;
+        file>>namefile;
+        if(namefile == "ComputerMonitor")
+        {
         file>>*this;
+        }
+        else if(namefile == "Monitor")
+        {
+            file>>*(dynamic_cast<Monitor*>(this));
+        }
+        else
+        {
+            cout<<"Do komputera monitorowego mozna przypisac tylko monitor lub monitor komputerowy";
+            return 0;
+        }
         file.close();
+        return 1;
     }
     else
     {
         cout<<"Nie udalo sie otworzyc pliku"<<endl;
-        return;
+        return 0;
     }
 
 }
@@ -166,7 +184,11 @@ void ComputerMonitor::edit()
 Monitor::edit();
 if(m_power == 1)
 {
-    cout<<"Nowy output: "<<endl;
+    cout<<"Wybierz output: "<<endl;
+    cout<<"0. VGA"<<endl;
+    cout<<"1. DVI"<<endl;
+    cout<<"2. HDMI"<<endl;
+    cout<<"3. DISPLAYPORT"<<endl;
     switch(getInt(0,3))
     {
         case 0:
@@ -186,12 +208,56 @@ if(m_power == 1)
 }
 }
 
+int ComputerMonitor::functions()
+{
+    Monitor::functions();
+    cout<<"4. Zmien output"<<endl;
+    return 3;
+}
+
 ComputerMonitor::Output ComputerMonitor::output()
 {
 return m_output;
 }
+
+void ComputerMonitor::setOutput()
+{
+    cout<<"Wybierz output: "<<endl;
+    cout<<"0. VGA"<<endl;
+    cout<<"1. DVI"<<endl;
+    cout<<"2. HDMI"<<endl;
+    cout<<"3. DISPLAYPORT"<<endl;
+
+    switch(getInt(0,3))
+    {
+        case 0:
+            setOutput(ComputerMonitor::Output::VGA);
+            break;
+        case 1:
+            setOutput(ComputerMonitor::Output::DVI);
+            break;
+        case 2:
+            setOutput(ComputerMonitor::Output::HDMI);
+            break;
+        case 3:
+            setOutput(ComputerMonitor::Output::DISPLAYPORT);
+            break;
+
+    }
+}
 void ComputerMonitor::setOutput(Output output)
 {
-m_output = output;
+    if(m_power)
+    {
+       m_output = output;
+    }
+    else
+    {
+        if(askToTurnOn())
+        {
+            switchPower();
+            setOutput(output);
+        }
+    }
 }
 

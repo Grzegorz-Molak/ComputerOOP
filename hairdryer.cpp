@@ -72,12 +72,13 @@ void Hairdryer::switchPower()
 #endif
     if(this->m_power == false)
     {
+        cout<<"Wlaczam suszarke, ustawiam cieplo na LOW"<<endl;
         this->m_power = true;
         this->m_heat_level = Heat_level::LOW;
     }
     else
     {
-
+        cout<<"Wylaczam suszarke, ustawiam cieplo na OFF"<<endl;
         this->m_power = false;
         this->m_heat_level = Heat_level::OFF;
     }
@@ -90,6 +91,7 @@ void Hairdryer::save()
     if(file)
     {
         cout<<"Udalo sie otworzyc file"<<endl;
+        file<<"Hairdryer"<<endl;
         file<<*this;
         file.close();
     }
@@ -102,7 +104,7 @@ void Hairdryer::save()
 
 }
 
-void Hairdryer::read()
+int Hairdryer::read()
 {
     string namefile;
     ifstream file;
@@ -112,13 +114,24 @@ void Hairdryer::read()
     if(file)
     {
         cout<<"udalo sie otworzyc plik"<<endl;
-        file>>*this;
+        file>>namefile;
+        if(namefile == "Hairdryer")
+        {
+            file>>*this;
+        }
+        else
+        {
+            cout<<"Do suszarki moze byc przypisana tylko suszarka"<<endl;
+            return 0;
+        }
+
         file.close();
+        return 1;
     }
     else
     {
         cout<<"nie udalo sie otworzyc pliku";
-        return;
+        return 0;
     }
 }
 
@@ -132,7 +145,11 @@ void Hairdryer::edit()
 Electronic::edit();
 if(m_power == 1)
 {
-    cout<<"Nowy poziom ciepla: "<<endl;
+    cout<<"Wybierz poziom ciepla: "<<endl;
+    cout<<"0. OFF "<<endl;
+    cout<<"1. LOW "<<endl;
+    cout<<"2. MEDIUM "<<endl;
+    cout<<"3. HIGH"<<endl;
     switch(getInt(0,3))
     {
         case 0:
@@ -152,9 +169,42 @@ if(m_power == 1)
 }
 }
 
+int Hairdryer::functions()
+{
+    Electronic::functions();
+    cout<<"2. Zmiana poziomu ciepla"<<endl;
+    return 1;
+}
+
 int Hairdryer::heat_level()
 {
     return static_cast<int>(m_heat_level);
+}
+
+void Hairdryer::setHeat_level()
+{
+    cout<<"Wybierz poziom ciepla: "<<endl;
+    cout<<"0. OFF "<<endl;
+    cout<<"1. LOW "<<endl;
+    cout<<"2. MEDIUM "<<endl;
+    cout<<"3. HIGH"<<endl;
+
+    switch(getInt(0,3))
+    {
+        case 0:
+            setHeat_level(Hairdryer::Heat_level::OFF);
+            break;
+        case 1:
+            setHeat_level(Hairdryer::Heat_level::LOW);
+            break;
+        case 2:
+            setHeat_level(Hairdryer::Heat_level::MEDIUM);
+            break;
+        case 3:
+            setHeat_level(Hairdryer::Heat_level::HIGH);
+            break;
+
+    }
 }
 
 void Hairdryer::setHeat_level(Heat_level heat_level)

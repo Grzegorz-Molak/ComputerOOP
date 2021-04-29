@@ -22,9 +22,10 @@ public:
     void setUser(const User &user);
 
     virtual void save() = 0;
-    virtual void read() = 0;
+    virtual int read() = 0;
     virtual void print() = 0;
     virtual void edit();
+    virtual int functions();
 
     static int quantity();
 

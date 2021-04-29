@@ -18,12 +18,14 @@ public:
     void closeApp();
 
     Output output();
+    void setOutput();
     void setOutput(Output output);
 
     void save();
-    void read();
+    int read();
     void print();
     void edit();
+    int functions();
 
     friend ostream& operator<<(ostream &, const ComputerMonitor&);
     friend istream & operator>>( istream &s , ComputerMonitor& computermonitor);

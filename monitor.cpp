@@ -111,11 +111,13 @@ void Monitor::switchPower()
 #endif
     if(this->m_power == false)
     {
+        cout<<"Wlaczam monitor, otwieram standardowa aplikacje Hello World"<<endl;
         this->m_power = true;
         this->m_apps.emplace("Hello World");
     }
     else
     {
+        cout<<"Wylaczam monitor, zamykam aplikacje"<<endl;
         this->m_power = false;
         this->m_apps.pop();
     }
@@ -129,6 +131,7 @@ void Monitor::save()
     if(file)
     {
         cout<<"udalo sie utworzyc plik"<<endl;
+        file<<"Monitor"<<endl;
         file<<*this;
         file.close();
     }
@@ -139,7 +142,7 @@ void Monitor::save()
     }
 }
 
-void Monitor::read()
+int Monitor::read()
 {
     string namefile;
     ifstream file;
@@ -149,13 +152,23 @@ void Monitor::read()
     if(file)
     {
         cout<<"udalo sie otworzyc plik"<<endl;
-        file>>*this;
+        file>>namefile;
+        if(namefile == "Monitor")
+        {
+            file>>*this;
+        }
+        else
+        {
+            cout<<"Do monitora moze byc przypisany tylko monitor"<<endl;
+            return 0;
+        }
         file.close();
+        return 1;
     }
     else
     {
         cout<<"Nie udalo sie otworzyc pliku"<<endl;
-        return;
+        return 0 ;
     }
 
 }
@@ -165,6 +178,7 @@ void Monitor::openApp(string name)
 #ifdef _DEBUG
     cout<<"Calling openApp in Monitor class"<<endl;
 #endif
+    cout<<"Otwieram "<<name<<" i zamykam "<<m_apps.top().name()<<endl;
     if(m_power)
     {
     this->m_apps.pop();
@@ -185,17 +199,19 @@ void Monitor::closeApp()
 #ifdef _DEBUG
     cout<<"Calling closeApp in Monitor class"<<endl;
 #endif
+    cout<<"Zamykam "<<m_apps.top().name()<<endl;
     if(m_power)
     {
         this->m_apps.pop();
         if(m_apps.empty())
         {
+            cout<<"Otwieram standardowa aplikacje Hello World"<<endl;
             this->m_apps.emplace("Hello World");
         }
     }
     else
     {
-        cout<<"Monitor jest wylaczony, nie ma zadnych otwartych afileacji"<<endl;
+        cout<<"Monitor jest wylaczony, nie ma zadnych otwartych aplikacji"<<endl;
     }
 
 }
@@ -227,6 +243,14 @@ void Monitor::edit()
        m_apps.emplace(apps.top());
        apps.pop();
    }
+}
+
+int Monitor::functions()
+{
+  Electronic::functions();
+  cout<<"2. Otworz nowa aplikacje"<<endl;
+  cout<<"3. Zamknij aplikacje"<<endl;
+  return 2;
 }
 
 

@@ -13,11 +13,13 @@ public:
     void switchPower();
     int heat_level();
     void setHeat_level(Heat_level heat_level);
+    void setHeat_level();
 
     void save();
-    void read();
+    int read();
     void print();
     void edit();
+    int functions();
 
     friend ostream & operator<<( ostream &s , Hairdryer& hairdryer);
     friend istream & operator>>( istream &s , Hairdryer& hairdryer);
