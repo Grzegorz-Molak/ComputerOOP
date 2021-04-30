@@ -18,7 +18,7 @@ Monitor::Monitor(string name) : Monitor()
     m_name = name;
 }
 
-// KONSTRUKTORY ****************************************
+
 
 Monitor::~Monitor()
 {
@@ -27,9 +27,9 @@ Monitor::~Monitor()
     cout<<"~Monitor, 'Monitor' objects: "<<this->m_quantity<<endl;
 #endif
 }
+// KONSTRUKTORY ****************************************
 
 // OPERATORY ******************************************
-
 ostream & operator<<( ostream &s , const Monitor& monitor)
 {
     s << *(dynamic_cast<const Electronic*>(&monitor));
@@ -84,6 +84,9 @@ istream & operator>>( istream &s , Monitor& monitor)
     return s;
 }
 
+// OPERATORY ******************************************
+
+// INNE FUNKCJE *************************************
 double Monitor::diagonal() const
 {
     return m_diagonal;
@@ -253,7 +256,4 @@ int Monitor::functions()
   return 2;
 }
 
-
-
-
-// OPERATORY ******************************************
+// INNE FUNKCJE *************************************

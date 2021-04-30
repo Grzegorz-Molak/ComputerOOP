@@ -4,6 +4,8 @@
 
 int Hairdryer::m_quantity = 0;
 
+
+// KONSTRUKTORY I DESTRUKTORY ***********************
 Hairdryer::Hairdryer()
 {
     this->m_quantity++;
@@ -26,6 +28,10 @@ Hairdryer::~Hairdryer()
 #endif
 }
 
+// KONSTRUKTORY I DESTRUKTORY ***********************
+
+
+// OPERATORY ****************************************
 istream & operator>>(istream &s, Hairdryer::Heat_level& heat_level)
 {
     int h;
@@ -65,6 +71,9 @@ istream & operator>>( istream &s , Hairdryer& hairdryer)
     s>>title>>title>>hairdryer.m_heat_level;
     return s;
 }
+// OPERATORY ****************************************
+
+// INNE FUNKCJE *************************************
 void Hairdryer::switchPower()
 {
 #ifdef _DEBUG
@@ -223,3 +232,4 @@ void Hairdryer::setHeat_level(Heat_level heat_level)
     }
 
 }
+// INNE FUNKCJE *************************************

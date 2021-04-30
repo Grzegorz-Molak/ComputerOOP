@@ -7,9 +7,11 @@ class ComputerMonitor : public Monitor
 
 public:
     enum class Output { VGA, DVI, HDMI, DISPLAYPORT};
+
     ComputerMonitor();
     ComputerMonitor(string name);
     ComputerMonitor(string name, Output output);
+
     ~ComputerMonitor();
 
 

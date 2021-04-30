@@ -5,6 +5,8 @@
 
 int Electronic::m_quantity = 0;
 
+
+// KONSTRUKTORY I DESTRUKTORY ***********************
 Electronic::Electronic()
 {
     this->m_quantity++;
@@ -20,7 +22,9 @@ Electronic::~Electronic()
     cout<<"~Electronic(), 'Electronic' objects: "<<m_quantity<<endl;
 #endif
 }
+// KONSTRUKTORY I DESTRUKTORY ***********************
 
+// OPERATORY ****************************************
 ostream & operator<<( ostream &s , const Electronic& electronic)
 {
 s<<"Nazwa: "<<electronic.m_name<<endl;
@@ -37,6 +41,8 @@ istream & operator>>( istream &s , Electronic& electronic)
     return s;
 }
 
+// OPERATORY ****************************************
+// INNE FUNKCJE *************************************
 bool Electronic::askToTurnOn()
 {
     cout<<"Aby wykonywac te operacje urzadzenie musi byc wlaczone\n"
@@ -97,4 +103,6 @@ void Electronic::setUser(const User &user)
 {
     m_user = user;
 }
+
+// INNE FUNKCJE *************************************
 

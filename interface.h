@@ -264,7 +264,7 @@ if(electronics.size() > 0)
    cout<<"2. Nowego"<<endl;
    if(getInt(1,2) == 1)
    {
-       if(electronics[getInt(0, electronics.size()-1)]->read() == 1)
+       if(electronics[chooseObject()]->read() == 1)
            cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
        else
            cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
