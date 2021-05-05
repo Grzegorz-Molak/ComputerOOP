@@ -1,0 +1,174 @@
+\hypertarget{class_user}{}\doxysection{User Class Reference}
+\label{class_user}\index{User@{User}}
+
+
+Klasa reprezentująca użytkownika.  
+
+
+
+
+{\ttfamily \#include $<$user.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_a4a0137053e591fbb79d9057dd7d2283d}\label{class_user_a4a0137053e591fbb79d9057dd7d2283d}} 
+\mbox{\hyperlink{class_user_a4a0137053e591fbb79d9057dd7d2283d}{User}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_a00c62cc75b827e6d3f9076e3208d1f3e}{User}} (string name\+\_\+of\+\_\+user)
+\begin{DoxyCompactList}\small\item\em Konstruktor z parametrem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_acf5714d295e7f0bf1641a2e9b1c8ca51}{User}} (int age\+\_\+of\+\_\+user)
+\begin{DoxyCompactList}\small\item\em Konstruktor z parametrem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_ae81c9292b3789044911b259c23e60899}{User}} (string name\+\_\+of\+\_\+user, int age\+\_\+of\+\_\+user)
+\begin{DoxyCompactList}\small\item\em Konstruktor z dwoma parametrami. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_a76e2ab85c5508e078cf10d2abe1eb292}{User}} (const \mbox{\hyperlink{class_user}{User}} \&user\+\_\+to\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Konstruktor kopiujący. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_ac00b72ad64eb4149f7b21b9f5468c2b2}\label{class_user_ac00b72ad64eb4149f7b21b9f5468c2b2}} 
+\mbox{\hyperlink{class_user_ac00b72ad64eb4149f7b21b9f5468c2b2}{$\sim$\+User}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user}{User}} \& \mbox{\hyperlink{class_user_abd934b169a3b8f9101fdc525e9273f0d}{operator=}} (const \mbox{\hyperlink{class_user}{User}} \&user\+\_\+to\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator przypisania. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_a23cf548cf827fea83d925808eadbf64c}\label{class_user_a23cf548cf827fea83d925808eadbf64c}} 
+string \mbox{\hyperlink{class_user_a23cf548cf827fea83d925808eadbf64c}{name}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca imię \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_a341a7e84056c748af0df2ac4d37fe44a}\label{class_user_a341a7e84056c748af0df2ac4d37fe44a}} 
+int \mbox{\hyperlink{class_user_a341a7e84056c748af0df2ac4d37fe44a}{age}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wiek. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_acabf7e5a40909656de5bc631abe5588c}{set\+Name}} (string \mbox{\hyperlink{class_user_a23cf548cf827fea83d925808eadbf64c}{name}})
+\begin{DoxyCompactList}\small\item\em Ustawia imię \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_a7a4620a81cd46db81747e59ffcd189c6}{set\+Age}} (unsigned int \mbox{\hyperlink{class_user_a341a7e84056c748af0df2ac4d37fe44a}{age}})
+\begin{DoxyCompactList}\small\item\em Ustawia wiek. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_adc0c36b7b51f87e96afc8ade2271a156}\label{class_user_adc0c36b7b51f87e96afc8ade2271a156}} 
+ostream \& \mbox{\hyperlink{class_user_adc0c36b7b51f87e96afc8ade2271a156}{operator$<$$<$}} (ostream \&s, const \mbox{\hyperlink{class_user}{User}} \&user)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumienia wyjścia. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_a0bba5d9d9a8f6c248992a70c5fcd3c7a}\label{class_user_a0bba5d9d9a8f6c248992a70c5fcd3c7a}} 
+istream \& \mbox{\hyperlink{class_user_a0bba5d9d9a8f6c248992a70c5fcd3c7a}{operator$>$$>$}} (istream \&s, \mbox{\hyperlink{class_user}{User}} \&user)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumienia wejścia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentująca użytkownika. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_user_a00c62cc75b827e6d3f9076e3208d1f3e}\label{class_user_a00c62cc75b827e6d3f9076e3208d1f3e}} 
+\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{User()}{User()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily User\+::\+User (\begin{DoxyParamCaption}\item[{string}]{name\+\_\+of\+\_\+user }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z parametrem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+\_\+of\+\_\+user} & nazwa użytkownika \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_acf5714d295e7f0bf1641a2e9b1c8ca51}\label{class_user_acf5714d295e7f0bf1641a2e9b1c8ca51}} 
+\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{User()}{User()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily User\+::\+User (\begin{DoxyParamCaption}\item[{int}]{age\+\_\+of\+\_\+user }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z parametrem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em age\+\_\+of\+\_\+user} & wiek użytkownika \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_ae81c9292b3789044911b259c23e60899}\label{class_user_ae81c9292b3789044911b259c23e60899}} 
+\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{User()}{User()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily User\+::\+User (\begin{DoxyParamCaption}\item[{string}]{name\+\_\+of\+\_\+user,  }\item[{int}]{age\+\_\+of\+\_\+user }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z dwoma parametrami. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+\_\+of\+\_\+user} & nazwa użytkownika \\
+\hline
+{\em age\+\_\+of\+\_\+user} & wiek użytkownika \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_a76e2ab85c5508e078cf10d2abe1eb292}\label{class_user_a76e2ab85c5508e078cf10d2abe1eb292}} 
+\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{User()}{User()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily User\+::\+User (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_user}{User}} \&}]{user\+\_\+to\+\_\+copy }\end{DoxyParamCaption})}
+
+
+
+Konstruktor kopiujący. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+to\+\_\+copy} & Referencja do kopiowanego użytkownika \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_abd934b169a3b8f9101fdc525e9273f0d}\label{class_user_abd934b169a3b8f9101fdc525e9273f0d}} 
+\index{User@{User}!operator=@{operator=}}
+\index{operator=@{operator=}!User@{User}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_user}{User}} \& User\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_user}{User}} \&}]{user\+\_\+to\+\_\+copy }\end{DoxyParamCaption})}
+
+
+
+Przeciążony operator przypisania. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+to\+\_\+copy} & Użytkownik którego parametry zostaną przypisane \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Referencja do użytkownika z przypisanymi parametrami 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_user_a7a4620a81cd46db81747e59ffcd189c6}\label{class_user_a7a4620a81cd46db81747e59ffcd189c6}} 
+\index{User@{User}!setAge@{setAge}}
+\index{setAge@{setAge}!User@{User}}
+\doxysubsubsection{\texorpdfstring{setAge()}{setAge()}}
+{\footnotesize\ttfamily void User\+::set\+Age (\begin{DoxyParamCaption}\item[{unsigned int}]{age }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia wiek. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em age} & wiek \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_acabf7e5a40909656de5bc631abe5588c}\label{class_user_acabf7e5a40909656de5bc631abe5588c}} 
+\index{User@{User}!setName@{setName}}
+\index{setName@{setName}!User@{User}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void User\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ustawia imię 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & imię \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+user.\+h\item 
+user.\+cpp\end{DoxyCompactItemize}

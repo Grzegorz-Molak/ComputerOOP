@@ -38,7 +38,6 @@ ComputerMonitor::~ComputerMonitor()
 ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 {
     s << *(dynamic_cast<const Monitor*>(&computermonitor));
-    //s<< "Wyjscie: " << static_cast<int>(computermonitor.m_output)<<endl;
     s<<"Output: ";
     switch(static_cast<int>(computermonitor.m_output))
     {
@@ -80,9 +79,6 @@ istream & operator>>( istream &s , ComputerMonitor::Output& output)
 // INNE FUNKCJE *************************************
 void ComputerMonitor::switchPower()
 {
-#ifdef _DEBUG
-    cout<<"Calling switchPower in ComputerMonitor class"<<endl;
-#endif
     if(this->m_power == false)
     {
         cout<<"Wlaczam monitor komputerowy, otwieram standardowa aplikacje Hello World"<<endl;
@@ -102,10 +98,6 @@ void ComputerMonitor::switchPower()
 
 void ComputerMonitor::openApp(string name)
 {
-
-#ifdef _DEBUG
-    cout<<"Calling openApp in ComputerMonitor class, opening "<<name<<endl;
-#endif
     cout<<"Otwieram nowa aplikacje: "<<name<<endl;
     if(m_power)
     {
@@ -181,31 +173,31 @@ void ComputerMonitor::print()
 
 void ComputerMonitor::edit()
 {
-Monitor::edit();
-if(m_power == 1)
-{
-    cout<<"Wybierz output: "<<endl;
-    cout<<"0. VGA"<<endl;
-    cout<<"1. DVI"<<endl;
-    cout<<"2. HDMI"<<endl;
-    cout<<"3. DISPLAYPORT"<<endl;
-    switch(getInt(0,3))
+    Monitor::edit();
+    if(m_power == 1)
     {
-        case 0:
-            m_output = ComputerMonitor::Output::VGA;
-            break;
-        case 1:
-            m_output = ComputerMonitor::Output::DVI;
-            break;
-        case 2:
-            m_output = ComputerMonitor::Output::HDMI;
-            break;
-        case 3:
-            m_output = ComputerMonitor::Output::DISPLAYPORT;
-            break;
+        cout<<"Wybierz output: "<<endl;
+        cout<<"0. VGA"<<endl;
+        cout<<"1. DVI"<<endl;
+        cout<<"2. HDMI"<<endl;
+        cout<<"3. DISPLAYPORT"<<endl;
+        switch(getInt(0,3))
+        {
+            case 0:
+                m_output = ComputerMonitor::Output::VGA;
+                break;
+            case 1:
+                m_output = ComputerMonitor::Output::DVI;
+                break;
+            case 2:
+                m_output = ComputerMonitor::Output::HDMI;
+                break;
+            case 3:
+                m_output = ComputerMonitor::Output::DISPLAYPORT;
+                break;
 
+        }
     }
-}
 }
 
 int ComputerMonitor::functions()
@@ -215,9 +207,13 @@ int ComputerMonitor::functions()
     return 3;
 }
 
+// INNE FUNKCJE *******************
+
+// SETTERSY I GETTERSY
+
 ComputerMonitor::Output ComputerMonitor::output()
 {
-return m_output;
+    return m_output;
 }
 
 void ComputerMonitor::setOutput()
@@ -260,4 +256,6 @@ void ComputerMonitor::setOutput(Output output)
         }
     }
 }
+
+// SETTERSY I GETTERSY
 

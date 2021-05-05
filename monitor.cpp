@@ -47,7 +47,7 @@ ostream & operator<<( ostream &s , const Monitor& monitor)
             apps.pop();
         }
     }
-return s;
+    return s;
 }
 
 istream & operator>>( istream &s , Monitor& monitor)
@@ -257,3 +257,4 @@ int Monitor::functions()
 }
 
 // INNE FUNKCJE *************************************
+

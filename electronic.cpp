@@ -27,10 +27,10 @@ Electronic::~Electronic()
 // OPERATORY ****************************************
 ostream & operator<<( ostream &s , const Electronic& electronic)
 {
-s<<"Nazwa: "<<electronic.m_name<<endl;
-s<<"ON/OFF: "<<electronic.m_power<<endl;
-s<<"Uzytkownik: "<<electronic.m_user<<endl;
-return s;
+    s<<"Nazwa: "<<electronic.m_name<<endl;
+    s<<"ON/OFF: "<<electronic.m_power<<endl;
+    s<<"Uzytkownik: "<<electronic.m_user<<endl;
+    return s;
 }
 istream & operator>>( istream &s , Electronic& electronic)
 {
@@ -75,14 +75,17 @@ void Electronic::edit()
 
 int Electronic::functions()
 {
-cout<<"1. Wlacz/Wylacz, aktualnie urzadzenie jest"<<(m_power ?  "ON" : "OFF")<<endl;
-return 0;
+    cout<<"1. Wlacz/Wylacz, aktualnie urzadzenie jest "<<(m_power ?  "ON" : "OFF")<<endl;
+    return 0;
 }
 
 bool Electronic::power() const
 {
     return m_power;
 }
+
+// INNE FUNKCJE *************************************
+// SETTERSY I GETTERSY ************
 
 string Electronic::name() const
 {
@@ -104,5 +107,5 @@ void Electronic::setUser(const User &user)
     m_user = user;
 }
 
-// INNE FUNKCJE *************************************
+// SETTERSY I GETTERSY ************
 

@@ -1,0 +1,186 @@
+\hypertarget{class_computer_monitor}{}\doxysection{Computer\+Monitor Class Reference}
+\label{class_computer_monitor}\index{ComputerMonitor@{ComputerMonitor}}
+
+
+Klasa reprezentująca monitor komputerowy.  
+
+
+
+
+{\ttfamily \#include $<$computermonitor.\+h$>$}
+
+Inheritance diagram for Computer\+Monitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_computer_monitor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}\label{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}} 
+enum class \mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}} \{ {\bfseries VGA}
+, {\bfseries DVI}
+, {\bfseries HDMI}
+, {\bfseries DISPLAYPORT}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ wyliczeniowy dla typów wyjść monitora komputerowego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_computer_monitor_ac24e573abfbbc1efebe853d180217e75}\label{class_computer_monitor_ac24e573abfbbc1efebe853d180217e75}} 
+\mbox{\hyperlink{class_computer_monitor_ac24e573abfbbc1efebe853d180217e75}{Computer\+Monitor}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_computer_monitor_a45394485a84dce617a125f26e8f3f2dd}{Computer\+Monitor}} (string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}})
+\begin{DoxyCompactList}\small\item\em Konstruktor z jednym parametrem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_computer_monitor_ada4339f6b841194a53912754a0bd3e73}{Computer\+Monitor}} (string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}}, \mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}} \mbox{\hyperlink{class_computer_monitor_a46cc70217dcef4a55837c3e8ec136428}{output}})
+\begin{DoxyCompactList}\small\item\em Konstruktor z jednym parametrem. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a351ec6a817038f33ab880c9af2870dda}\label{class_computer_monitor_a351ec6a817038f33ab880c9af2870dda}} 
+\mbox{\hyperlink{class_computer_monitor_a351ec6a817038f33ab880c9af2870dda}{$\sim$\+Computer\+Monitor}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_ae99e8d04ca223e8d510eb2432cfea7a1}\label{class_computer_monitor_ae99e8d04ca223e8d510eb2432cfea7a1}} 
+void \mbox{\hyperlink{class_computer_monitor_ae99e8d04ca223e8d510eb2432cfea7a1}{switch\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Włącza/\+Wyłącza urządzenie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_computer_monitor_aa0e9e8b779e8e7ede8c9fd79a135e61a}{open\+App}} (string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}})
+\begin{DoxyCompactList}\small\item\em Otwiera nową aplikację \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a7e64b1c6c6d665f8279dae8bf1060508}\label{class_computer_monitor_a7e64b1c6c6d665f8279dae8bf1060508}} 
+void \mbox{\hyperlink{class_computer_monitor_a7e64b1c6c6d665f8279dae8bf1060508}{close\+App}} ()
+\begin{DoxyCompactList}\small\item\em Zamyka aplikację na szczycie stosu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a46cc70217dcef4a55837c3e8ec136428}\label{class_computer_monitor_a46cc70217dcef4a55837c3e8ec136428}} 
+\mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}} \mbox{\hyperlink{class_computer_monitor_a46cc70217dcef4a55837c3e8ec136428}{output}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca wyjście. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a49407c14def01a4533886f3a2dafb0ee}\label{class_computer_monitor_a49407c14def01a4533886f3a2dafb0ee}} 
+void \mbox{\hyperlink{class_computer_monitor_a49407c14def01a4533886f3a2dafb0ee}{set\+Output}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia wyjście(interfejs) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_computer_monitor_a28a64022b564a1c4b2c747e4f4fe7de3}{set\+Output}} (\mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}} \mbox{\hyperlink{class_computer_monitor_a46cc70217dcef4a55837c3e8ec136428}{output}})
+\begin{DoxyCompactList}\small\item\em Ustawia wyjście(bez interfejsu) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a670106c8a586c7d207dcde34beb4ef4a}\label{class_computer_monitor_a670106c8a586c7d207dcde34beb4ef4a}} 
+void \mbox{\hyperlink{class_computer_monitor_a670106c8a586c7d207dcde34beb4ef4a}{save}} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje do pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a9a1279ed2962e4f65d125822ed1724bc}\label{class_computer_monitor_a9a1279ed2962e4f65d125822ed1724bc}} 
+int \mbox{\hyperlink{class_computer_monitor_a9a1279ed2962e4f65d125822ed1724bc}{read}} ()
+\begin{DoxyCompactList}\small\item\em Odczytuje z pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_a1787c55c01a3154a58d2aea44b8631a0}\label{class_computer_monitor_a1787c55c01a3154a58d2aea44b8631a0}} 
+void \mbox{\hyperlink{class_computer_monitor_a1787c55c01a3154a58d2aea44b8631a0}{print}} ()
+\begin{DoxyCompactList}\small\item\em Wypisuje na ekran konsoli. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_aa5deb88a6697eab9e3aabc4fbd4defa5}\label{class_computer_monitor_aa5deb88a6697eab9e3aabc4fbd4defa5}} 
+void \mbox{\hyperlink{class_computer_monitor_aa5deb88a6697eab9e3aabc4fbd4defa5}{edit}} ()
+\begin{DoxyCompactList}\small\item\em Uruchamia edytor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_computer_monitor_a82eb7d2e63eb9dd97ff6b54aeb1ca096}{functions}} ()
+\begin{DoxyCompactList}\small\item\em Przedstawia dostępne funkcje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_computer_monitor_a088820e40cf3e1c40ef7499b7a9ea89b}\label{class_computer_monitor_a088820e40cf3e1c40ef7499b7a9ea89b}} 
+\mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}} \mbox{\hyperlink{class_computer_monitor_a088820e40cf3e1c40ef7499b7a9ea89b}{m\+\_\+output}} = Output\+::\+VGA
+\begin{DoxyCompactList}\small\item\em Wyjście komputera monitorowego, domyślnie VGA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_computer_monitor_aae9c0b87dec34bed5cdf5ca92a0e727e}\label{class_computer_monitor_aae9c0b87dec34bed5cdf5ca92a0e727e}} 
+ostream \& \mbox{\hyperlink{class_computer_monitor_aae9c0b87dec34bed5cdf5ca92a0e727e}{operator$<$$<$}} (ostream \&, const \mbox{\hyperlink{class_computer_monitor}{Computer\+Monitor}} \&)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumienia wyjścia dla klasy \mbox{\hyperlink{class_computer_monitor}{Computer\+Monitor}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_af16946117c4ee521dc8ea6b9357263d6}\label{class_computer_monitor_af16946117c4ee521dc8ea6b9357263d6}} 
+istream \& \mbox{\hyperlink{class_computer_monitor_af16946117c4ee521dc8ea6b9357263d6}{operator$>$$>$}} (istream \&s, \mbox{\hyperlink{class_computer_monitor}{Computer\+Monitor}} \&computermonitor)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumienia wejścia dla klasy \mbox{\hyperlink{class_computer_monitor}{Computer\+Monitor}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_computer_monitor_af9b6cb8cfe853650209ea29c980cd6fa}\label{class_computer_monitor_af9b6cb8cfe853650209ea29c980cd6fa}} 
+istream \& \mbox{\hyperlink{class_computer_monitor_af9b6cb8cfe853650209ea29c980cd6fa}{operator$>$$>$}} (istream \&s, \mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Computer\+Monitor\+::\+Output}} \&\mbox{\hyperlink{class_computer_monitor_a46cc70217dcef4a55837c3e8ec136428}{output}})
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumienia wejścia dla typu wyliczeniowego Output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentująca monitor komputerowy. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_computer_monitor_a45394485a84dce617a125f26e8f3f2dd}\label{class_computer_monitor_a45394485a84dce617a125f26e8f3f2dd}} 
+\index{ComputerMonitor@{ComputerMonitor}!ComputerMonitor@{ComputerMonitor}}
+\index{ComputerMonitor@{ComputerMonitor}!ComputerMonitor@{ComputerMonitor}}
+\doxysubsubsection{\texorpdfstring{ComputerMonitor()}{ComputerMonitor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Computer\+Monitor\+::\+Computer\+Monitor (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z jednym parametrem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nazwa monitora komputerowego \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_computer_monitor_ada4339f6b841194a53912754a0bd3e73}\label{class_computer_monitor_ada4339f6b841194a53912754a0bd3e73}} 
+\index{ComputerMonitor@{ComputerMonitor}!ComputerMonitor@{ComputerMonitor}}
+\index{ComputerMonitor@{ComputerMonitor}!ComputerMonitor@{ComputerMonitor}}
+\doxysubsubsection{\texorpdfstring{ComputerMonitor()}{ComputerMonitor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Computer\+Monitor\+::\+Computer\+Monitor (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{\mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}}}]{output }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z jednym parametrem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nazwa monitora komputerowego \\
+\hline
+{\em output} & typ nowego wyjścia \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_computer_monitor_a82eb7d2e63eb9dd97ff6b54aeb1ca096}\label{class_computer_monitor_a82eb7d2e63eb9dd97ff6b54aeb1ca096}} 
+\index{ComputerMonitor@{ComputerMonitor}!functions@{functions}}
+\index{functions@{functions}!ComputerMonitor@{ComputerMonitor}}
+\doxysubsubsection{\texorpdfstring{functions()}{functions()}}
+{\footnotesize\ttfamily int Computer\+Monitor\+::functions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Przedstawia dostępne funkcje. 
+
+\begin{DoxyReturn}{Returns}
+Zwraca 3, co oznacza że obiekt jest monitorem komputerowym 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_electronic_a6f9e23d74afd1c3bf5fb87fbc95ef71e}{Electronic}}.
+
+\mbox{\Hypertarget{class_computer_monitor_aa0e9e8b779e8e7ede8c9fd79a135e61a}\label{class_computer_monitor_aa0e9e8b779e8e7ede8c9fd79a135e61a}} 
+\index{ComputerMonitor@{ComputerMonitor}!openApp@{openApp}}
+\index{openApp@{openApp}!ComputerMonitor@{ComputerMonitor}}
+\doxysubsubsection{\texorpdfstring{openApp()}{openApp()}}
+{\footnotesize\ttfamily void Computer\+Monitor\+::open\+App (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Otwiera nową aplikację 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nazwa aplikacji \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_monitor_a084fe2cdcf675acec09ff897e8c58473}{Monitor}}.
+
+\mbox{\Hypertarget{class_computer_monitor_a28a64022b564a1c4b2c747e4f4fe7de3}\label{class_computer_monitor_a28a64022b564a1c4b2c747e4f4fe7de3}} 
+\index{ComputerMonitor@{ComputerMonitor}!setOutput@{setOutput}}
+\index{setOutput@{setOutput}!ComputerMonitor@{ComputerMonitor}}
+\doxysubsubsection{\texorpdfstring{setOutput()}{setOutput()}}
+{\footnotesize\ttfamily void Computer\+Monitor\+::set\+Output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_computer_monitor_aa43ae28ed58f394c8ac07f7aecbd1d7a}{Output}}}]{output }\end{DoxyParamCaption})}
+
+
+
+Ustawia wyjście(bez interfejsu) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & typ wyjścia \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+computermonitor.\+h\item 
+computermonitor.\+cpp\end{DoxyCompactItemize}

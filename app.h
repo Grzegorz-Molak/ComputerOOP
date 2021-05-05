@@ -2,31 +2,53 @@
 #include <iostream>
 
 using namespace std;
-
-class App // Aplikacja
+/// Klasa reprezentująca Aplikację
+class App
 {
 public:
-    // KONSTRUKTORY **********
+
+    /// Konstruktor domyślny
     App();
+
+    /// Konstruktor z parametrem
+    /**
+     \param name_of_app nazwa aplikacji
+     */
     App(string name_of_app);
+
+    /// Konstruktor kopiujący
+    /**
+     \param app_to_copy aplikacja do skopiowania
+     */
     App(const App &app_to_copy);
-    // KONSTRUKTORY **********
-   ~App(); // DESTRUKTOR ***********
 
-    static int quantity();
+    /// Destruktor
+   ~App();
 
-    App& operator=(const App &app_to_copy); // przypisuje danej aplikacji parametry innej
+    /// Przeciążony operator przypisania(operator = )
+    /**
+     \param app_to_copy aplikacja, której parametry zostaną przypisane
+     \return zwraca referencję do nowej wersji aplikacji
+     */
+    App& operator=(const App &app_to_copy);
 
-    // funkcje sterujace zawartoscia ******
+    /// zwraca nazwę aplikacji
     string name();
-    void setName(string name);
-    // funkcje sterujace zawartoscia ******
 
+    /// zmienia nazwę aplikacji
+    /**
+     \param name nowa nazwa aplikacji
+     */
+    void setName(string name);
+
+    /// Przeciążony operator strumieniowy wyjścia
     friend ostream & operator<<( ostream &s , App& app);
+
+    /// Przeciążony operator strumieniowy wejścia
     friend istream & operator>>( istream &s , App& app);
 
 private:
-    static int m_quantity;
-    string m_name = "unknown"; // bazowo kazda aplikacja ma nazwe unknown
+    static int m_quantity; ///< ilość otwartych aplikacji
+    string m_name = "unknown"; ///< nazwa aplikacji(domyślnie unknown)
 };
 

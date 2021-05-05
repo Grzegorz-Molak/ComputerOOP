@@ -1,0 +1,172 @@
+\hypertarget{class_monitor}{}\doxysection{Monitor Class Reference}
+\label{class_monitor}\index{Monitor@{Monitor}}
+
+
+Klasa reprezentująca monitor.  
+
+
+
+
+{\ttfamily \#include $<$monitor.\+h$>$}
+
+Inheritance diagram for Monitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_monitor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_monitor_a639d27b16055d8681c2015d00ea083d8}\label{class_monitor_a639d27b16055d8681c2015d00ea083d8}} 
+\mbox{\hyperlink{class_monitor_a639d27b16055d8681c2015d00ea083d8}{Monitor}} ()
+\begin{DoxyCompactList}\small\item\em Konsturktor domyślny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_monitor_a42f8ef380eb9e818989e4778bee246c9}{Monitor}} (string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}})
+\begin{DoxyCompactList}\small\item\em Konstruktor z parametrem. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a64aba8195effc068092ddea5a71e8176}\label{class_monitor_a64aba8195effc068092ddea5a71e8176}} 
+\mbox{\hyperlink{class_monitor_a64aba8195effc068092ddea5a71e8176}{$\sim$\+Monitor}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_acdbec938a9baf9cfdccbacd20134497b}\label{class_monitor_acdbec938a9baf9cfdccbacd20134497b}} 
+double \mbox{\hyperlink{class_monitor_acdbec938a9baf9cfdccbacd20134497b}{diagonal}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca przekątną \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_aa85e23b21f80da0dee7a219c8d3537c9}{set\+Diagonal}} (double \mbox{\hyperlink{class_monitor_acdbec938a9baf9cfdccbacd20134497b}{diagonal}})
+\begin{DoxyCompactList}\small\item\em Ustawia przekątną \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a7d7e440c5b4d4b21887db5d21b637a35}\label{class_monitor_a7d7e440c5b4d4b21887db5d21b637a35}} 
+unsigned int \mbox{\hyperlink{class_monitor_a7d7e440c5b4d4b21887db5d21b637a35}{get\+Brightness}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca jasność \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monitor_aeb63a47f49a11c5a3a4b641a66d510a4}{set\+Brightness}} (unsigned int value)
+\begin{DoxyCompactList}\small\item\em Ustawia jasność \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_ac93c487d3c146eb452aa57056b98215c}\label{class_monitor_ac93c487d3c146eb452aa57056b98215c}} 
+void \mbox{\hyperlink{class_monitor_ac93c487d3c146eb452aa57056b98215c}{switch\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Włącza/\+Wyłącza urządzenie. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_monitor_a084fe2cdcf675acec09ff897e8c58473}{open\+App}} (string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}})
+\begin{DoxyCompactList}\small\item\em Otwiera aplikację(zamykając poprzednią) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a75887883b9452009c5c29a8a29325c91}\label{class_monitor_a75887883b9452009c5c29a8a29325c91}} 
+void \mbox{\hyperlink{class_monitor_a75887883b9452009c5c29a8a29325c91}{close\+App}} ()
+\begin{DoxyCompactList}\small\item\em Zamyka aplikację i otwiera aplikację domyślną Hello World. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a597faaacc4102e38eac407b4469e00dc}\label{class_monitor_a597faaacc4102e38eac407b4469e00dc}} 
+void \mbox{\hyperlink{class_monitor_a597faaacc4102e38eac407b4469e00dc}{save}} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje do pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a6700910b66e3f25fb459d480874e1d2c}\label{class_monitor_a6700910b66e3f25fb459d480874e1d2c}} 
+int \mbox{\hyperlink{class_monitor_a6700910b66e3f25fb459d480874e1d2c}{read}} ()
+\begin{DoxyCompactList}\small\item\em Odczytuje z pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a0fe53d4bafbbde9536ab21ab2823c62b}\label{class_monitor_a0fe53d4bafbbde9536ab21ab2823c62b}} 
+void \mbox{\hyperlink{class_monitor_a0fe53d4bafbbde9536ab21ab2823c62b}{print}} ()
+\begin{DoxyCompactList}\small\item\em Wypisuje na ekran konsoli. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a5d961a58d8358da64d6e5eecf8b1aa56}\label{class_monitor_a5d961a58d8358da64d6e5eecf8b1aa56}} 
+void \mbox{\hyperlink{class_monitor_a5d961a58d8358da64d6e5eecf8b1aa56}{edit}} ()
+\begin{DoxyCompactList}\small\item\em Uruchamia edytor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_monitor_aacdbd6f948a02430fe825fb4cf0f8369}{functions}} ()
+\begin{DoxyCompactList}\small\item\em Przedstawia dostępne funkcje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_monitor_a4dd6ae8b82863d666b19aa03f6000a09}\label{class_monitor_a4dd6ae8b82863d666b19aa03f6000a09}} 
+double \mbox{\hyperlink{class_monitor_a4dd6ae8b82863d666b19aa03f6000a09}{m\+\_\+diagonal}} = 25
+\begin{DoxyCompactList}\small\item\em Długość przekątnej, domyślna wartość 25. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a2306486a27ab9a404b0a07fb05ab21a4}\label{class_monitor_a2306486a27ab9a404b0a07fb05ab21a4}} 
+unsigned int \mbox{\hyperlink{class_monitor_a2306486a27ab9a404b0a07fb05ab21a4}{m\+\_\+brightness}} = 50
+\begin{DoxyCompactList}\small\item\em Jasność, domyślna wartość 50. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a69ad7486a9dd0ec51966a02e9a44fd8a}\label{class_monitor_a69ad7486a9dd0ec51966a02e9a44fd8a}} 
+stack$<$ \mbox{\hyperlink{class_app}{App}} $>$ {\bfseries m\+\_\+apps}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_monitor_aa62fe10734e6e80b13baf0324cf36342}\label{class_monitor_aa62fe10734e6e80b13baf0324cf36342}} 
+ostream \& \mbox{\hyperlink{class_monitor_aa62fe10734e6e80b13baf0324cf36342}{operator$<$$<$}} (ostream \&s, const \mbox{\hyperlink{class_monitor}{Monitor}} \&monitor)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wyjścia. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monitor_a5b87a9afade4342c1a5512828fa45902}\label{class_monitor_a5b87a9afade4342c1a5512828fa45902}} 
+istream \& \mbox{\hyperlink{class_monitor_a5b87a9afade4342c1a5512828fa45902}{operator$>$$>$}} (istream \&s, \mbox{\hyperlink{class_monitor}{Monitor}} \&monitor)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wejścia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentująca monitor. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_monitor_a42f8ef380eb9e818989e4778bee246c9}\label{class_monitor_a42f8ef380eb9e818989e4778bee246c9}} 
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\index{Monitor@{Monitor}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{Monitor()}{Monitor()}}
+{\footnotesize\ttfamily Monitor\+::\+Monitor (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z parametrem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nazwa urządzenia \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_monitor_aacdbd6f948a02430fe825fb4cf0f8369}\label{class_monitor_aacdbd6f948a02430fe825fb4cf0f8369}} 
+\index{Monitor@{Monitor}!functions@{functions}}
+\index{functions@{functions}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{functions()}{functions()}}
+{\footnotesize\ttfamily int Monitor\+::functions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Przedstawia dostępne funkcje. 
+
+\begin{DoxyReturn}{Returns}
+Zwraca 2, co oznacza że obiekt jest monitorem 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_electronic_a6f9e23d74afd1c3bf5fb87fbc95ef71e}{Electronic}}.
+
+\mbox{\Hypertarget{class_monitor_a084fe2cdcf675acec09ff897e8c58473}\label{class_monitor_a084fe2cdcf675acec09ff897e8c58473}} 
+\index{Monitor@{Monitor}!openApp@{openApp}}
+\index{openApp@{openApp}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{openApp()}{openApp()}}
+{\footnotesize\ttfamily void Monitor\+::open\+App (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Otwiera aplikację(zamykając poprzednią) 
+
+/param name Nazwa aplikacji 
+
+Reimplemented in \mbox{\hyperlink{class_computer_monitor_aa0e9e8b779e8e7ede8c9fd79a135e61a}{Computer\+Monitor}}.
+
+\mbox{\Hypertarget{class_monitor_aeb63a47f49a11c5a3a4b641a66d510a4}\label{class_monitor_aeb63a47f49a11c5a3a4b641a66d510a4}} 
+\index{Monitor@{Monitor}!setBrightness@{setBrightness}}
+\index{setBrightness@{setBrightness}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{setBrightness()}{setBrightness()}}
+{\footnotesize\ttfamily void Monitor\+::set\+Brightness (\begin{DoxyParamCaption}\item[{unsigned int}]{value }\end{DoxyParamCaption})}
+
+
+
+Ustawia jasność 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & jasność \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monitor_aa85e23b21f80da0dee7a219c8d3537c9}\label{class_monitor_aa85e23b21f80da0dee7a219c8d3537c9}} 
+\index{Monitor@{Monitor}!setDiagonal@{setDiagonal}}
+\index{setDiagonal@{setDiagonal}!Monitor@{Monitor}}
+\doxysubsubsection{\texorpdfstring{setDiagonal()}{setDiagonal()}}
+{\footnotesize\ttfamily void Monitor\+::set\+Diagonal (\begin{DoxyParamCaption}\item[{double}]{diagonal }\end{DoxyParamCaption})}
+
+
+
+Ustawia przekątną 
+
+
+\begin{DoxyParams}{Parameters}
+{\em diagonal} & długość przekątnej \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monitor.\+h\item 
+monitor.\+cpp\end{DoxyCompactItemize}

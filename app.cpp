@@ -1,16 +1,12 @@
 #include "app.h"
 
 // STATYCZNE ************
-int App::m_quantity = 0; // bazowo ilosc aplikacji to 0
+int App::m_quantity = 0; // bazowo ilosc aplikacji to
 
-int App::quantity()
-{
-    return m_quantity;
-}
 // STATYCZNE ************
 // KONSTRUKTORY I DESTRUKTORY **********
 
-App::App() // podstawowy konstruktor
+App::App() // podstawowy konstruktor0
 {
     m_quantity++;
 #ifdef _DEBUG
@@ -58,12 +54,12 @@ App& App::operator=(const App &app_to_copy) //operator przypisania, mozna przypi
 
 ostream & operator<<( ostream &s , App& app)
 {
-return s<<app.m_name;
+    return s<<app.m_name;
 }
+
 istream & operator>>( istream &s , App& app)
 {
-return s >> app.m_name;
-
+    return s >> app.m_name;
 }
 
 // OPERATORY *****************************
@@ -80,6 +76,7 @@ void App::setName(string name)
 #endif
     m_name = name;
 }
+
 string App::name()
 {
     return m_name;

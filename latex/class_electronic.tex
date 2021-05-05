@@ -1,0 +1,139 @@
+\hypertarget{class_electronic}{}\doxysection{Electronic Class Reference}
+\label{class_electronic}\index{Electronic@{Electronic}}
+
+
+Klasa reprezentująca sprzęt elektroniczny.  
+
+
+
+
+{\ttfamily \#include $<$electronic.\+h$>$}
+
+Inheritance diagram for Electronic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_electronic}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_electronic_a9d5d279ad4b4d6ef605297e9dfb06472}\label{class_electronic_a9d5d279ad4b4d6ef605297e9dfb06472}} 
+\mbox{\hyperlink{class_electronic_a9d5d279ad4b4d6ef605297e9dfb06472}{Electronic}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a6db8eccc9b5fa832b96d486198803e49}\label{class_electronic_a6db8eccc9b5fa832b96d486198803e49}} 
+virtual \mbox{\hyperlink{class_electronic_a6db8eccc9b5fa832b96d486198803e49}{$\sim$\+Electronic}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor(wirtualny) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a5971e312d415d4de9f251e1ff5cdea32}\label{class_electronic_a5971e312d415d4de9f251e1ff5cdea32}} 
+bool \mbox{\hyperlink{class_electronic_a5971e312d415d4de9f251e1ff5cdea32}{power}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca czy urządzenie jest ON(typ logiczny) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_aa3cc4158c20f07c0b737f659e08f4657}\label{class_electronic_aa3cc4158c20f07c0b737f659e08f4657}} 
+virtual void \mbox{\hyperlink{class_electronic_aa3cc4158c20f07c0b737f659e08f4657}{switch\+Power}} ()=0
+\begin{DoxyCompactList}\small\item\em Włącza/\+Wyłącza urządzenie(metoda czysto wirtualna) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a58d74ece0532c6c5ff68b213959ca5f9}\label{class_electronic_a58d74ece0532c6c5ff68b213959ca5f9}} 
+bool \mbox{\hyperlink{class_electronic_a58d74ece0532c6c5ff68b213959ca5f9}{ask\+To\+Turn\+On}} ()
+\begin{DoxyCompactList}\small\item\em Pyta użytkownika czy chce włączyć urządzenie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a642f5420707faada988438b71051b5e6}\label{class_electronic_a642f5420707faada988438b71051b5e6}} 
+string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca nazwę \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_electronic_aa84704ee2b24cc5f4015a3f9eb610d2f}{set\+Name}} (const string \&\mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}})
+\begin{DoxyCompactList}\small\item\em Zmienia nazwę urządzenia. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_aa9f7b07d8bb531cbe2075f384a8d88c1}\label{class_electronic_aa9f7b07d8bb531cbe2075f384a8d88c1}} 
+\mbox{\hyperlink{class_user}{User}} \mbox{\hyperlink{class_electronic_aa9f7b07d8bb531cbe2075f384a8d88c1}{user}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca użytkownika. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_electronic_a9a6a3a552a2b44e36e011ffc9f3b7377}{set\+User}} (const \mbox{\hyperlink{class_user}{User}} \&\mbox{\hyperlink{class_electronic_aa9f7b07d8bb531cbe2075f384a8d88c1}{user}})
+\begin{DoxyCompactList}\small\item\em zmienia użytkownia \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a99d34fe07fa0a1e1a20e2dd46bd990e4}\label{class_electronic_a99d34fe07fa0a1e1a20e2dd46bd990e4}} 
+virtual void \mbox{\hyperlink{class_electronic_a99d34fe07fa0a1e1a20e2dd46bd990e4}{save}} ()=0
+\begin{DoxyCompactList}\small\item\em Zapis do pliku(metoda czysto wirtualna) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a5c5f0caef58a849ad067b98f0fd6dbe8}\label{class_electronic_a5c5f0caef58a849ad067b98f0fd6dbe8}} 
+virtual int \mbox{\hyperlink{class_electronic_a5c5f0caef58a849ad067b98f0fd6dbe8}{read}} ()=0
+\begin{DoxyCompactList}\small\item\em Odczyt z pliku(metoda czysto wirtualna) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a7230438f65b81bf50e34723f9dd69f48}\label{class_electronic_a7230438f65b81bf50e34723f9dd69f48}} 
+virtual void \mbox{\hyperlink{class_electronic_a7230438f65b81bf50e34723f9dd69f48}{print}} ()=0
+\begin{DoxyCompactList}\small\item\em Wypisanie w konsoli(metoda czysto wirtualna) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_ac824b45eff9d22c580de580fd73e1a97}\label{class_electronic_ac824b45eff9d22c580de580fd73e1a97}} 
+virtual void \mbox{\hyperlink{class_electronic_ac824b45eff9d22c580de580fd73e1a97}{edit}} ()
+\begin{DoxyCompactList}\small\item\em Włącza edytyor urządzenia elektrycznego. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_electronic_a6f9e23d74afd1c3bf5fb87fbc95ef71e}{functions}} ()
+\begin{DoxyCompactList}\small\item\em Przedstawia dostępne funkcje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_electronic_a86698160192fbf7490b91cf510ab58f0}\label{class_electronic_a86698160192fbf7490b91cf510ab58f0}} 
+bool \mbox{\hyperlink{class_electronic_a86698160192fbf7490b91cf510ab58f0}{m\+\_\+power}} = 0
+\begin{DoxyCompactList}\small\item\em włączenie urządzenia(typ logiczny), domyślnie OFF \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_ae887b79e8e9be059df7b333aa1999b1b}\label{class_electronic_ae887b79e8e9be059df7b333aa1999b1b}} 
+string {\bfseries m\+\_\+name} = \char`\"{}unknown\char`\"{}
+\item 
+\mbox{\Hypertarget{class_electronic_a407493a083a48bc1d1387e476fe66a9c}\label{class_electronic_a407493a083a48bc1d1387e476fe66a9c}} 
+\mbox{\hyperlink{class_user}{User}} \mbox{\hyperlink{class_electronic_a407493a083a48bc1d1387e476fe66a9c}{m\+\_\+user}}
+\begin{DoxyCompactList}\small\item\em nazwa urządzenia, domyślnie unknown \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_electronic_aec4d9ef904b7780efaede2393aefb854}\label{class_electronic_aec4d9ef904b7780efaede2393aefb854}} 
+ostream \& \mbox{\hyperlink{class_electronic_aec4d9ef904b7780efaede2393aefb854}{operator$<$$<$}} (ostream \&s, const \mbox{\hyperlink{class_electronic}{Electronic}} \&electronic)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wyjścia. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_electronic_a97430538861dcecc2f298bc195dec247}\label{class_electronic_a97430538861dcecc2f298bc195dec247}} 
+istream \& \mbox{\hyperlink{class_electronic_a97430538861dcecc2f298bc195dec247}{operator$>$$>$}} (istream \&s, \mbox{\hyperlink{class_electronic}{Electronic}} \&electronic)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wejścia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentująca sprzęt elektroniczny. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_electronic_a6f9e23d74afd1c3bf5fb87fbc95ef71e}\label{class_electronic_a6f9e23d74afd1c3bf5fb87fbc95ef71e}} 
+\index{Electronic@{Electronic}!functions@{functions}}
+\index{functions@{functions}!Electronic@{Electronic}}
+\doxysubsubsection{\texorpdfstring{functions()}{functions()}}
+{\footnotesize\ttfamily int Electronic\+::functions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Przedstawia dostępne funkcje. 
+
+\begin{DoxyReturn}{Returns}
+Zwraca 0 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_monitor_aacdbd6f948a02430fe825fb4cf0f8369}{Monitor}}, \mbox{\hyperlink{class_hairdryer_a02ca5ef3b32e40099c907f12fd548504}{Hairdryer}}, and \mbox{\hyperlink{class_computer_monitor_a82eb7d2e63eb9dd97ff6b54aeb1ca096}{Computer\+Monitor}}.
+
+\mbox{\Hypertarget{class_electronic_aa84704ee2b24cc5f4015a3f9eb610d2f}\label{class_electronic_aa84704ee2b24cc5f4015a3f9eb610d2f}} 
+\index{Electronic@{Electronic}!setName@{setName}}
+\index{setName@{setName}!Electronic@{Electronic}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Electronic\+::set\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Zmienia nazwę urządzenia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nowa nazwa urządzenia \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_electronic_a9a6a3a552a2b44e36e011ffc9f3b7377}\label{class_electronic_a9a6a3a552a2b44e36e011ffc9f3b7377}} 
+\index{Electronic@{Electronic}!setUser@{setUser}}
+\index{setUser@{setUser}!Electronic@{Electronic}}
+\doxysubsubsection{\texorpdfstring{setUser()}{setUser()}}
+{\footnotesize\ttfamily void Electronic\+::set\+User (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_user}{User}} \&}]{user }\end{DoxyParamCaption})}
+
+
+
+zmienia użytkownia 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & referencja do użytkownika \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+electronic.\+h\item 
+electronic.\+cpp\end{DoxyCompactItemize}

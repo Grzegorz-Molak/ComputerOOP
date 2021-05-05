@@ -1,0 +1,150 @@
+\hypertarget{class_hairdryer}{}\doxysection{Hairdryer Class Reference}
+\label{class_hairdryer}\index{Hairdryer@{Hairdryer}}
+
+
+Klasa reprezentująca suszarkę  
+
+
+
+
+{\ttfamily \#include $<$hairdryer.\+h$>$}
+
+Inheritance diagram for Hairdryer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hairdryer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hairdryer_a7061948c8cd8e01ee3648e0736dbf7f7}\label{class_hairdryer_a7061948c8cd8e01ee3648e0736dbf7f7}} 
+enum class \mbox{\hyperlink{class_hairdryer_a7061948c8cd8e01ee3648e0736dbf7f7}{Heat\+\_\+level}} \{ {\bfseries OFF}
+, {\bfseries LOW}
+, {\bfseries MEDIUM}
+, {\bfseries HIGH}
+ \}
+\begin{DoxyCompactList}\small\item\em Typ wyliczeniowy dla poziomu ciepła suszarki. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hairdryer_ad960c0b776bf79fdf005eb637ca75dfb}\label{class_hairdryer_ad960c0b776bf79fdf005eb637ca75dfb}} 
+\mbox{\hyperlink{class_hairdryer_ad960c0b776bf79fdf005eb637ca75dfb}{Hairdryer}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor domyślny. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hairdryer_a5b0fa5e1921bbbe285893deb49402999}{Hairdryer}} (string \mbox{\hyperlink{class_electronic_a642f5420707faada988438b71051b5e6}{name}})
+\begin{DoxyCompactList}\small\item\em Konstruktor z parametrem. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_ad40e5c1ecbaaba002f131f88d4909271}\label{class_hairdryer_ad40e5c1ecbaaba002f131f88d4909271}} 
+\mbox{\hyperlink{class_hairdryer_ad40e5c1ecbaaba002f131f88d4909271}{$\sim$\+Hairdryer}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_aaf07a46dd503186669d07f3331eff28d}\label{class_hairdryer_aaf07a46dd503186669d07f3331eff28d}} 
+void \mbox{\hyperlink{class_hairdryer_aaf07a46dd503186669d07f3331eff28d}{switch\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Włącza/\+Wyłącza urządzenie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hairdryer_a8b18428fbbef8f49c9826446691775ea}{heat\+\_\+level}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca poziom ciepła suszarki. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_ae2bf72deae77c744e4b5f9438fe1afa3}\label{class_hairdryer_ae2bf72deae77c744e4b5f9438fe1afa3}} 
+void \mbox{\hyperlink{class_hairdryer_ae2bf72deae77c744e4b5f9438fe1afa3}{set\+Heat\+\_\+level}} ()
+\begin{DoxyCompactList}\small\item\em Ustawia poziom ciepła(interfejs) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hairdryer_ac2040c05df51c258cd37deaa12e40fdf}{set\+Heat\+\_\+level}} (\mbox{\hyperlink{class_hairdryer_a7061948c8cd8e01ee3648e0736dbf7f7}{Heat\+\_\+level}} \mbox{\hyperlink{class_hairdryer_a8b18428fbbef8f49c9826446691775ea}{heat\+\_\+level}})
+\begin{DoxyCompactList}\small\item\em Ustawia poziom ciepła(bez interfejsu) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_aefdbc02da39e8fe0865c07c73c702869}\label{class_hairdryer_aefdbc02da39e8fe0865c07c73c702869}} 
+void \mbox{\hyperlink{class_hairdryer_aefdbc02da39e8fe0865c07c73c702869}{save}} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje do pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_a4266814caee8eda7ed5a28e64aa2fb95}\label{class_hairdryer_a4266814caee8eda7ed5a28e64aa2fb95}} 
+int \mbox{\hyperlink{class_hairdryer_a4266814caee8eda7ed5a28e64aa2fb95}{read}} ()
+\begin{DoxyCompactList}\small\item\em Odczytuje z pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_a75244bd8239b24a4b37ee9b39e6efa22}\label{class_hairdryer_a75244bd8239b24a4b37ee9b39e6efa22}} 
+void \mbox{\hyperlink{class_hairdryer_a75244bd8239b24a4b37ee9b39e6efa22}{print}} ()
+\begin{DoxyCompactList}\small\item\em Wypisuje na ekran konsoli. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_ab6e07e5efc08f7ae24b2fdf9f14e3608}\label{class_hairdryer_ab6e07e5efc08f7ae24b2fdf9f14e3608}} 
+void \mbox{\hyperlink{class_hairdryer_ab6e07e5efc08f7ae24b2fdf9f14e3608}{edit}} ()
+\begin{DoxyCompactList}\small\item\em Uruchamia edytor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hairdryer_a02ca5ef3b32e40099c907f12fd548504}{functions}} ()
+\begin{DoxyCompactList}\small\item\em Przedstawia dostępne funkcje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hairdryer_ae470fcb2049d55c76775e6ba4d2d889a}\label{class_hairdryer_ae470fcb2049d55c76775e6ba4d2d889a}} 
+ostream \& \mbox{\hyperlink{class_hairdryer_ae470fcb2049d55c76775e6ba4d2d889a}{operator$<$$<$}} (ostream \&s, \mbox{\hyperlink{class_hairdryer}{Hairdryer}} \&hairdryer)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wyjścia dla suszarki. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_a47b940ed19c525f61c37463bb666dfb0}\label{class_hairdryer_a47b940ed19c525f61c37463bb666dfb0}} 
+ostream \& \mbox{\hyperlink{class_hairdryer_a47b940ed19c525f61c37463bb666dfb0}{operator$>$$>$}} (ostream \&s, \mbox{\hyperlink{class_hairdryer_a7061948c8cd8e01ee3648e0736dbf7f7}{Hairdryer\+::\+Heat\+\_\+level}} \&\mbox{\hyperlink{class_hairdryer_a8b18428fbbef8f49c9826446691775ea}{heat\+\_\+level}})
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wejścia dla typu wyliczonego poziomu ciepła. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hairdryer_ab10eff61e912f00c23ad1a5cc26f7774}\label{class_hairdryer_ab10eff61e912f00c23ad1a5cc26f7774}} 
+istream \& \mbox{\hyperlink{class_hairdryer_ab10eff61e912f00c23ad1a5cc26f7774}{operator$>$$>$}} (istream \&s, \mbox{\hyperlink{class_hairdryer}{Hairdryer}} \&hairdryer)
+\begin{DoxyCompactList}\small\item\em Przeciążony operator strumieniowy wejścia dla suszarki. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentująca suszarkę 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hairdryer_a5b0fa5e1921bbbe285893deb49402999}\label{class_hairdryer_a5b0fa5e1921bbbe285893deb49402999}} 
+\index{Hairdryer@{Hairdryer}!Hairdryer@{Hairdryer}}
+\index{Hairdryer@{Hairdryer}!Hairdryer@{Hairdryer}}
+\doxysubsubsection{\texorpdfstring{Hairdryer()}{Hairdryer()}}
+{\footnotesize\ttfamily Hairdryer\+::\+Hairdryer (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Konstruktor z parametrem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nazwa urządzenia \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hairdryer_a02ca5ef3b32e40099c907f12fd548504}\label{class_hairdryer_a02ca5ef3b32e40099c907f12fd548504}} 
+\index{Hairdryer@{Hairdryer}!functions@{functions}}
+\index{functions@{functions}!Hairdryer@{Hairdryer}}
+\doxysubsubsection{\texorpdfstring{functions()}{functions()}}
+{\footnotesize\ttfamily int Hairdryer\+::functions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Przedstawia dostępne funkcje. 
+
+\begin{DoxyReturn}{Returns}
+Zwraca 1, co oznacza że obiekt jest suszarką 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_electronic_a6f9e23d74afd1c3bf5fb87fbc95ef71e}{Electronic}}.
+
+\mbox{\Hypertarget{class_hairdryer_a8b18428fbbef8f49c9826446691775ea}\label{class_hairdryer_a8b18428fbbef8f49c9826446691775ea}} 
+\index{Hairdryer@{Hairdryer}!heat\_level@{heat\_level}}
+\index{heat\_level@{heat\_level}!Hairdryer@{Hairdryer}}
+\doxysubsubsection{\texorpdfstring{heat\_level()}{heat\_level()}}
+{\footnotesize\ttfamily int Hairdryer\+::heat\+\_\+level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Zwraca poziom ciepła suszarki. 
+
+\begin{DoxyReturn}{Returns}
+Poziom ciepła suszarki jako liczba całkowita 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hairdryer_ac2040c05df51c258cd37deaa12e40fdf}\label{class_hairdryer_ac2040c05df51c258cd37deaa12e40fdf}} 
+\index{Hairdryer@{Hairdryer}!setHeat\_level@{setHeat\_level}}
+\index{setHeat\_level@{setHeat\_level}!Hairdryer@{Hairdryer}}
+\doxysubsubsection{\texorpdfstring{setHeat\_level()}{setHeat\_level()}}
+{\footnotesize\ttfamily void Hairdryer\+::set\+Heat\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hairdryer_a7061948c8cd8e01ee3648e0736dbf7f7}{Heat\+\_\+level}}}]{heat\+\_\+level }\end{DoxyParamCaption})}
+
+
+
+Ustawia poziom ciepła(bez interfejsu) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heat\+\_\+level} & poziom ciepła \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+hairdryer.\+h\item 
+hairdryer.\+cpp\end{DoxyCompactItemize}

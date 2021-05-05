@@ -42,28 +42,28 @@ istream & operator>>(istream &s, Hairdryer::Heat_level& heat_level)
 
 ostream & operator<<( ostream &s , Hairdryer& hairdryer)
 {
- s<<*(dynamic_cast<Electronic*>(&hairdryer));
- //s<<"Poziom-ciepla: "<<static_cast<int>(hairdryer.m_heat_level)<<endl;
- s<<"Poziom-ciepla: ";
- switch(static_cast<int>(hairdryer.m_heat_level))
- {
-     case 0:
-         s<<"OFF ";
-         break;
-     case 1:
-         s<<"LOW ";
-         break;
-     case 2:
-         s<<"MEDIUM ";
-         break;
-     case 3:
-         s<<"HIGH ";
-         break;
+    s<<*(dynamic_cast<Electronic*>(&hairdryer));
+    s<<"Poziom-ciepla: ";
+    switch(static_cast<int>(hairdryer.m_heat_level))
+    {
+        case 0:
+            s<<"OFF ";
+            break;
+        case 1:
+            s<<"LOW ";
+            break;
+        case 2:
+            s<<"MEDIUM ";
+            break;
+        case 3:
+            s<<"HIGH ";
+            break;
 
-  }
- s<<static_cast<int>(hairdryer.m_heat_level)<<endl;
- return s;
+    }
+    s<<static_cast<int>(hairdryer.m_heat_level)<<endl;
+    return s;
 }
+
 istream & operator>>( istream &s , Hairdryer& hairdryer)
 {
     string title;
@@ -151,31 +151,30 @@ void Hairdryer::print()
 
 void Hairdryer::edit()
 {
-Electronic::edit();
-if(m_power == 1)
-{
-    cout<<"Wybierz poziom ciepla: "<<endl;
-    cout<<"0. OFF "<<endl;
-    cout<<"1. LOW "<<endl;
-    cout<<"2. MEDIUM "<<endl;
-    cout<<"3. HIGH"<<endl;
-    switch(getInt(0,3))
+    Electronic::edit();
+    if(m_power == 1)
     {
-        case 0:
-            m_heat_level = Hairdryer::Heat_level::OFF;
-            break;
-        case 1:
-            m_heat_level = Hairdryer::Heat_level::LOW;
-            break;
-        case 2:
-            m_heat_level = Hairdryer::Heat_level::MEDIUM;
-            break;
-        case 3:
-            m_heat_level = Hairdryer::Heat_level::HIGH;
-            break;
-
+        cout<<"Wybierz poziom ciepla: "<<endl;
+        cout<<"0. OFF "<<endl;
+        cout<<"1. LOW "<<endl;
+        cout<<"2. MEDIUM "<<endl;
+        cout<<"3. HIGH"<<endl;
+        switch(getInt(0,3))
+        {
+            case 0:
+                m_heat_level = Hairdryer::Heat_level::OFF;
+                break;
+            case 1:
+                m_heat_level = Hairdryer::Heat_level::LOW;
+                break;
+            case 2:
+                m_heat_level = Hairdryer::Heat_level::MEDIUM;
+                break;
+            case 3:
+                m_heat_level = Hairdryer::Heat_level::HIGH;
+                break;
+        }
     }
-}
 }
 
 int Hairdryer::functions()
@@ -184,6 +183,9 @@ int Hairdryer::functions()
     cout<<"2. Zmiana poziomu ciepla"<<endl;
     return 1;
 }
+
+// INNE FUNKCJE *************************************
+// SETTERSY I GETTERSY ************
 
 int Hairdryer::heat_level()
 {
@@ -232,4 +234,5 @@ void Hairdryer::setHeat_level(Heat_level heat_level)
     }
 
 }
-// INNE FUNKCJE *************************************
+
+// SETTERSY I GETTERSY ************
