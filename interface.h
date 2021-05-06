@@ -99,7 +99,7 @@ void interface()
                 break;
 
             default:
-                cout<<"Nie podano wartosci z przedzialu 0-6"<<endl;
+                cout<<"Nie podano wartosci z przedzialu 0-7"<<endl;
         }
     }
 }

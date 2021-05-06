@@ -39,7 +39,7 @@ ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 {
     s << *(dynamic_cast<const Monitor*>(&computermonitor));
     s<<"Output: ";
-    switch(static_cast<int>(computermonitor.m_output))
+    switch(static_cast<int>(computermonitor.m_output)) // Wybiera odpowiedni Output
     {
         case 0:
             s<<"VGA ";
@@ -61,8 +61,8 @@ ostream & operator<<( ostream &s , const ComputerMonitor& computermonitor)
 istream & operator>>( istream &s , ComputerMonitor& computermonitor)
 {
     string title;
-    s >> *(dynamic_cast<Monitor*>(&computermonitor));
-    s >>title>>title>> computermonitor.m_output;
+    s >> *(dynamic_cast<Monitor*>(&computermonitor)); // wywołuje strumień klasy bazowej
+    s >>title>>title>> computermonitor.m_output; // swój element pobiera
     return s;
 }
 istream & operator>>( istream &s , ComputerMonitor::Output& output)
@@ -71,7 +71,7 @@ istream & operator>>( istream &s , ComputerMonitor::Output& output)
     int o;
     s>>o;
     cout<<o<<endl;
-    output = static_cast<ComputerMonitor::Output>(o);
+    output = static_cast<ComputerMonitor::Output>(o); // zmienia liczbe na output
     return s;
 }
 // OPERATORY ****************************************
@@ -152,7 +152,7 @@ int ComputerMonitor::read()
         }
         else
         {
-            cout<<"Do komputera monitorowego mozna przypisac tylko monitor lub monitor komputerowy";
+            cout<<"Do komputera monitorowego mozna przypisac tylko monitor lub monitor komputerowy"<<endl;
             return 0;
         }
         file.close();
@@ -173,7 +173,7 @@ void ComputerMonitor::print()
 
 void ComputerMonitor::edit()
 {
-    Monitor::edit();
+    Monitor::edit(); // wywołuje edytor klasy bazowej
     if(m_power == 1)
     {
         cout<<"Wybierz output: "<<endl;
@@ -202,14 +202,13 @@ void ComputerMonitor::edit()
 
 int ComputerMonitor::functions()
 {
-    Monitor::functions();
+    Monitor::functions(); // funkcje klasy bazowej
     cout<<"4. Zmien output"<<endl;
     return 3;
 }
 
 // INNE FUNKCJE *******************
-
-// SETTERSY I GETTERSY
+// SETTERSY I GETTERSY ************
 
 ComputerMonitor::Output ComputerMonitor::output()
 {

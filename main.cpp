@@ -12,10 +12,6 @@ using namespace std;
 
 int main()
 {
-
-    //vector<Electronic> electronics;
     interface();
-
-
     return 0;
 }

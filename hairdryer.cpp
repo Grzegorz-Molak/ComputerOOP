@@ -139,7 +139,7 @@ int Hairdryer::read()
     }
     else
     {
-        cout<<"nie udalo sie otworzyc pliku";
+        cout<<"nie udalo sie otworzyc pliku"<<endl;
         return 0;
     }
 }
