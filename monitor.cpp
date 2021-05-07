@@ -181,9 +181,10 @@ void Monitor::openApp(string name)
 #ifdef _DEBUG
     cout<<"Calling openApp in Monitor class"<<endl;
 #endif
-    cout<<"Otwieram "<<name<<" i zamykam "<<m_apps.top().name()<<endl;
+
     if(m_power)
     {
+    cout<<"Otwieram "<<name<<" i zamykam "<<m_apps.top().name()<<endl;
     this->m_apps.pop();
     this->m_apps.emplace(name);
     }
@@ -238,7 +239,7 @@ void Monitor::edit()
    {
      cout<<"Nowa nazwa apikacji: "<<endl;
      cin>>text;
-     apps.emplace("text");
+     apps.emplace(text);
      m_apps.pop();
    }
    while(!apps.empty())

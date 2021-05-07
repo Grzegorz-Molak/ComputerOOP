@@ -98,9 +98,10 @@ void ComputerMonitor::switchPower()
 
 void ComputerMonitor::openApp(string name)
 {
-    cout<<"Otwieram nowa aplikacje: "<<name<<endl;
+
     if(m_power)
     {
+        cout<<"Otwieram nowa aplikacje: "<<name<<endl;
         this->m_apps.emplace(name);
     }
     else
