@@ -39,14 +39,11 @@ ostream & operator<<( ostream &s , const Monitor& monitor)
 
     stack<App> apps = monitor.m_apps;
 
-    if(!apps.empty())
-    {
         while(!apps.empty())
         {
             s<<"App: "<<apps.top()<<endl;
             apps.pop();
         }
-    }
     return s;
 }
 

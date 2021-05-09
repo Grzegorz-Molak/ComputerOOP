@@ -16,7 +16,6 @@ void interface();
 int menu();
 int chooseObject();
 void showObjectsList();
-
 void newObject();
 void newObjectRead();
 void deleteObject();
@@ -28,41 +27,6 @@ void edit();
 void print();
 void functions();
 
-int menu()
-{
-    showObjectsList();
-
-    if(electronics.size() > 0)
-    {
-    cout<<"\nWybierz dzialanie: "<<endl;
-    cout<<"******************************"<<endl;
-    cout<<"1 - Utworz nowy obiekt"<<endl;
-    cout<<"2 - Edytuj istniejacy obiekt"<<endl;
-    cout<<"3 - Usun istniejacy obiekt"<<endl;
-    cout<<"4 - Przetestuj inne funkcje obiektow"<<endl;
-    cout<<"5 - Zapisz obiekt do pliku"<<endl;
-    cout<<"6 - Wczytaj obiekt z pliku"<<endl;
-    cout<<"7 - Wyswietl obiekt"<<endl;
-    cout<<"0 - By opuscic program"<<endl;
-    cout<<"******************************"<<endl;
-    return getInt(0,7);
-    }
-    else
-    {
-        cout<<"\nWybierz dzialanie: "<<endl;
-        cout<<"******************************"<<endl;
-        cout<<"1 - Utworz nowy obiekt"<<endl;
-        cout<<"2 - Wczytaj obiekt z pliku"<<endl;
-        cout<<"0 - By opuscic program"<<endl;
-        cout<<"******************************"<<endl;
-        int index = getInt(0,2);
-        if(index == 2) return 6;
-        else return index;
-    }
-
-
-
-}
 
 void interface()
 {
@@ -104,6 +68,49 @@ void interface()
     }
 }
 
+int menu()
+{
+    showObjectsList();
+
+    if(electronics.size() > 0)
+    {
+    cout<<"\nWybierz dzialanie: "<<endl;
+    cout<<"******************************"<<endl;
+    cout<<"1 - Utworz nowy obiekt"<<endl;
+    cout<<"2 - Edytuj istniejacy obiekt"<<endl;
+    cout<<"3 - Usun istniejacy obiekt"<<endl;
+    cout<<"4 - Przetestuj inne funkcje obiektow"<<endl;
+    cout<<"5 - Zapisz obiekt do pliku"<<endl;
+    cout<<"6 - Wczytaj obiekt z pliku"<<endl;
+    cout<<"7 - Wyswietl obiekt"<<endl;
+    cout<<"0 - By opuscic program"<<endl;
+    cout<<"******************************"<<endl;
+    return getInt(0,7);
+    }
+    else
+    {
+        cout<<"\nWybierz dzialanie: "<<endl;
+        cout<<"******************************"<<endl;
+        cout<<"1 - Utworz nowy obiekt"<<endl;
+        cout<<"2 - Wczytaj obiekt z pliku"<<endl;
+        cout<<"0 - By opuscic program"<<endl;
+        cout<<"******************************"<<endl;
+        int index = getInt(0,2);
+        if(index == 2) return 6;
+        else return index;
+    }
+
+
+
+}
+
+int chooseObject()
+{
+    showObjectsList();
+
+    cout<<"Wybierz obiekt podajac jego indeks(po lewej stronie)"<<endl;
+    return getInt(0, static_cast<int>(electronics.size())-1);
+}
 
 void showObjectsList()
 {
@@ -119,14 +126,6 @@ void showObjectsList()
             cout<<(i - electronics.begin())<<". "<<(*i)->name()<<endl;
         }
     }
-}
-
-int chooseObject()
-{
-    showObjectsList();
-
-    cout<<"Wybierz obiekt podajac jego indeks(po lewej stronie)"<<endl;
-    return getInt(0, static_cast<int>(electronics.size())-1);
 }
 
 void newObject()
@@ -177,11 +176,13 @@ void deleteObject()
     int i = chooseObject();
     deleteObject(i);
 }
+
 void deleteObject(int i)
 {
     delete electronics[i];
     electronics.erase(electronics.begin()+i);
 }
+
 void deleteAllObjects()
 {
     for(auto i = electronics.begin(); i < electronics.end(); i++ )
@@ -191,14 +192,64 @@ void deleteAllObjects()
     }
 }
 
+void save()
+{
+electronics[chooseObject()]->save();
+}
+
+void read()
+{
+
+
+if(electronics.size() > 0)
+{
+    cout<<"Chcesz dane z pliku wczytac do nowego pliku czy chcesz najpierw utworzyc nowy?"<<endl;
+   cout<<"1. Istniejacego"<<endl;
+   cout<<"2. Nowego"<<endl;
+   if(getInt(1,2) == 1)
+   {
+       if(electronics[chooseObject()]->read() == 1)
+           cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
+       else
+           cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
+   }
+   else
+   {
+       newObjectRead();
+       if(electronics[electronics.size()-1]->read() == 1)
+            cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
+       else
+       {
+            cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
+            deleteObject(electronics.size()-1);
+       }
+   }
+}
+else
+{
+    newObjectRead();
+    if(electronics[electronics.size()-1]->read() == 1)
+         cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
+    else
+    {
+         cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
+         deleteObject(electronics.size()-1);
+    }
+}
+
+}
+
 void edit()
 {
 electronics[chooseObject()]->edit();
 }
 
-void save()
+void print()
 {
-electronics[chooseObject()]->save();
+    int index = chooseObject();
+    cout<<"******************"<<endl;
+    electronics[index]->print();
+    cout<<"******************"<<endl;
 }
 
 void functions()
@@ -253,55 +304,8 @@ void functions()
 }
 
 
-void read()
-{
 
 
-if(electronics.size() > 0)
-{
-    cout<<"Chcesz dane z pliku wczytac do nowego pliku czy chcesz najpierw utworzyc nowy?"<<endl;
-   cout<<"1. Istniejacego"<<endl;
-   cout<<"2. Nowego"<<endl;
-   if(getInt(1,2) == 1)
-   {
-       if(electronics[chooseObject()]->read() == 1)
-           cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
-       else
-           cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
-   }
-   else
-   {
-       newObjectRead();
-       if(electronics[electronics.size()-1]->read() == 1)
-            cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
-       else
-       {
-            cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
-            deleteObject(electronics.size()-1);
-       }
-   }
-}
-else
-{
-    newObjectRead();
-    if(electronics[electronics.size()-1]->read() == 1)
-         cout<<"Wczytywanie z pliku zakonczone pomyslnie"<<endl;
-    else
-    {
-         cout<<"Wczytywanie z pliku zakonczone niepomyslnie"<<endl;
-         deleteObject(electronics.size()-1);
-    }
-}
-
-}
-
-void print()
-{
-    int index = chooseObject();
-    cout<<"******************"<<endl;
-    electronics[index]->print();
-    cout<<"******************"<<endl;
-}
 
 
 
