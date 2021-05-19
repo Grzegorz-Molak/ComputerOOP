@@ -8,7 +8,7 @@ public:
     Node(T elem) {setValue(elem);}
     Node(T elem, Node<T>* previous) {setValue(elem); setPrevious(previous);}
     Node(T elem, Node<T>* previous, Node<T>* next) {setValue(elem); setPrevious(previous); setNext(next);}
-    ~Node() {}
+    ~Node();
 
     T value() const {return m_value;}
     void setValue(const T &value) {m_value = value; }
@@ -25,4 +25,15 @@ private:
     Node* m_next = nullptr;
 
 };
+
+template<class T>
+Node<T>::~Node()
+{
+    if(previous() && next())
+    {
+        previous()->setNext(next());
+
+        next()->setPrevious(previous());
+    }
+}
 

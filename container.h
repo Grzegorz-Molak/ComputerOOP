@@ -202,19 +202,13 @@ void Container<T>::pop(int pos)
             Node<T>* ptr = end();
             if(!(end()->previous())) throw string("Wystapila luka w kontenerze");
             (end()->previous())->setNext(nullptr);
+            delete ptr;
             setSize(size()-1);
         }
         else
         {
-            Node<T>*ptr = at(pos);
-
-            if(!(ptr->previous())) throw string("Wystapila luka w kontenerze");
-            (ptr->previous())->setNext(ptr->next());
-
-            if(!ptr->next()) throw string("Wystapila luka w kontenerze");
-            (ptr->next())->setPrevious(ptr->previous());
-
-            delete ptr;
+            //Node<T>*ptr = at(pos);
+            delete at(pos);
             setSize(size()-1);
         }
     }
