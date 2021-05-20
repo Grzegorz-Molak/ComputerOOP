@@ -11,6 +11,7 @@ public:
     ~Node();
 
     T value() const {return m_value;}
+    T& getObject() {return m_value;}
     void setValue(const T &value) {m_value = value; }
 
     Node *previous() const {return m_previous;}

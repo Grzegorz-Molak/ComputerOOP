@@ -1,6 +1,7 @@
 #pragma once
 #include "node.h"
 #include "iostream"
+#include "fstream"
 
 using namespace std;
 
@@ -12,7 +13,6 @@ public:
     Container(const Container<T>& c);
     ~Container();
 
-
     Container& operator=(const Container<T>& c);
     bool operator==(const Container<T>& c);
     T& operator[](int i);
@@ -21,8 +21,8 @@ public:
         Node<T>* ptr = c.begin();
         for(int i = 1; i <= c.size(); i++)
         {
-            if(!ptr) throw string("Przekroczono zakres tablicy\n");
-            cout<<i<<": "<<ptr->value()<<endl;
+            if(!ptr) throw string("Luka w kontenerze\n");
+            s<<i<<": "<<ptr->value()<<endl;
             ptr = ptr->next();
 
         }
@@ -67,7 +67,6 @@ private:
 
 
 // ***********************************************
-
 template<class T>
 Container<T>::Container(const Container<T>& c)
 {
@@ -141,7 +140,51 @@ bool Container<T>::operator==(const Container<T>& c)
 template<class T>
 T& Container<T>::operator[](int i)
 {
+return at(i)->getObject();
+}
 
+template<class T>
+void Container<T>::moveToEnd(int n)
+{
+    //push_back(at(n)->value());
+    //pop(n);
+    if(n == size())
+    {
+        return;
+    }
+    else if(size() == 2)
+    {
+        swap(1,2);
+    }
+    else if(n == 1)
+    {
+        Node<T>* ptr = begin();
+        setBegin(begin()->next());
+
+        ptr->setNext(nullptr);
+        ptr->setPrevious(end());
+        end()->setNext(ptr);
+        setEnd(ptr);
+
+    }
+    else
+    {
+        try
+        {
+            Node<T>* ptr = at(n);
+            ptr->previous()->setNext(ptr->next());
+            ptr->next()->setPrevious(ptr->previous());
+
+            ptr->setPrevious(end());
+            ptr->setNext(nullptr);
+            end()->setNext(ptr);
+            setEnd(ptr);
+        }
+        catch (string s)
+        {
+            cout<<s;
+        }
+    }
 }
 
 
@@ -243,6 +286,10 @@ void Container<T>::pop(int pos)
         if(pos > size())
         {
             throw string("Nie mozna usunac elementu o takim indeksie, zakres to <1,"+to_string(size())+">\n");
+        }
+        else if(size() == 0)
+        {
+            throw string("Nie ma czego usuwac");
         }
         else if(size() == 1)
         {
@@ -356,6 +403,68 @@ void Container<T>::swap(int e1, int e2)
         cout<<s;
     }
 
+}
+
+template<class T>
+void Container<T>::save()
+{
+    try
+    {
+        string filename;
+        cout<<"Prosze podac nazwe pliku: "<<endl;
+        cin>>filename;
+
+        ofstream file;
+        file.open(filename+".txt");
+        if(!file) throw string("Nie udalo sie utworzyc pliku\n");
+
+        file<<*this;
+
+        file.close();
+    }
+    catch (string s)
+    {
+        cout<<s;
+    }
+    catch (length_error)
+    {
+        cout<<"wprowadzono za dluga nazwe\n";
+    }
+}
+
+template<class T>
+void Container<T>::read()
+{
+    try
+    {
+        string filename;
+        cout<<"Prosze podac nazwe pliku: "<<endl;
+        cin>>filename;
+
+        ifstream file;
+        file.open(filename+".txt");
+        if(!file) throw string("Nie udalo sie otworzyc pliku\n");
+
+        T obj;
+        string title;
+        while(1)
+        {
+        file>>title>>obj;
+        //if(!file && !file.eof()) throw string("Wczytywanie z pliku zakonczone bledem\n Czy plik na pewno ma poprawne dane?\n");
+        if(!file.eof()) push_back(obj);
+        else break;
+        }
+
+        file.close();
+    }
+    catch (string s)
+    {
+        cout<<s;
+    }
+    catch (length_error)
+    {
+        cout<<"wprowadzono za dluga nazwe\n";
+    }
 }
 
 

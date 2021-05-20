@@ -70,7 +70,6 @@ istream & operator>>( istream &s , ComputerMonitor::Output& output)
     string title;
     int o;
     s>>o;
-    cout<<o<<endl;
     output = static_cast<ComputerMonitor::Output>(o); // zmienia liczbe na output
     return s;
 }
