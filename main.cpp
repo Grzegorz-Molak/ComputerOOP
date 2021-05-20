@@ -12,17 +12,27 @@ int main()
     Container<int> c;
     c.push_back(1);
     c.push_back(2);
+    cout<<c<<endl;
+    c.swap(2,1);
+    cout<<c<<endl;
     c.push_back(3);
-    c.push(3,3);
-    c.push(4,20);
     cout<<c<<endl;
-    c.pop(3);
-    //c.push(8,12);
+    c.swap(1,3);
     cout<<c<<endl;
-    c.pop_back();
+    c.swap(1,2);
+    cout<<c<<endl;
+    c.swap(2,3);
+    cout<<c<<endl;
+    c.push_back(4);
+    c.push_back(5);
+    cout<<c<<endl;
+    c.swap(4,5);
+    cout<<c<<endl;
+    c.swap(2,3);
     cout<<c<<endl;
 
-    Container<string> s;
+
+    /*Container<string> s;
     s.push_back("kssks");
     s.push_back("blelbel");
     s.push_back("ddfsdf");
@@ -36,7 +46,7 @@ int main()
     ComputerMonitor maciek2("maciek2");
     d.push_back(maciek);
     d.push_back(maciek2);
-    cout<<d<<endl;
+    cout<<d<<endl;*/
 
     return 0;
 }

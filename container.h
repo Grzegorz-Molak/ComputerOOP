@@ -28,7 +28,6 @@ public:
         {
             cout<<s;
         }
-
     }
 
     Container& operator=(const Container& c);
@@ -58,7 +57,7 @@ public:
     void pop_back();
     void pop(int pos);
 
-    void swap(int s1, int s2);
+    void swap(int e1, int e2);
     void moveToEnd(int n);
 
     void save();
@@ -89,32 +88,36 @@ private:
 template<class T>
 Node<T>* Container<T>::at(int pos)
 {
-    Node<T>* ptr;
-    if(pos < size()/2)
-    {
-        ptr = begin();
-        for(int i = 1; i < pos; i++)
+        Node<T>* ptr;
+        if(pos > size())
         {
-            if(ptr->next() == nullptr && i < pos )
-            {
-                throw string("Wystapila luka w kontenerze");
-            }
-            ptr = ptr->next();
+            throw string("Nie mozna uzyskac dostepu do elementu indeksie "+to_string(pos)+", zakres to <1,"+to_string(size())+">\n");
         }
-    }
-    else
-    {
-        ptr = end();
-        for(int i = size(); i > pos; i--)
+        else if(pos < size()/2)
         {
-            if(ptr->previous() == nullptr && i > pos )
+            ptr = begin();
+            for(int i = 1; i < pos; i++)
             {
-                throw string("Wystapila luka w kontenerze");
+                if(ptr->next() == nullptr && i < pos )
+                {
+                    throw string("Wystapila luka w kontenerze\n");
+                }
+                ptr = ptr->next();
             }
-            ptr = ptr->previous();
         }
-    }
-            return ptr;
+        else
+        {
+            ptr = end();
+            for(int i = size(); i > pos; i--)
+            {
+                if(ptr->previous() == nullptr && i > pos )
+                {
+                    throw string("Wystapila luka w kontenerze\n");
+                }
+                ptr = ptr->previous();
+            }
+        }
+        return ptr;
 }
 
 template<class T>
@@ -163,7 +166,7 @@ void Container<T>::push(int pos, T elem)
         }
         else
         {
-            throw string("Nie mozna utworzyc elementu o takim indeksie, zakres to <1,"+to_string(size()+1)+">\n");
+            cout<<"Nie mozna utworzyc elementu o takim indeksie, zakres to <1,"<<size()+1<<">\n";
         }
     }
     catch(string s)
@@ -179,7 +182,7 @@ void Container<T>::pop(int pos)
     {
         if(pos > size())
         {
-            throw string("Nie mozna utworzyc elementu o takim indeksie, zakres to <1,"+to_string(size())+">\n");
+            throw string("Nie mozna usunac elementu o takim indeksie, zakres to <1,"+to_string(size())+">\n");
         }
         else if(size() == 1)
         {
@@ -207,7 +210,6 @@ void Container<T>::pop(int pos)
         }
         else
         {
-            //Node<T>*ptr = at(pos);
             delete at(pos);
             setSize(size()-1);
         }
@@ -222,6 +224,113 @@ template<class T>
 void Container<T>::pop_back()
 {
     pop(size());
+}
+
+template<class T>
+void Container<T>::swap(int e1, int e2)
+{
+    try
+    {
+        Node<T>* ptr1 = at(e1);
+        Node<T>* ptr2 = at(e2);
+        Node<T>* helper_p = ptr1->previous();
+        Node<T>* helper_n = ptr1->next();
+        if(e1 == e2)
+        {
+            return;
+        }
+        if(e1 > e2)
+        {
+            swap(e2,e1);
+        }
+        else if(size() == 2)
+        {
+            setBegin(ptr2);
+            setEnd(ptr1);
+            ptr1->setNext(nullptr);
+            ptr1->setPrevious(ptr2);
+            ptr2->setNext(ptr1);
+            ptr2->setPrevious(nullptr);
+        }
+        else if(ptr1->next() == ptr2)
+        {
+            if(ptr1 == begin()) setBegin(ptr2);
+            else ptr1->previous()->setNext(ptr2);
+
+            if(ptr2 == end()) setEnd(ptr1);
+            else ptr2->next()->setPrevious(ptr1);
+
+            if(ptr2 == end()) ptr1->setNext(nullptr);
+            else ptr1->setNext(ptr2->next());
+            ptr1->setPrevious(ptr2);
+
+            ptr2->setNext(ptr1);
+            if(ptr2 != begin()) ptr2->setPrevious(helper_p);
+        }
+        else if(e1 == 1 && e2 == size())
+        {
+            setBegin(ptr2);
+            setEnd(ptr1);
+
+            ptr1->next()->setPrevious(ptr2);
+            ptr2->previous()->setNext(ptr1);
+
+            ptr1->setPrevious(ptr2->previous());
+            ptr1->setNext(nullptr);
+
+            ptr2->setPrevious(nullptr);
+            ptr2->setNext(helper_n);
+        }
+        else if(e1 == 1 && e2 != size())
+        {
+            setBegin(ptr2);
+            ptr1->next()->setPrevious(ptr2);
+
+            ptr2->previous()->setNext(ptr1);
+            ptr2->next()->setPrevious(ptr1);
+
+            ptr1->setPrevious(ptr2->previous());
+            ptr1->setNext(ptr2->next());
+
+            ptr2->setPrevious(nullptr);
+            ptr2->setNext(helper_n);
+        }
+        else if(e1 != 1 && e2 == size())
+        {
+            ptr1->previous()->setNext(ptr2);
+            ptr1->next()->setPrevious(ptr2);
+            setEnd(ptr1);
+            ptr2->previous()->setNext(ptr1);
+
+            ptr1->setPrevious(ptr2->previous());
+            ptr1->setNext(nullptr);
+
+            ptr2->setPrevious(helper_p);
+            ptr2->setNext(helper_n);
+
+        }
+        else
+        {
+            ptr1->previous()->setNext(ptr2);
+            ptr1->next()->setPrevious(ptr2);
+
+            ptr2->previous()->setNext(ptr1);
+            ptr2->next()->setPrevious(ptr1);
+
+            ptr1->setPrevious(ptr2->previous());
+            ptr1->setNext(ptr2->next());
+
+            ptr2->setPrevious(helper_p);
+            ptr2->setNext(helper_n);
+        }
+
+
+    }
+    catch (string s)
+    {
+        cout<<s;
+    }
+
 }
 
 
