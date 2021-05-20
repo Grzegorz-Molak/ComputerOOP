@@ -29,7 +29,33 @@ int main()
     c.swap(4,5);
     cout<<c<<endl;
     c.swap(2,3);
-    cout<<c<<endl;
+    cout<<"c: \n"<<c<<endl;
+    c.swap(2,3);
+    cout<<"c: \n"<<c<<endl;
+
+    Container<int> d(c);
+    cout<<d<<endl;
+
+    c.swap(1,5);
+    d.swap(1,2);
+
+    cout<<"c:\n"<<c<<endl<<"d:\n"<<d<<endl;
+
+    Container<int> e;
+    e.push_back(1);
+    e.push_back(23);
+    e.push_back(4);
+    cout<<e<<endl;
+    cout<<"eeee\n"<<(e == d)<<endl;
+
+    e = d;
+
+    cout<<e<<endl;
+    cout<<"eeee\n"<<(e == d)<<endl;
+
+    d.swap(1,5);
+
+   cout<<"e: "<<endl<<e<<endl<<"d: "<<endl<<d<<endl;
 
 
     /*Container<string> s;

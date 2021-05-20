@@ -9,29 +9,12 @@ class Container
 {
 public:
     Container() {}
-    Container(const Container& c);
-    ~Container()
-    {
-        try
-        {
-            Node<T>* ptr = begin();
-            Node<T>* p_ptr = ptr;
-            while(ptr)
-            {
-                ptr = ptr->next();
-                delete ptr;
-                setSize(size() - 1);
-            }
-            if(size() > 0) throw string("Nie udalo sie usunac wszystkich elementow");
-        }
-        catch (string s)
-        {
-            cout<<s;
-        }
-    }
+    Container(const Container<T>& c);
+    ~Container();
 
-    Container& operator=(const Container& c);
-    bool operator==(const Container& c);
+
+    Container& operator=(const Container<T>& c);
+    bool operator==(const Container<T>& c);
     T& operator[](int i);
 
     friend std::ostream& operator<<(std::ostream &s, Container &c) {
@@ -72,7 +55,7 @@ public:
     void setEnd(Node<T> *end) { m_end = end;}
 
     void setSize(int size) {m_size = size;}
-    int size() { return m_size;}
+    int size() const { return m_size;}
 
 private:
     Node<T>* at(int pos);
@@ -84,6 +67,83 @@ private:
 
 
 // ***********************************************
+
+template<class T>
+Container<T>::Container(const Container<T>& c)
+{
+    Node<T>* ptr = c.begin();
+    while(ptr != nullptr)
+    {
+        push_back(ptr->value());
+        ptr = ptr->next();
+    }
+}
+
+template<class T>
+Container<T>::~Container()
+{
+    try
+    {
+        Node<T>* ptr = begin();
+        Node<T>* p_ptr = ptr;
+        while(ptr)
+        {
+            ptr = ptr->next();
+            delete ptr;
+            setSize(size() - 1);
+        }
+        if(size() > 0) throw string("Nie udalo sie usunac wszystkich elementow");
+    }
+    catch (string s)
+    {
+        cout<<s;
+    }
+}
+
+template<class T>
+Container<T>& Container<T>::operator=(const Container<T>& c)
+{
+    while(size() > 0)
+    {
+        pop_back();
+    }
+    Node<T>* ptr = c.begin();
+    while(ptr != nullptr)
+    {
+        push_back(ptr->value());
+        ptr = ptr->next();
+    }
+
+    return *this;
+}
+
+template<class T>
+bool Container<T>::operator==(const Container<T>& c)
+{
+    if(size() != c.size())
+    {
+        return false;
+    }
+    else
+    {
+        Node<T>* ptr1 = begin();
+        Node<T>* ptr2 = c.begin();
+        while(ptr1->next() != nullptr && ptr2->next() != nullptr)
+        {
+            if(ptr1->value() != ptr2->value()) return false;
+            ptr1 = ptr1->next();
+            ptr2 = ptr2->next();
+        }
+        return true;
+    }
+}
+
+template<class T>
+T& Container<T>::operator[](int i)
+{
+
+}
+
 
 template<class T>
 Node<T>* Container<T>::at(int pos)
@@ -197,6 +257,7 @@ void Container<T>::pop(int pos)
             Node<T>* ptr = begin();
             if(!(begin()->next())) throw string("Wystapila luka w kontenerze");
             (begin()->next())->setPrevious(nullptr);
+            setBegin(ptr->next());
             delete ptr;
             setSize(size()-1);
         }
@@ -205,6 +266,7 @@ void Container<T>::pop(int pos)
             Node<T>* ptr = end();
             if(!(end()->previous())) throw string("Wystapila luka w kontenerze");
             (end()->previous())->setNext(nullptr);
+            setEnd(end()->previous());
             delete ptr;
             setSize(size()-1);
         }
@@ -260,67 +322,30 @@ void Container<T>::swap(int e1, int e2)
             if(ptr2 == end()) setEnd(ptr1);
             else ptr2->next()->setPrevious(ptr1);
 
-            if(ptr2 == end()) ptr1->setNext(nullptr);
+            if(ptr1 == end()) ptr1->setNext(nullptr);
             else ptr1->setNext(ptr2->next());
             ptr1->setPrevious(ptr2);
 
             ptr2->setNext(ptr1);
-            if(ptr2 != begin()) ptr2->setPrevious(helper_p);
-        }
-        else if(e1 == 1 && e2 == size())
-        {
-            setBegin(ptr2);
-            setEnd(ptr1);
-
-            ptr1->next()->setPrevious(ptr2);
-            ptr2->previous()->setNext(ptr1);
-
-            ptr1->setPrevious(ptr2->previous());
-            ptr1->setNext(nullptr);
-
-            ptr2->setPrevious(nullptr);
-            ptr2->setNext(helper_n);
-        }
-        else if(e1 == 1 && e2 != size())
-        {
-            setBegin(ptr2);
-            ptr1->next()->setPrevious(ptr2);
-
-            ptr2->previous()->setNext(ptr1);
-            ptr2->next()->setPrevious(ptr1);
-
-            ptr1->setPrevious(ptr2->previous());
-            ptr1->setNext(ptr2->next());
-
-            ptr2->setPrevious(nullptr);
-            ptr2->setNext(helper_n);
-        }
-        else if(e1 != 1 && e2 == size())
-        {
-            ptr1->previous()->setNext(ptr2);
-            ptr1->next()->setPrevious(ptr2);
-            setEnd(ptr1);
-            ptr2->previous()->setNext(ptr1);
-
-            ptr1->setPrevious(ptr2->previous());
-            ptr1->setNext(nullptr);
-
-            ptr2->setPrevious(helper_p);
-            ptr2->setNext(helper_n);
-
+            if(ptr2 == begin()) ptr2->setPrevious(nullptr);
+            else ptr2->setPrevious(helper_p);
         }
         else
         {
-            ptr1->previous()->setNext(ptr2);
+            if(ptr1 == begin()) setBegin(ptr2);
+            else ptr1->previous()->setNext(ptr2);
             ptr1->next()->setPrevious(ptr2);
 
             ptr2->previous()->setNext(ptr1);
-            ptr2->next()->setPrevious(ptr1);
+            if(ptr2 == end()) setEnd(ptr1);
+            else ptr2->next()->setPrevious(ptr1);
 
             ptr1->setPrevious(ptr2->previous());
-            ptr1->setNext(ptr2->next());
+            if(ptr1 == end()) ptr1->setNext(nullptr);
+            else ptr1->setNext(ptr2->next());
 
-            ptr2->setPrevious(helper_p);
+            if(ptr2 == begin()) ptr2->setPrevious(nullptr);
+            else ptr2->setPrevious(helper_p);
             ptr2->setNext(helper_n);
         }
 
