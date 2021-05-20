@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Container<Electronic*> electronics;
+Container<Monitor> monitors;
 
 void interface();
 int menu();
@@ -65,12 +65,12 @@ void interface()
 
 void showElementList()
 {
-    if(electronics.size() == 0) cout<<"Brak elementow, moze utworzyc nowy?"<<endl;
+    if(monitors.size() == 0) cout<<"Brak elementow, moze utworzyc nowy?"<<endl;
     else
     {
-        for(int i = 1; i <= electronics.size(); i++)
+        for(int i = 1; i <= monitors.size(); i++)
         {
-            cout<<i<<": "<<electronics[i]->name()<<endl;
+            cout<<i<<": "<<monitors[i].name()<<endl;
         }
     }
 }
@@ -79,7 +79,7 @@ int menu()
 {
     showElementList();
 
-    if(electronics.size() > 0)
+    if(monitors.size() > 0)
     {
     cout<<"\nWybierz dzialanie: "<<endl;
     cout<<"******************************"<<endl;
@@ -113,53 +113,23 @@ int menu()
 int chooseElement()
 {
     cout<<"Wybierz element z kontenera poslugujac sie jego indeksem(po lewej stronie)"<<endl;
-    return getInt(1, electronics.size());
+    return getInt(1, monitors.size());
 }
 void newElement()
 {
     string name;
-    cout<<"Prosze podac nazwe elementu: "<<endl;
+    cout<<"Prosze podac nazwe monitora: "<<endl;
     cin>>name;
-
-    cout<<"Czym jest "<<name<<"? Prosze wybrac 1,2 albo 3"<<endl;
-    cout<<"1: Suszarka"<<endl;
-    cout<<"2: Monitor"<<endl;
-    cout<<"3: Monitor komputerowy"<<endl;
-
-    int type = getInt(1,3);
-
 
     cout<<"Dodac element na wybrana pozycje w kontenerze(1), czy na koniec kontenera(2)"<<endl;
     if(getInt(1,2) == 1)
     {
-        cout<<"Prosze podac pozycje(z zakresu (1,"<<electronics.size()+1<<")"<<endl;
-        switch(type)
-        {
-            case 1:
-                electronics.push(getInt(1,electronics.size()+1) ,new Hairdryer(name));
-                break;
-            case 2:
-                electronics.push(getInt(1,electronics.size()+1) ,new Monitor(name));
-                break;
-            case 3:
-                electronics.push(getInt(1,electronics.size()+1) ,new ComputerMonitor(name));
-                break;
-        }
+        cout<<"Prosze podac pozycje(z zakresu (1,"<<monitors.size()+1<<")"<<endl;
+        monitors.push(getInt(1, monitors.size()+1), Monitor(name));
     }
     else
     {
-        switch(type)
-        {
-            case 1:
-                electronics.push_back(new Hairdryer(name));
-                break;
-            case 2:
-                electronics.push_back(new Monitor(name));
-                break;
-            case 3:
-                electronics.push_back(new ComputerMonitor(name));
-                break;
-        }
+        monitors.push_back(Monitor(name));
     }
 }
 
@@ -169,60 +139,54 @@ void deleteElement()
     if(getInt(1,2) == 1)
     {
         cout<<"Prosze podac indeks elementu: "<<endl;
-        int i = getInt(1, electronics.size());
-        delete electronics[i];
-        electronics.pop(i);
+        int i = getInt(1, monitors.size());
+        monitors.pop(i);
     }
     else
     {
-        delete electronics[electronics.size()];
-        electronics.pop_back();
+        monitors.pop_back();
     }
 }
 void swapElements()
 {
     cout<<"Prosze podac nr 1. elementu"<<endl;
-    int i = getInt(1, electronics.size());
+    int i = getInt(1, monitors.size());
     cout<<"Prosze podac nr 2. elementu"<<endl;
-    int j = getInt(1, electronics.size());
-    electronics.swap(i,j);
+    int j = getInt(1, monitors.size());
+    monitors.swap(i,j);
 
 }
 void moveElementToEnd()
 {
     cout<<"Prosze podac nr elementu ktory ma wyladowac na koncu: "<<endl;
-    electronics.moveToEnd(getInt(1, electronics.size()));
+    monitors.moveToEnd(getInt(1, monitors.size()));
 }
 void save()
 {
-    electronics.save();
+    monitors.save();
 }
 void read()
 {
-    cout<<"Chcesz dopisac elementy do kontenera(1), czy zastapic tymi elementami aktualny kontener?(2)"<<endl;
-    if(getInt(1,2) == 1)
-    {
-        //electronics.read();
-    }
+    cout<<"Czy chcesz dopisac elementy do kontenera(1), czy utworzyc nowy z obiektami z pliku(2)?"<<endl;
+    if(getInt(1,2) == 1) monitors.read();
     else
     {
-        Container<Electronic*> helper;
-        //helper.read();
-        electronics = helper;
+        Container<Monitor> helper;
+        helper.read();
+        monitors = helper;
     }
 }
 
 void showElement()
 {
     cout<<"Prosze podac nr. elementu:"<<endl;
-    electronics[getInt(1, electronics.size())]->print();
+    monitors[getInt(1, monitors.size())].print();
 }
 void deleteAllElements()
 {
-    for(int i = 0; i < electronics.size(); i++)
+    for(int i = 0; i < monitors.size(); i++)
     {
-        delete electronics[electronics.size()];
-        electronics.pop_back();
+        monitors.pop_back();
     }
 }
 
