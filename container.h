@@ -9,15 +9,16 @@ template<class T>
 class Container
 {
 public:
-    Container() {}
-    Container(const Container<T>& c);
-    ~Container();
+    Container() {} // Domyslny konstruktor
+    Container(const Container<T>& c); // Konstruktor kopiujacy
+    ~Container(); // Destruktor
 
-    Container& operator=(const Container<T>& c);
-    bool operator==(const Container<T>& c);
-    T& operator[](int i);
+    Container& operator=(const Container<T>& c); // Operator przypisania
+    bool operator==(const Container<T>& c); // Operator porówania
+    T& operator[](int i); // Operator indeksowy
 
-    friend std::ostream& operator<<(std::ostream &s, Container &c) {
+    friend std::ostream& operator<<(std::ostream &s, Container &c) // Wypisuje dane na strumien
+    {
         Node<T>* ptr = c.begin();
         for(int i = 1; i <= c.size(); i++)
         {
@@ -28,40 +29,43 @@ public:
         }
         return s;
     }
-    friend istream & operator>>(istream& s, Container &c)
+    friend istream & operator>>(istream& s, Container &c) // Wczytuje ze strumienia
     {
-        s>>c.m_end;
+        string title;
+        T obj;
+        s>>title>>obj; // bo sa numerowane 1. 2. 3. ...
+        if(!s.eof()) c.push_back(obj);
         return s;
     }
 
-    void push_back(T elem);
-    void push(int pos, T elem);
+    void push_back(T elem); // Tworzy element na koncu listy
+    void push(int pos, T elem); // Tworzy element na n-tej pozycji listy
 
-    void pop_back();
-    void pop(int pos);
+    void pop_back(); // Usuwa ostatni element listy
+    void pop(int pos); // Usuwa n-ty element listy
 
-    void swap(int e1, int e2);
-    void moveToEnd(int n);
+    void swap(int e1, int e2); // Zamienia elementy miejscami
+    void moveToEnd(int n); // Przenosi element na koniec listy
 
-    void save();
-    void read();
+    void save(); // Zapisuje do pliku
+    void read(); // Odczytuje z pliku
 
 
 
-    Node<T> *begin() const {return m_begin;}
-    void setBegin(Node<T> *begin) { m_begin = begin;}
+    Node<T> *begin() const {return m_begin;} // Zwraca wskaznik na poczatek listy
+    void setBegin(Node<T> *begin) { m_begin = begin;}  // Ustawia wskaznik na poczatek listy
 
-    Node<T> *end() const { return m_end;}
-    void setEnd(Node<T> *end) { m_end = end;}
+    Node<T> *end() const { return m_end;} //  Zwraca wskaznik na koniec listy
+    void setEnd(Node<T> *end) { m_end = end;} // Ustawia wskaznik na koniec listy
 
-    void setSize(int size) {m_size = size;}
-    int size() const { return m_size;}
+    void setSize(int size) {m_size = size;} // Ustawia rozmiar listy
+    int size() const { return m_size;} // Zwraca rozmiar listy
 
 private:
-    Node<T>* at(int pos);
-    Node<T>* m_begin = nullptr;
-    Node<T>* m_end = nullptr;
-    int m_size = 0;
+    Node<T>* at(int pos); // Zwraca wskaznik na i-ty element listy
+    Node<T>* m_begin = nullptr; // wskaznik na glowe listy
+    Node<T>* m_end = nullptr; // wskaznik na ogon listy
+    int m_size = 0; // rozmiar listy
 
 };
 
@@ -87,8 +91,9 @@ Container<T>::~Container()
         Node<T>* p_ptr = ptr;
         while(ptr)
         {
+            p_ptr = ptr;
             ptr = ptr->next();
-            delete ptr;
+            delete p_ptr;
             setSize(size() - 1);
         }
         if(size() > 0) throw string("Nie udalo sie usunac wszystkich elementow");
@@ -96,6 +101,10 @@ Container<T>::~Container()
     catch (string s)
     {
         cout<<s;
+    }
+    catch (exception)
+    {
+        cout<<"Wystapil nieznany blad\n";
     }
 }
 
@@ -140,7 +149,7 @@ bool Container<T>::operator==(const Container<T>& c)
 template<class T>
 T& Container<T>::operator[](int i)
 {
-return at(i)->getObject();
+    return at(i)->getObject();
 }
 
 template<class T>
@@ -184,6 +193,10 @@ void Container<T>::moveToEnd(int n)
         {
             cout<<s;
         }
+        catch (exception)
+        {
+            cout<<"Wystapil nieznany blad\n";
+        }
     }
 }
 
@@ -226,7 +239,7 @@ Node<T>* Container<T>::at(int pos)
 template<class T>
 void Container<T>::push_back(T elem)
 {
-push(size()+1, elem);
+    push(size()+1, elem);
 }
 
 template<class T>
@@ -247,7 +260,7 @@ void Container<T>::push(int pos, T elem)
             {
                 ptr = at(pos);
                 Node<T>* new_node = new Node<T>(elem, ptr->previous(), ptr);
-                if(!new_node) throw string("Blad alokowania pamieci");
+                //if(!new_node) throw string("Blad alokowania pamieci");
                 ptr->setPrevious(new_node);
                 if(new_node->previous()) (new_node->previous())->setNext(new_node);
                 else setBegin(new_node);
@@ -257,12 +270,16 @@ void Container<T>::push(int pos, T elem)
             {
                 cout<<s;
             }
+            catch (exception)
+            {
+                cout<<"Wystapil nieznany blad\n";
+            }
         }
         else if(pos == size()+1)
         {
             Node<T>* former_end = end();
             Node<T>* new_end = new Node<T>(elem, former_end);
-            if(!new_end) throw string("Blad alokowania pamieci");
+            //if(!new_end) throw string("Blad alokowania pamieci");
             setEnd(new_end);
             former_end->setNext(new_end);
             setSize(size()+1);
@@ -275,6 +292,14 @@ void Container<T>::push(int pos, T elem)
     catch(string s)
     {
         cout<<s;
+    }
+    catch(bad_alloc)
+    {
+        cout<<"Blad alokowania pamieci\n";
+    }
+    catch (exception)
+    {
+        cout<<"Wystapil nieznany blad\n";
     }
 }
 
@@ -327,6 +352,10 @@ void Container<T>::pop(int pos)
     {
         cout<<s;
     }
+    catch (exception)
+    {
+        cout<<"Wystapil nieznany blad\n";
+    }
 }
 
 template<class T>
@@ -342,6 +371,7 @@ void Container<T>::swap(int e1, int e2)
     {
         Node<T>* ptr1 = at(e1);
         Node<T>* ptr2 = at(e2);
+        if(!ptr1 || !ptr2) throw string("Nie udalo sie odnalezc ktoregos elementu");
         Node<T>* helper_p = ptr1->previous();
         Node<T>* helper_n = ptr1->next();
         if(e1 == e2)
@@ -402,6 +432,10 @@ void Container<T>::swap(int e1, int e2)
     {
         cout<<s;
     }
+    catch (exception)
+    {
+        cout<<"Wystapil nieznany blad\n";
+    }
 
 }
 
@@ -430,6 +464,10 @@ void Container<T>::save()
     {
         cout<<"wprowadzono za dluga nazwe\n";
     }
+    catch (exception)
+    {
+        cout<<"Wystapil nieznany blad\n";
+    }
 }
 
 template<class T>
@@ -449,10 +487,9 @@ void Container<T>::read()
         string title;
         while(1)
         {
-        file>>title>>obj;
-        //if(!file && !file.eof()) throw string("Wczytywanie z pliku zakonczone bledem\n Czy plik na pewno ma poprawne dane?\n");
-        if(!file.eof()) push_back(obj);
-        else break;
+        if(!file && !file.eof()) throw string("Wczytywanie z pliku zakonczone bledem\n Czy plik na pewno ma poprawne dane?\n");
+        if(file.eof()) break;
+        else file>>*this;
         }
 
         file.close();
@@ -464,6 +501,10 @@ void Container<T>::read()
     catch (length_error)
     {
         cout<<"wprowadzono za dluga nazwe\n";
+    }
+    catch (exception)
+    {
+        cout<<"Wystapil nieznany blad\n";
     }
 }
 

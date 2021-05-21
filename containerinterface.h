@@ -22,6 +22,7 @@ void newElement();
 void deleteElement();
 void swapElements();
 void moveElementToEnd();
+void edit();
 void save();
 void read();
 void showElement();
@@ -47,12 +48,15 @@ void interface()
                 moveElementToEnd();
                 break;
             case 5:
-                save();
+                edit();
                 break;
             case 6:
-                read();
+                save();
                 break;
             case 7:
+                read();
+                break;
+            case 8:
                 showElement();
                 break;
             case 0:
@@ -68,6 +72,7 @@ void showElementList()
     if(monitors.size() == 0) cout<<"Brak elementow, moze utworzyc nowy?"<<endl;
     else
     {
+        cout<<"Monitory: \n";
         for(int i = 1; i <= monitors.size(); i++)
         {
             cout<<i<<": "<<monitors[i].name()<<endl;
@@ -87,12 +92,13 @@ int menu()
     cout<<"2 - Usun element"<<endl;
     cout<<"3 - Zamien obiekty miejscami"<<endl;
     cout<<"4 - Przenies obiekt na koniec kontenera"<<endl;
-    cout<<"5 - Zapisz kontener do pliku"<<endl;
-    cout<<"6 - Wczytaj kontener z pliku"<<endl;
-    cout<<"7 - Wyswietl obiekt"<<endl;
+    cout<<"5 - Edytuj element"<<endl;
+    cout<<"6 - Zapisz kontener do pliku"<<endl;
+    cout<<"7 - Wczytaj kontener z pliku"<<endl;
+    cout<<"8 - Wyswietl obiekt"<<endl;
     cout<<"0 - By opuscic program"<<endl;
     cout<<"******************************"<<endl;
-    return getInt(0,7);
+    return getInt(0,8);
     }
     else
     {
@@ -103,7 +109,7 @@ int menu()
         cout<<"0 - By opuscic program"<<endl;
         cout<<"******************************"<<endl;
         int index = getInt(0,2);
-        if(index == 2) return 6;
+        if(index == 2) return 7;
         else return index;
     }
 }
@@ -121,26 +127,41 @@ void newElement()
     cout<<"Prosze podac nazwe monitora: "<<endl;
     cin>>name;
 
-    cout<<"Dodac element na wybrana pozycje w kontenerze(1), czy na koniec kontenera(2)"<<endl;
-    if(getInt(1,2) == 1)
+    if(monitors.size() >= 1)
     {
-        cout<<"Prosze podac pozycje(z zakresu (1,"<<monitors.size()+1<<")"<<endl;
-        monitors.push(getInt(1, monitors.size()+1), Monitor(name));
+        cout<<"Dodac element na wybrana pozycje w kontenerze(1), czy na koniec kontenera(2)"<<endl;
+        if(getInt(1,2) == 1)
+        {
+            cout<<"Prosze podac pozycje(z zakresu (1,"<<monitors.size()+1<<")"<<endl;
+            monitors.push(getInt(1, monitors.size()+1), Monitor(name));
+        }
+        else
+        {
+            monitors.push_back(Monitor(name));
+        }
     }
     else
     {
         monitors.push_back(Monitor(name));
     }
+
 }
 
 void deleteElement()
 {
-    cout<<"Chcesz usunac n-ty element kontenera(1) czy ostatni?(2)"<<endl;
-    if(getInt(1,2) == 1)
+    if(monitors.size() > 1)
     {
-        cout<<"Prosze podac indeks elementu: "<<endl;
-        int i = getInt(1, monitors.size());
-        monitors.pop(i);
+        cout<<"Chcesz usunac n-ty element kontenera(1) czy ostatni?(2)"<<endl;
+        if(getInt(1,2) == 1)
+        {
+            cout<<"Prosze podac indeks elementu: "<<endl;
+            int i = getInt(1, monitors.size());
+            monitors.pop(i);
+        }
+        else
+        {
+            monitors.pop_back();
+        }
     }
     else
     {
@@ -161,6 +182,13 @@ void moveElementToEnd()
     cout<<"Prosze podac nr elementu ktory ma wyladowac na koncu: "<<endl;
     monitors.moveToEnd(getInt(1, monitors.size()));
 }
+
+void edit()
+{
+    cout<<"Prosze podac nr elementu do edycji: "<<endl;
+    monitors[getInt(1, monitors.size())].edit();
+}
+
 void save()
 {
     monitors.save();
