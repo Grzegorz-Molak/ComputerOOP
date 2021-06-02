@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 
-Container<int> c;
+/*Container<int> c;
 c.push_back(1);
 c.push_back(2);
 c.push_back(3);
@@ -43,6 +43,7 @@ s.save();
 cout<<"Odczyt"<<endl;
 s.read();
 cout<<s<<endl;
+*/
 
 interface();
     return 0;
