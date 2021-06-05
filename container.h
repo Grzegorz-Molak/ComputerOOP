@@ -23,7 +23,7 @@ public:
         for(int i = 1; i <= c.size(); i++)
         {
             if(!ptr) throw string("Luka w kontenerze\n");
-            s<<i<<": "<<ptr->value()<<endl;
+            s<<i<<": "<<ptr->getObject()<<endl;
             ptr = ptr->next();
 
         }
@@ -34,7 +34,7 @@ public:
         string title;
         T obj;
         s>>title>>obj; // bo sa numerowane 1. 2. 3. ...
-        if(!s.eof()) c.push_back(obj);
+        if(!s.eof() && s) c.push_back(obj);
         return s;
     }
 
@@ -324,7 +324,7 @@ void Container<T>::pop(int pos)
             setSize(size()-1);
 
         }
-        else if(pos == 0)
+        else if(pos == 1)
         {
             Node<T>* ptr = begin();
             if(!(begin()->next())) throw string("Wystapila luka w kontenerze");
@@ -487,9 +487,16 @@ void Container<T>::read()
         string title;
         while(1)
         {
-        if(!file && !file.eof()) throw string("Wczytywanie z pliku zakonczone bledem\n Czy plik na pewno ma poprawne dane?\n");
-        if(file.eof()) break;
-        else file>>*this;
+            if(!file && !file.eof())
+            {
+                throw string("Wczytywanie z pliku zakonczone bledem\n Czy plik na pewno ma poprawne dane?\n");
+
+            }
+            else if(file.eof()) break;
+            else
+            {
+                file>>*this;
+            }
         }
 
         file.close();
