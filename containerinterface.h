@@ -40,37 +40,37 @@ void interface()
     {
         switch(menu())
         {
-            case 1:
-                newElement();
-                break;
-            case 2:
-                deleteElement();
-                break;
-            case 3:
-                swapElements();
-                break;
-            case 4:
-                moveElementToEnd();
-                break;
-            case 5:
-                edit();
-                break;
-            case 6:
-                save();
-                break;
-            case 7:
-                read();
-                break;
-            case 8:
-                showElement();
-                break;
-            case 9:
-                setActive();
-                break;
-            case 0:
-                end = true;
-                deleteAllElements();
-                break;
+        case 1:
+            newElement();
+            break;
+        case 2:
+            deleteElement();
+            break;
+        case 3:
+            swapElements();
+            break;
+        case 4:
+            moveElementToEnd();
+            break;
+        case 5:
+            edit();
+            break;
+        case 6:
+            save();
+            break;
+        case 7:
+            read();
+            break;
+        case 8:
+            showElement();
+            break;
+        case 9:
+            setActive();
+            break;
+        case 0:
+            end = true;
+            deleteAllElements();
+            break;
         }
     }
 }
@@ -124,23 +124,23 @@ int menu()
 
 
     if((active == 1 && hairdryers.size() > 0) ||
-       (active == 2 && monitors.size() > 0) ||
-       (active == 3 && computers.size() > 0))
+            (active == 2 && monitors.size() > 0) ||
+            (active == 3 && computers.size() > 0))
     {
-    cout<<"\nWybierz dzialanie: "<<endl;
-    cout<<"******************************"<<endl;
-    cout<<"1 - Dodaj nowy element"<<endl;
-    cout<<"2 - Usun element"<<endl;
-    cout<<"3 - Zamien obiekty miejscami"<<endl;
-    cout<<"4 - Przenies obiekt na koniec kontenera"<<endl;
-    cout<<"5 - Edytuj element"<<endl;
-    cout<<"6 - Zapisz kontener do pliku"<<endl;
-    cout<<"7 - Wczytaj kontener z pliku"<<endl;
-    cout<<"8 - Wyswietl obiekt"<<endl;
-    cout<<"9 - ustaw aktywny kontener"<<endl;
-    cout<<"0 - By opuscic program"<<endl;
-    cout<<"******************************"<<endl;
-    return getInt(0,9);
+        cout<<"\nWybierz dzialanie: "<<endl;
+        cout<<"******************************"<<endl;
+        cout<<"1 - Dodaj nowy element"<<endl;
+        cout<<"2 - Usun element"<<endl;
+        cout<<"3 - Zamien obiekty miejscami"<<endl;
+        cout<<"4 - Przenies obiekt na koniec kontenera"<<endl;
+        cout<<"5 - Edytuj element"<<endl;
+        cout<<"6 - Zapisz kontener do pliku"<<endl;
+        cout<<"7 - Wczytaj kontener z pliku"<<endl;
+        cout<<"8 - Wyswietl obiekt"<<endl;
+        cout<<"9 - ustaw aktywny kontener"<<endl;
+        cout<<"0 - By opuscic program"<<endl;
+        cout<<"******************************"<<endl;
+        return getInt(0,9);
     }
     else
     {

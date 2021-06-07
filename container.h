@@ -96,7 +96,7 @@ Container<T>::~Container()
             delete p_ptr;
             setSize(size() - 1);
         }
-        if(size() > 0) throw string("Nie udalo sie usunac wszystkich elementow");
+        if(size() > 0) throw string("Nie udalo sie usunac wszystkich elementow\n");
     }
     catch (string s)
     {
@@ -204,36 +204,36 @@ void Container<T>::moveToEnd(int n)
 template<class T>
 Node<T>* Container<T>::at(int pos)
 {
-        Node<T>* ptr;
-        if(pos > size())
+    Node<T>* ptr;
+    if(pos > size())
+    {
+        throw string("Nie mozna uzyskac dostepu do elementu indeksie "+to_string(pos)+", zakres to <1,"+to_string(size())+">\n");
+    }
+    else if(pos < size()/2)
+    {
+        ptr = begin();
+        for(int i = 1; i < pos; i++)
         {
-            throw string("Nie mozna uzyskac dostepu do elementu indeksie "+to_string(pos)+", zakres to <1,"+to_string(size())+">\n");
-        }
-        else if(pos < size()/2)
-        {
-            ptr = begin();
-            for(int i = 1; i < pos; i++)
+            if(ptr->next() == nullptr && i < pos )
             {
-                if(ptr->next() == nullptr && i < pos )
-                {
-                    throw string("Wystapila luka w kontenerze\n");
-                }
-                ptr = ptr->next();
+                throw string("Wystapila luka w kontenerze\n");
             }
+            ptr = ptr->next();
         }
-        else
+    }
+    else
+    {
+        ptr = end();
+        for(int i = size(); i > pos; i--)
         {
-            ptr = end();
-            for(int i = size(); i > pos; i--)
+            if(ptr->previous() == nullptr && i > pos )
             {
-                if(ptr->previous() == nullptr && i > pos )
-                {
-                    throw string("Wystapila luka w kontenerze\n");
-                }
-                ptr = ptr->previous();
+                throw string("Wystapila luka w kontenerze\n");
             }
+            ptr = ptr->previous();
         }
-        return ptr;
+    }
+    return ptr;
 }
 
 template<class T>
@@ -250,6 +250,7 @@ void Container<T>::push(int pos, T elem)
         if(size() == 0)
         {
             setBegin(new Node<T>(elem));
+            if(!begin()) throw string("Blad alokowania pamieci");
             setEnd(begin());
             setSize(size()+1);
         }
@@ -260,7 +261,7 @@ void Container<T>::push(int pos, T elem)
             {
                 ptr = at(pos);
                 Node<T>* new_node = new Node<T>(elem, ptr->previous(), ptr);
-                //if(!new_node) throw string("Blad alokowania pamieci");
+                if(!new_node) throw string("Blad alokowania pamieci");
                 ptr->setPrevious(new_node);
                 if(new_node->previous()) (new_node->previous())->setNext(new_node);
                 else setBegin(new_node);
@@ -279,7 +280,7 @@ void Container<T>::push(int pos, T elem)
         {
             Node<T>* former_end = end();
             Node<T>* new_end = new Node<T>(elem, former_end);
-            //if(!new_end) throw string("Blad alokowania pamieci");
+            if(!new_end) throw string("Blad alokowania pamieci");
             setEnd(new_end);
             former_end->setNext(new_end);
             setSize(size()+1);
